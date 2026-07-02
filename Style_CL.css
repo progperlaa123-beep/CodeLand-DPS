@@ -1,0 +1,393 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+body{
+    font-family: 'Poppins', sans-serif;
+
+    background: #020b2d;
+
+    min-height: 100vh;
+
+    overflow-x: hidden;
+}
+
+
+
+.contenedor{
+    width: 100%;
+    background: #020b2d;
+    position: relative;
+    flex: 1;
+    padding-bottom: 60px;
+}
+
+
+
+.navbar{
+    width: 100%;
+    height: 70px;
+    background: #0b132b;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 0 50px;
+}
+
+
+
+.logo{
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.azul{
+    color: #1f8fff;
+}
+
+.verde{
+    color: #38e27a;
+}
+
+
+.menu{
+    display: flex;
+    gap: 70px;
+}
+
+.menu a{
+    text-decoration: none;
+    color: #cfd4e0;
+    font-size: 15px;
+    font-weight: 400;
+    transition: 0.3s;
+}
+
+.menu a:hover{
+    color: white;
+}
+
+
+/*BOTONES NAV*/
+
+.botones-nav{
+    display: flex;
+    gap: 18px;
+}
+.linea{
+    width: 100%;
+    height: 2px;
+    background: #27d86c;
+}
+.hero{
+    position: relative;
+    width: 100%;
+    height: 520px;
+    min-height: 85vh;
+}
+.contenido-texto{
+    position: absolute;
+    top: 60px;
+    left: 70px;
+    z-index: 2;
+}
+
+.contenido-texto h1{
+    color: white;
+
+    font-size: 68px;
+    font-weight: 700;
+
+    line-height: 1.18;
+}
+
+.contenido-texto p{
+    margin-top: 30px;
+
+    width: 500px;
+
+    color: #c9cfdb;
+
+    font-size: 16px;
+    font-weight: 600;
+
+    line-height: 1.5;
+}
+.imagen-planeta{
+    position: absolute;
+    top: 20px;
+    left: 270px;
+    z-index: 1;
+}
+
+.imagen-planeta img{
+    width: 520px;
+    opacity: 0.65;
+}
+@keyframes brincar{
+
+    0%{
+        transform: translateY(0px);
+    }
+
+    50%{
+        transform: translateY(-10px);
+    }
+
+    100%{
+        transform: translateY(0px);
+    }
+
+}
+.btn-aventura{
+
+    position: absolute;
+    top: 240px;
+    left: 750px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 240px;
+    height: 62px;
+
+    border: none;
+    border-radius: 16px;
+
+    background: #07101f;
+    color: #38ff8a;
+
+    text-decoration: none;
+
+    font-size: 18px;
+    font-weight: 500;
+    font-family: 'Poppins', sans-serif;
+
+    cursor: pointer;
+
+    animation: brincar 2s infinite ease-in-out;
+
+    box-shadow:
+    0 0 10px #0084ff,
+    0 0 20px rgba(0,132,255,0.8);
+
+    transition: 0.3s;
+}
+.btn-aventura:hover{
+
+    transform: scale(1.08);
+
+    box-shadow:
+    0 0 15px #00a2ff,
+    0 0 35px rgba(0,162,255,1);
+}
+.cards{
+    width: 100%;
+
+    display: flex;
+    justify-content: space-evenly;
+
+    margin-top: 30px;
+    margin-bottom: 80px;
+
+    padding: 0 20px;
+}
+
+.card{
+
+    width: 250px;
+    height: 160px;
+
+    background: #1a274f;
+
+    border-radius: 18px;
+
+    padding: 25px 18px;
+
+    display: flex;
+    align-items: flex-start;
+
+    cursor: pointer;
+
+    transition: 0.35s ease;
+}
+.card p{
+
+    color: white;
+
+    font-size: 16px;
+    font-weight: 700;
+
+    line-height: 1.5;
+}
+.card:hover{
+
+    transform: translateY(-12px) scale(1.03);
+
+    background: #22356b;
+
+    box-shadow:
+    0 0 15px rgba(0,132,255,0.5),
+    0 0 30px rgba(0,132,255,0.3);
+}
+
+.card:active{
+
+    transform: scale(0.97);
+}
+/* FOOTER */
+
+.footer{
+
+    width: 100%;
+
+    background: #1e3147;
+
+    border-top: 2px solid #38e27a;
+
+    padding: 35px 50px 20px;
+}
+
+/* CONTENEDOR */
+
+.footer-contenedor{
+
+    display: flex;
+
+    justify-content: space-between;
+
+    flex-wrap: wrap;
+
+    gap: 30px;
+}
+
+/* COLUMNAS */
+
+.footer-box{
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 12px;
+
+    max-width: 240px;
+}
+
+/* TITULOS */
+
+.footer-box h2{
+
+    font-size: 28px;
+    font-weight: 700;
+}
+
+.footer-box h3{
+
+    font-size: 20px;
+    font-weight: 700;
+}
+
+/* TEXTO */
+
+.footer-box p,
+.footer-box a{
+
+    color: #d7dde8;
+
+    text-decoration: none;
+
+    font-size: 14px;
+
+    line-height: 1.7;
+}
+
+/* HOVER */
+
+.footer-box a:hover{
+
+    color: #38e27a;
+}
+
+/* LINEA */
+
+.footer-linea{
+
+    width: 100%;
+    height: 1px;
+
+    background: rgba(255,255,255,0.1);
+
+    margin: 25px 0 20px;
+}
+
+/* PARTE INFERIOR */
+
+.footer-bottom{
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.footer-bottom p{
+
+    color: #d7dde8;
+
+    font-size: 13px;
+}
+
+/* MODAL CONTACTO */
+
+.modal-emergente{
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    background: rgba(2, 6, 23, 0.72);
+}
+
+.modal-content{
+    width: min(420px, 100%);
+    padding: 26px;
+    border: 1px solid rgba(148, 163, 184, 0.25);
+    border-radius: 8px;
+    background: #0f172a;
+    color: #f8fafc;
+    box-shadow: 0 24px 70px rgba(0, 0, 0, 0.35);
+    position: relative;
+}
+
+.modal-content h2{
+    margin-bottom: 12px;
+    font-size: 22px;
+}
+
+.modal-content p{
+    margin: 10px 0;
+    color: #d7dde8;
+}
+
+.close-btn{
+    position: absolute;
+    top: 10px;
+    right: 14px;
+    color: #f8fafc;
+    font-size: 28px;
+    font-weight: 700;
+    line-height: 1;
+    cursor: pointer;
+}
+
+.close-btn:hover{
+    color: #38e27a;
+}

@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/estilo_lecciones.css">
+    <title>Estación Orbital 28 | CodeLand DPS</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght=300;400;600;800&display=swap" rel="stylesheet">
+    <script src="https://player.vimeo.com/api/player.js"></script>
+</head>
+<body>
+    <header class="header-leccion">
+        <div><h2>Módulo I ➔ Estación 28</h2></div>
+        <div id="cronometroContenedor" style="background: rgba(0, 162, 255, 0.15); border: 1px solid #00a2ff; padding: 6px 16px; border-radius: 20px; font-weight: 600; color: #00a2ff; font-family: 'Poppins', sans-serif; display: flex; align-items: center; gap: 8px;">
+            ⏱️ Tiempo: <span id="timerVisual">00:00</span>
+        </div>
+        <button class="btn-salir" onclick="solicitarSalida()">Abandona Misión 🛸</button>
+    </header>
+
+    <section class="seccion-contexto">
+        <h3>🚀 Contexto de Aplicación Real</h3>
+        <p>En el procesamiento de gráficos en 3D para simulaciones espaciales o filtros fotográficos, transformar una imagen vertical a una posición horizontal implica rotar sus pixeles. Matemáticamente, esto equivale a transponer una matriz: convertir todas sus filas en columnas. Dominar el recorrido selectivo de una matriz (como extraer únicamente su diagonal principal) permite acelerar los cálculos de inteligencia artificial y física avanzada.</p>
+    </section>
+
+    <section class="seccion-multimedia">
+        <h3>🎥 Contenido Audiovisual </h3>
+        <p class="instruccion-video">⚠️ Debes visualizar el video completo sin adelantar para desbloquear la evaluación.</p>
+        
+        <div class="contenedor-video" style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; margin-bottom: 15px;">
+            <iframe id="videoVimeo" 
+                    src="https://player.vimeo.com/video/1198525712?api=1&controls=1&badge=0&autopause=0&player_id=0" 
+                    frameborder="0" 
+                    allow="autoplay; fullscreen; picture-in-picture" 
+                    style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border-radius: 8px;" 
+                    title="Contenido Educativo Orbital">
+            </iframe>
+        </div>
+
+        <p style="font-size: 0.85rem; color: #64748b; text-align: center; margin-top: 12px; font-style: italic; font-family: 'Poppins', sans-serif;">
+            Material audiovisual adaptado con fines estrictamente educativos. Créditos del autor: Sincronizacion del conocimiento.
+        </p>
+        <div class="contenedor-imagen-apoyo">
+            <img src="img/esquema_leccion28.png" alt="Esquema conceptual" onerror="this.style.display='none';">
+        </div>
+    </section>
+
+    <section class="seccion-teoria">
+        <h1>28. Operaciones Avanzadas con Matrices</h1>
+        <p>Más allá de almacenar datos en celdas individuales, la ingeniería de software requiere operar las estructuras bidimensionales de forma colectiva mediante álgebra lineal y algoritmos de filtrado selectivo.</p>
+        
+        <div class="ideas-clave">
+            <h3>💡 Conceptos Clave y Definiciones Académicas:</h3>
+            <ul>
+                <li><strong>Matriz Cuadrada:</strong> Aquella estructura bidimensional que posee exactamente la misma cantidad de filas que de columnas (ej: una matriz de 4x4) <em>(Sznajdleder, 2012)</em>.</li>
+                <li><strong>Diagonal Principal:</strong> Conjunto ordenado de celdas dentro de una matriz cuadrada donde el índice de la fila es exactamente igual al índice de la columna (<code>i == j</code>). Recorrerla solo requiere un único ciclo simple en lugar de bucles anidados, reduciendo el consumo computacional.</li>
+                <li><strong>Transposición:</strong> Operación algorítmica donde los elementos localizados en la coordenada <code>matriz[i][j]</code> se reasignan ordenadamente a la posición invertida de una matriz de destino <code>matriz_transpuesta[j][i]</code>.</li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="seccion-bloqueada-control" id="controlBloqueo">
+        <button id="btnDesbloquearQuiz" class="btn-verificar" disabled onclick="mostrarEvaluacionOculta()">
+            Bloqueado por Reproducción 🔒
+        </button>
+    </section>
+
+    <section class="seccion-quiz oculto-inicial" id="moduloEvaluacion">
+        <h2>⚡ Evaluación </h2>
+        
+        <div id="contenedorPreguntas">
+            
+            <div class="pregunta-bloque" data-correcta="1">
+                <p><strong> Dentro de una matriz cuadrada de 5x5, ¿qué condición lógica formal determina que una celda forma parte exacta de la "Diagonal Principal"?</strong></p>
+                <ul class="opciones-lista">
+                    <li onclick="seleccionarOpcion(this)" data-id="1">Que el valor del índice de la fila (`i`) coincida de forma idéntica con el valor del índice de la columna (`j`).</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="2">Que la suma de ambos índices de como resultado el tamaño máximo de la estructura.</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="3">Que ambos índices contengan únicamente valores impares de forma alternativa.</li>
+                </ul>
+            </div>
+
+            <div class="pregunta-bloque" data-correcta="3">
+                <p><strong> Si un algoritmo procesa una matriz invirtiendo el orden de sus celdas mediante la lógica `destino[j][i] = origen[i][j]`, ¿qué operación avanzada se está ejecutando?</strong></p>
+                <ul class="opciones-lista">
+                    <li onclick="seleccionarOpcion(this)" data-id="1">Una búsqueda lineal indexada.</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="2">La inicialización estática de acumuladores modulares.</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="3">La transposición de una matriz (conversión de filas a columnas).</li>
+                </ul>
+            </div>
+
+            <div class="pregunta-bloque" data-correcta="2">
+                <p><strong> Según Sznajdleder (2012), ¿qué característica define estrictamente a una "Matriz Cuadrada"?</strong></p>
+                <ul class="opciones-lista">
+                    <li onclick="seleccionarOpcion(this)" data-id="1">Que todas sus celdas lógicas almacenen valores iguales a cero.</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="2">Poseer exactamente la misma cantidad de filas que de columnas en su dimensión.</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="3">Tener más de 10 columnas horizontales inicializadas en memoria RAM.</li>
+                </ul>
+            </div>
+
+            <div class="pregunta-bloque" data-correcta="1">
+                <p><strong> ¿Cuál es el beneficio computacional directo de recorrer únicamente la diagonal principal de una matriz cuadrada?</strong></p>
+                <ul class="opciones-lista">
+                    <li onclick="seleccionarOpcion(this)" data-id="1">Requiere un único ciclo simple en lugar de bucles anidados, reduciendo el consumo de procesamiento.</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="2">Permite duplicar el espacio de almacenamiento disponible en la memoria del sistema.</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="3">Evita que se generen errores de desbordamiento en la ejecución.</li>
+                </ul>
+            </div>
+
+            <div class="pregunta-bloque" data-correcta="2">
+                <p><strong> Si estamos en la coordenada `matriz[2][2]` de una estructura cuadrada, ¿pertenece este casillero a la diagonal principal?</strong></p>
+                <ul class="opciones-lista">
+                    <li onclick="seleccionarOpcion(this)" data-id="1">No, porque los valores numéricos deben ser impares de manera mandatoria.</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="2">Sí, porque se cumple la condición lógica exacta de que el índice de la fila es igual al de la columna (i == j).</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="3">Depende de si la matriz almacena números enteros o flotantes.</li>
+                </ul>
+            </div>
+
+            <div class="pregunta-bloque" data-correcta="3">
+                <p><strong> De acuerdo con Joyanes Aguilar (2013), la permutación ordenada de las coordenadas de filas por columnas representa la definición matemática estricta de:</strong></p>
+                <ul class="opciones-lista">
+                    <li onclick="seleccionarOpcion(this)" data-id="1">La eficiencia temporal secuencial.</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="2">La doble indexación lineal anidada.</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="3">La transposición matricial.</li>
+                </ul>
+            </div>
+
+            <div class="pregunta-bloque" data-correcta="1">
+                <p><strong> En el procesamiento de gráficos 3D astronómicos, ¿para qué se utiliza operativamente la transposición de matrices?</strong></p>
+                <ul class="opciones-lista">
+                    <li onclick="seleccionarOpcion(this)" data-id="1">Para rotar píxeles o transformar imágenes de una posición a otra reasignando coordenadas de filas a columnas.</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="2">Para comprimir el tamaño físico del archivo antes de guardarlo en disco.</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="3">Para limpiar el ruido de las señales electromagnéticas externas.</li>
+                </ul>
+            </div>
+
+            <div class="pregunta-bloque" data-correcta="2">
+                <p><strong> Si tenemos una matriz original de dimensiones 4 filas por 3 columnas, ¿qué dimensiones tendrá la matriz transpuesta de destino?</strong></p>
+                <ul class="opciones-lista">
+                    <li onclick="seleccionarOpcion(this)" data-id="1">Mantendrá las mismas dimensiones de 4 filas por 3 columnas.</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="2">Tendrá dimensiones invertidas de 3 filas por 4 columnas.</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="3">Se convertirá en un vector unidimensional de 12 elementos en fila.</li>
+                </ul>
+            </div>
+
+            <div class="pregunta-bloque" data-correcta="3">
+                <p><strong> ¿Cuál de los siguientes conjuntos de coordenadas mapea de forma exclusiva elementos de la diagonal principal de una matriz de 3x3?</strong></p>
+                <ul class="opciones-lista">
+                    <li onclick="seleccionarOpcion(this)" data-id="1">`[0][1], [1][2], [2][0]`</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="2">`[0][2], [1][1], [2][0]`</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="3">`[0][0], [1][1], [2][2]`</li>
+                </ul>
+            </div>
+
+            <div class="pregunta-bloque" data-correcta="1">
+                <p><strong> Dominar operaciones avanzadas como el recorrido selectivo de subestructuras matriciales permite directamente:</strong></p>
+                <ul class="opciones-lista">
+                    <li onclick="seleccionarOpcion(this)" data-id="1">Acelerar los cálculos de inteligencia artificial y modelos de física avanzada en el software.</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="2">Evitar tener que documentar los bloques complejos de código fuente.</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="3">Modificar la velocidad física de transferencia del bus de datos de la RAM.</li>
+                </ul>
+            </div>
+
+        </div>
+
+        <button class="btn-verificar" onclick="validarCuestionario()">Enviar Respuestas </button>
+    </section>
+
+    <div id="overlayExito" class="pantalla-exito-overlay">
+        <div id="textoExito" class="mensaje-exito-grande">¡Correcto! Has ganado 50 XP.</div>
+        <button class="btn-comenzar" id="btnSiguienteNivel" onclick="irAlMapa()">Regresar a las Regiones 🚀</button>
+    </div>
+
+    <script>
+        const idLeccionActual = 28;
+        const xpGanada = 50;
+        
+        let segundosTranscurridos = 0;
+        const timerElemento = document.getElementById("timerVisual");
+        
+        const cronometroIntervalo = setInterval(() => {
+            segundosTranscurridos++;
+            let minutos = Math.floor(segundosTranscurridos / 60);
+            let segundos = segundosTranscurridos % 60;
+            let minTexto = minutos < 10 ? "0" + minutos : minutos;
+            let segTexto = segundos < 10 ? "0" + segundos : segundos;
+            timerElemento.innerText = minTexto + ":" + segTexto;
+        }, 1000);
+
+        const btnDesbloquear = document.getElementById("btnDesbloquearQuiz");
+        const moduloEvaluacion = document.getElementById("moduloEvaluacion");
+
+        const iframe = document.getElementById('videoVimeo');
+        const player = new Vimeo.Player(iframe);
+        
+        let tiempoMaximoVisto = 0;
+        let ejecutandoRegreso = false;
+        let duracionVideo = 0;
+
+        player.getDuration().then(function(duration) {
+            duracionVideo = duration;
+        }).catch(function() {
+            duracionVideo = 60; 
+        });
+
+        player.on('timeupdate', function(data) {
+            if (!ejecutandoRegreso) {
+                if (data.seconds > tiempoMaximoVisto + 1.5) {
+                    ejecutandoRegreso = true;
+                    player.setCurrentTime(tiempoMaximoVisto).then(function() {
+                        ejecutandoRegreso = false;
+                        alert("🔒 Bloqueo de Seguridad: No puedes adelantar la explicación audiovisual.");
+                    });
+                } else if (data.seconds > tiempoMaximoVisto) {
+                    tiempoMaximoVisto = data.seconds;
+                }
+            }
+        });
+
+        player.on('seeked', function(data) {
+            if (data.seconds > tiempoMaximoVisto + 1.5) {
+                ejecutandoRegreso = true;
+                player.setCurrentTime(tiempoMaximoVisto).then(function() {
+                    ejecutandoRegreso = false;
+                });
+            }
+        });
+
+        player.on('ended', function() {
+            if (tiempoMaximoVisto >= (duracionVideo - 3)) {
+                btnDesbloquear.removeAttribute("disabled");
+                btnDesbloquear.innerText = "Acceder a Evaluación ⚔️";
+                btnDesbloquear.style.background = "linear-gradient(135deg, #00ff87, #00c2ff)";
+                btnDesbloquear.style.color = "#020617";
+                btnDesbloquear.style.boxShadow = "0 0 20px rgba(0, 255, 135, 0.6)";
+            } else {
+                tiempoMaximoVisto = 0;
+                player.setCurrentTime(0);
+                alert("❌ Trampa detectada: Debes reproducir el contenido completo paso a paso.");
+            }
+        });
+
+        function barajearTodo() {
+            const contenedorPreguntas = document.getElementById('contenedorPreguntas');
+            const bloquesPreguntas = Array.from(contenedorPreguntas.children);
+            
+            for (let i = bloquesPreguntas.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                contenedorPreguntas.appendChild(bloquesPreguntas[j]);
+            }
+
+            const listasOpciones = document.querySelectorAll('.opciones-lista');
+            listasOpciones.forEach(lista => {
+                const opciones = Array.from(lista.children);
+                for (let i = opciones.length - 1; i > 0; i--) {
+                    const j = Math.floor(Math.random() * (i + 1));
+                    lista.appendChild(opciones[j]);
+                }
+            });
+        }
+
+        window.addEventListener("DOMContentLoaded", barajearTodo);
+
+        function mostrarEvaluacionOculta() {
+            moduloEvaluacion.classList.remove("oculto-inicial");
+            moduloEvaluacion.classList.add("mostrar-animado");
+            document.getElementById("controlBloqueo").style.display = "none";
+            moduloEvaluacion.scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function solicitarSalida() { 
+            if (confirm("¿Abortar misión? El progreso actual no se guardará.")) {
+                window.location.href = "../mundoI.php"; 
+            }
+        }
+        
+        function seleccionarOpcion(elementoLli) { 
+            const listaPadre = elementoLli.parentElement; 
+            Array.from(listaPadre.children).forEach(li => li.classList.remove('seleccionada')); 
+            elementoLli.classList.add('seleccionada'); 
+            listaPadre.setAttribute("data-seleccionada", elementoLli.getAttribute("data-id")); 
+        }
+
+        function validarCuestionario() {
+            const bloques = document.querySelectorAll('.pregunta-bloque'); 
+            let todasRespondidas = true; 
+            let todasCorrectas = true;
+
+            bloques.forEach(bloque => {
+                const listaOpciones = bloque.querySelector('.opciones-lista');
+                const seleccionadaId = listaOpciones.getAttribute('data-seleccionada');
+                const respuestaCorrecta = bloque.getAttribute('data-correcta');
+
+                if (!seleccionadaId) {
+                    todasRespondidas = false;
+                    return; 
+                }
+                if (seleccionadaId !== respuestaCorrecta) {
+                    todasCorrectas = false;
+                }
+            });
+
+            if (!todasRespondidas) { 
+                alert("⚠️ Por favor, responde los 10 reactivos antes de enviar las respuestas."); 
+                return; 
+            }
+
+            if (!todasCorrectas) { 
+                alert("❌ Error en los sistemas lógicos. Revisa tus respuestas e inténtalo de nuevo."); 
+                return; 
+            }
+
+            clearInterval(cronometroIntervalo);
+            registrarProgresoYXP(idLeccionActual);
+        }
+
+        function registrarProgresoYXP(l) {
+            fetch('../api/procesar_leccion_completada.php', { 
+                method: 'POST', 
+                headers: { 'Content-Type': 'application/json' }, 
+                body: JSON.stringify({ 
+                    id_leccion: l, 
+                    xp_ganada: xpGanada,
+                    tiempo_segundos: segundosTranscurridos 
+                }) 
+            })
+            .then(res => res.json())
+            .then(d => { 
+                mostrarPantallaExito();
+            })
+            .catch(() => { 
+                mostrarPantallaExito();
+            });
+        }
+
+        function mostrarPantallaExito() {
+            document.getElementById('overlayExito').classList.add('visible'); 
+            const btnRegresar = document.getElementById('btnSiguienteNivel');
+            btnRegresar.style.setProperty('display', 'flex', 'important');
+        }
+
+        function irAlMapa() { window.location.href = "../mundoI.php"; }
+    </script>
+</body>
+</html>

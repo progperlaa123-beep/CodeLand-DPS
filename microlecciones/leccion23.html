@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/estilo_lecciones.css">
+    <title>Estación Orbital 23 | CodeLand DPS</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght=300;400;600;800&display=swap" rel="stylesheet">
+    <script src="https://player.vimeo.com/api/player.js"></script>
+</head>
+<body>
+    <header class="header-leccion">
+        <div><h2>Módulo I ➔ Estación 23</h2></div>
+        <div id="cronometroContenedor" style="background: rgba(0, 162, 255, 0.15); border: 1px solid #00a2ff; padding: 6px 16px; border-radius: 20px; font-weight: 600; color: #00a2ff; font-family: 'Poppins', sans-serif; display: flex; align-items: center; gap: 8px;">
+            ⏱️ Tiempo: <span id="timerVisual">00:00</span>
+        </div>
+        <button class="btn-salir" onclick="solicitarSalida()">Abandona Misión 🛸</button>
+    </header>
+
+    <section class="seccion-contexto" style="margin-bottom: 25px; padding: 20px; background: rgba(255, 255, 255, 0.02); border-left: 4px solid #00a2ff; border-radius: 4px;">
+        <h3>🚀 Contexto de Aplicación Real</h3>
+        <p>Imagina que tienes una hoja con un reporte contable oficial guardado bajo llave en tu escritorio. Si un compañero te pide los datos para un análisis rápido, tienes dos opciones: sacarle una fotocopia y entregársela (Paso por Valor); cualquier rayón que él haga en la copia no dañará tu documento original. O bien, prestarle el reporte original firmado (Paso por Referencia); cualquier tachadura o cambio que él realice modificará directamente tu documento para siempre. Lo mismo ocurre con las variables enviadas a las funciones en programación.</p>
+    </section>
+
+    <section class="seccion-multimedia">
+        <h3>🎥 Contenido Audiovisual </h3>
+        <p class="instruccion-video">⚠️ Debes visualizar el video completo sin adelantar para desbloquear la evaluación.</p>
+        
+        <div class="contenedor-video" style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; margin-bottom: 15px;">
+            <iframe id="videoVimeo" 
+                    src="https://player.vimeo.com/video/1198518845?api=1&controls=1&badge=0&autopause=0&player_id=0" 
+                    frameborder="0" 
+                    allow="autoplay; fullscreen; picture-in-picture" 
+                    style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border-radius: 8px;" 
+                    title="Contenido Educativo Orbital 23">
+            </iframe>
+        </div>
+
+        <p style="font-size: 0.85rem; color: #64748b; text-align: center; margin-top: 12px; font-style: italic; font-family: 'Poppins', sans-serif;">
+            Material audiovisual adaptado con fines estrictamente educativos. Créditos del autor: Aprende a programar.
+        </p>
+        <div class="contenedor-imagen-apoyo">
+            <img src="img/esquema_leccion23.png" alt="Esquema parámetros" onerror="this.style.display='none';">
+        </div>
+    </section>
+
+    <section class="seccion-teoria">
+        <h1>23. Mecanismos de Transmisión: Paso por Valor vs Paso por Referencia</h1>
+        <p>Al invocar una función pasándole variables de argumento, el lenguaje de programación utiliza mecanismos específicos en la asignación de memoria para tratar dichas transferencias de datos.</p>
+        
+        <div class="ideas-clave">
+            <h3>💡 Conceptos Clave y Definiciones Académicas:</h3>
+            <ul>
+                <li><strong>Paso por Valor:</strong> La función recibe una copia exacta del dato contenido en la variable original. Cualquier modificación que se realice dentro del bloque secundario NO afecta la variable externa del algoritmo principal.</li>
+                <li><strong>Paso por Referencia:</strong> La función recibe la dirección de memoria exacta de la variable original. No hay copia; la función trabaja con la variable real, por lo que cualquier modificación interna alterará directamente su valor original fuera de la sub-rutina.</li>
+                <li><strong>Ámbito (Scope):</strong> Delimita la región de validez de una variable. Las variables locales solo existen dentro de su módulo correspondiente.</li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="seccion-bloqueada-control" id="controlBloqueo">
+        <button id="btnDesbloquearQuiz" class="btn-verificar" disabled onclick="mostrarEvaluacionOculta()">
+            Bloqueado por Reproducción 🔒
+        </button>
+    </section>
+
+    <section class="seccion-quiz oculto-inicial" id="moduloEvaluacion">
+        <h2>⚡ Evaluación </h2>
+        
+        <div id="contenedorPreguntas">
+            
+            <div class="pregunta-bloque" data-correcta="2">
+                <p><strong> ¿Qué sucede con la variable original del programa principal en un Paso por Valor?</strong></p>
+                <ul class="opciones-lista">
+                    <li onclick="seleccionarOpcion(this)" data-id="1">Se borra de forma permanente de la memoria caché.</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="2">Se mantiene intacta sin importar las modificaciones que haga la función.</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="3">Cambia obligatoriamente a un tipo lógico booleano falso.</li>
+                </ul>
+            </div>
+
+            <div class="pregunta-bloque" data-correcta="1">
+                <p><strong> ¿Qué recibe exactamente una función cuando se utiliza el mecanismo de Paso por Referencia?</strong></p>
+                <ul class="opciones-lista">
+                    <li onclick="seleccionarOpcion(this)" data-id="1">La dirección real de memoria de la variable original.</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="2">Una simple fotocopia de lectura del dato ingresado.</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="3">Un arreglo unidimensional indexado en cero.</li>
+                </ul>
+            </div>
+
+            <div class="pregunta-bloque" data-correcta="3">
+                <p><strong> En la analogía del reporte contable, ¿qué representaría entregar una fotocopia del archivo?</strong></p>
+                <ul class="opciones-lista">
+                    <li onclick="seleccionarOpcion(this)" data-id="1">El uso exclusivo de variables globales redundantes.</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="2">Un proceso de Paso por Referencia.</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="3">Un proceso de Paso por Valor.</li>
+                </ul>
+            </div>
+
+            <div class="pregunta-bloque" data-correcta="2">
+                <p><strong> Si una función altera un parámetro recibido "Por Referencia", ¿qué ocurre al regresar al algoritmo principal?</strong></p>
+                <ul class="opciones-lista">
+                    <li onclick="seleccionarOpcion(this)" data-id="1">La variable conserva su valor original previo a la llamada.</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="2">El cambio persiste y la variable del programa principal se muestra modificada.</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="3">El programa arroja un error fatal de sintaxis indeterminada.</li>
+                </ul>
+            </div>
+
+            <div class="pregunta-bloque" data-correcta="1">
+                <p><strong> ¿Qué define el Concepto de Ámbito (Scope) de una variable?</strong></p>
+                <ul class="opciones-lista">
+                    <li onclick="seleccionarOpcion(this)" data-id="1">La región o bloque del programa donde la variable es válida y reconocida en memoria.</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="2">La velocidad en milisegundos con la que calcula un ciclo Mientras.</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="3">La cantidad de texto permitida en un comentario de pseudocódigo.</li>
+                </ul>
+            </div>
+
+            <div class="pregunta-bloque" data-correcta="3">
+                <p><strong> ¿Cómo se comportan las variables locales declaradas dentro de una función secundaria?</strong></p>
+                <ul class="opciones-lista">
+                    <li onclick="seleccionarOpcion(this)" data-id="1">Tienen validez absoluta en todo el software indexado de la plataforma.</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="2">Se inicializan obligatoriamente en la cabecera del ciclo Para de la Lección 17.</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="3">Solo existen y pueden usarse dentro de esa función específica; mueren al terminar su flujo.</li>
+                </ul>
+            </div>
+
+            <div class="pregunta-bloque" data-correcta="2">
+                <p><strong> Si solo deseas que una función consulte la edad de un usuario para imprimirla sin arriesgarse a cambiarla, ¿qué mecanismo eliges?</strong></p>
+                <ul class="opciones-lista">
+                    <li onclick="seleccionarOpcion(this)" data-id="1">Paso por Referencia explícita.</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="2">Paso por Valor.</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="3">Uso de acumulador variable asíncrono.</li>
+                </ul>
+            </div>
+
+            <div class="pregunta-bloque" data-correcta="1">
+                <p><strong> Si deseas construir una función que deba actualizar y modificar directamente el saldo neto de una cuenta de banco externa, ¿qué paso aplicas?</strong></p>
+                <ul class="opciones-lista">
+                    <li onclick="seleccionarOpcion(this)" data-id="1">Paso por Referencia.</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="2">Paso por Valor de copia entera.</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="3">Estructuración mediante banderas de tipo carácter.</li>
+                </ul>
+            </div>
+
+            <div class="pregunta-bloque" data-correcta="3">
+                <p><strong> En pseudocódigo (como PSeInt), ¿qué palabra clave explícita se añade para activar el enlace directo de memoria?</strong></p>
+                <ul class="opciones-lista">
+                    <li onclick="seleccionarOpcion(this)" data-id="1">ConPaso1</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="2">PorValorCopy</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="3">PorReferencia</li>
+                </ul>
+            </div>
+
+            <div class="pregunta-bloque" data-correcta="2">
+                <p><strong> ¿Qué ventaja de rendimiento en memoria RAM puede ofrecer el paso por referencia al trabajar con estructuras de datos masivas?</strong></p>
+                <ul class="opciones-lista">
+                    <li onclick="seleccionarOpcion(this)" data-id="1">Elimina la necesidad de utilizar un navegador web avanzado.</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="2">Ahorra memoria al evitar duplicar o realizar copias completas de volúmenes gigantescos de datos innecesariamente.</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="3">Convierte de forma inmediata las variables en comentarios de sistema.</li>
+                </ul>
+            </div>
+
+        </div>
+
+        <button class="btn-verificar" onclick="validarCuestionario()">Enviar Respuestas al Servidor</button>
+    </section>
+
+    <div id="overlayExito" class="pantalla-exito-overlay">
+        <div id="textoExito" class="mensaje-exito-grande">¡Correcto! Has ganado 50 XP.</div>
+        <button class="btn-comenzar" id="btnSiguienteNivel" onclick="irAlMapa()">Regresar a las Regiones 🚀</button>
+    </div>
+
+    <script>
+        const idLeccionActual = 23;
+        const xpGanada = 50;
+        
+        let segundosTranscurridos = 0;
+        const timerElemento = document.getElementById("timerVisual");
+        
+        const cronometroIntervalo = setInterval(() => {
+            segundosTranscurridos++;
+            let minutos = Math.floor(segundosTranscurridos / 60);
+            let segundos = segundosTranscurridos % 60;
+            let minTexto = minutos < 10 ? "0" + minutos : minutos;
+            let segTexto = segundos < 10 ? "0" + segundos : segundos;
+            timerElemento.innerText = minTexto + ":" + segTexto;
+        }, 1000);
+
+        const btnDesbloquear = document.getElementById("btnDesbloquearQuiz");
+        const moduloEvaluacion = document.getElementById("moduloEvaluacion");
+        const iframe = document.getElementById('videoVimeo');
+        const player = new Vimeo.Player(iframe);
+        
+        let tiempoMaximoVisto = 0;
+        let ejecutandoRegreso = false;
+        let duracionVideo = 0;
+
+        player.getDuration().then(function(duration) {
+            duracionVideo = duration;
+        }).catch(function() {
+            duracionVideo = 60; 
+        });
+
+        player.on('timeupdate', function(data) {
+            if (!ejecutandoRegreso) {
+                if (data.seconds > tiempoMaximoVisto + 1.5) {
+                    ejecutandoRegreso = true;
+                    player.setCurrentTime(tiempoMaximoVisto).then(function() {
+                        ejecutandoRegreso = false;
+                        alert("🔒 Bloqueo de Seguridad: No puedes adelantar la explicación audiovisual.");
+                    });
+                } else if (data.seconds > tiempoMaximoVisto) {
+                    tiempoMaximoVisto = data.seconds;
+                }
+            }
+        });
+
+        player.on('seeked', function(data) {
+            if (data.seconds > tiempoMaximoVisto + 1.5) {
+                ejecutandoRegreso = true;
+                player.setCurrentTime(tiempoMaximoVisto).then(function() {
+                    ejecutandoRegreso = false;
+                });
+            }
+        });
+
+        player.on('ended', function() {
+            if (tiempoMaximoVisto >= (duracionVideo - 3)) {
+                btnDesbloquear.removeAttribute("disabled");
+                btnDesbloquear.innerText = "Acceder a Evaluación ⚔️";
+                btnDesbloquear.style.background = "linear-gradient(135deg, #00ff87, #00c2ff)";
+                btnDesbloquear.style.color = "#020617";
+                btnDesbloquear.style.boxShadow = "0 0 20px rgba(0, 255, 135, 0.6)";
+            } else {
+                tiempoMaximoVisto = 0;
+                player.setCurrentTime(0);
+                alert("❌ Trampa detectada: Debes reproducir el contenido completo paso a paso.");
+            }
+        });
+
+        function barajearTodo() {
+            const contenedorPreguntas = document.getElementById('contenedorPreguntas');
+            const bloquesPreguntas = Array.from(contenedorPreguntas.children);
+            
+            for (let i = bloquesPreguntas.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                contenedorPreguntas.appendChild(bloquesPreguntas[j]);
+            }
+
+            const listasOpciones = document.querySelectorAll('.opciones-lista');
+            listasOpciones.forEach(lista => {
+                const opciones = Array.from(lista.children);
+                for (let i = opciones.length - 1; i > 0; i--) {
+                    const j = Math.floor(Math.random() * (i + 1));
+                    lista.appendChild(opciones[j]);
+                }
+            });
+        }
+
+        window.addEventListener("DOMContentLoaded", barajearTodo);
+
+        function mostrarEvaluacionOculta() {
+            moduloEvaluacion.classList.remove("oculto-inicial");
+            moduloEvaluacion.classList.add("mostrar-animado");
+            document.getElementById("controlBloqueo").style.display = "none";
+            moduloEvaluacion.scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function solicitarSalida() { 
+            if (confirm("¿Abortar misión? El progreso actual no se guardará.")) {
+                window.location.href = "../mundoI.php"; 
+            }
+        }
+        
+        function seleccionarOpcion(elementoLli) { 
+            const listaPadre = elementoLli.parentElement; 
+            Array.from(listaPadre.children).forEach(li => li.classList.remove('seleccionada')); 
+            elementoLli.classList.add('seleccionada'); 
+            listaPadre.setAttribute("data-seleccionada", elementoLli.getAttribute("data-id")); 
+        }
+
+        function validarCuestionario() {
+            const bloques = document.querySelectorAll('.pregunta-bloque'); 
+            let todasRespondidas = true; 
+            let todasCorrectas = true;
+
+            bloques.forEach(bloque => {
+                const listaOpciones = bloque.querySelector('.opciones-lista');
+                const seleccionadaId = listaOpciones.getAttribute('data-seleccionada');
+                const respuestaCorrecta = bloque.getAttribute('data-correcta');
+
+                if (!seleccionadaId) {
+                    todasRespondidas = false;
+                    return; 
+                }
+
+                if (seleccionadaId !== respuestaCorrecta) {
+                    todasCorrectas = false;
+                }
+            });
+
+            if (!todasRespondidas) { 
+                alert("⚠️ Por favor, responde los 10 reactivos antes de enviar las respuestas."); 
+                return; 
+            }
+
+            if (!todasCorrectas) { 
+                alert("❌ Error en los sistemas lógicos. Revisa tus respuestas e inténtalo de nuevo."); 
+                return; 
+            }
+
+            clearInterval(cronometroIntervalo);
+            registrarProgresoYXP(idLeccionActual);
+        }
+
+        function registrarProgresoYXP(l) {
+            fetch('../api/procesar_leccion_completada.php', { 
+                method: 'POST', 
+                headers: { 'Content-Type': 'application/json' }, 
+                body: JSON.stringify({ 
+                    id_leccion: l, 
+                    xp_ganada: xpGanada,
+                    tiempo_segundos: segundosTranscurridos 
+                }) 
+            })
+            .then(res => res.json())
+            .then(() => { mostrarPantallaExito(); })
+            .catch(() => { mostrarPantallaExito(); });
+        }
+
+        function mostrarPantallaExito() {
+            document.getElementById('overlayExito').classList.add('visible'); 
+            const btnRegresar = document.getElementById('btnSiguienteNivel');
+            btnRegresar.style.setProperty('display', 'flex', 'important');
+        }
+
+        function irAlMapa() { window.location.href = "../mundoI.php"; }
+    </script>
+</body>
+</html>

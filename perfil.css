@@ -1,0 +1,269 @@
+body.body-perfil-instagram {
+    background-color: #0b0f19;
+    color: #f1f5f9;
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+/* Forzar que el menú use las reglas exactas de alineación de mundoI */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 40px;
+    background-color: #0b0f19;
+}
+
+/* Contenedor centralizado simétrico */
+.perfil-insta-container {
+    max-width: 800px;
+    margin: 50px auto; /* Centrado horizontal automático */
+    background: rgba(22, 32, 54, 0.5);
+    border: 1px solid #1e293b;
+    border-radius: 20px;
+    padding: 40px;
+    backdrop-filter: blur(12px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+}
+
+/* Cabecera Flexible */
+.insta-header {
+    display: flex;
+    gap: 50px;
+    align-items: center;
+    border-bottom: 1px solid #1e293b;
+    padding-bottom: 35px;
+    margin-bottom: 30px;
+}
+
+/* Ajuste de Foto de Perfil más Grande */
+.insta-avatar-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+}
+.avatar-marco {
+    width: 170px; /* Tamaño optimizado y ampliado */
+    height: 170px;
+    border-radius: 50%;
+    border: 3px solid #38bdf8; /* Azul CodeLand */
+    padding: 5px;
+    background: #0f172a;
+    box-shadow: 0 0 25px rgba(56, 189, 248, 0.3);
+}
+
+.avatar-marco img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+}
+.btn-cambiar-avatar {
+    background: rgba(30, 41, 59, 0.8);
+    border: 1px solid #38bdf8;
+    color: #38bdf8;
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 11.5px;
+    cursor: pointer;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    transition: all 0.2s;
+}
+
+.btn-cambiar-avatar:hover {
+    background: #38bdf8;
+    color: #0b0f19;
+}
+/* Bloque Informativo */
+.insta-stats-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.insta-username-row {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.insta-username-row h2 {
+    margin: 0;
+    font-size: 25px;
+    font-weight: 600;
+}
+
+/* Indicadores de Estado Dinámicos */
+.badge-estado-insta {
+    padding: 4px 14px;
+    font-size: 11.5px;
+    font-weight: 700;
+    border-radius: 20px;
+    text-transform: uppercase;
+}
+
+.estado-activo {
+    background: rgba(74, 222, 128, 0.1);
+    color: #4ade80; /* Verde CodeLand */
+    border: 1px solid rgba(74, 222, 128, 0.3);
+}
+
+.estado-inactivo {
+    background: rgba(239, 68, 68, 0.1);
+    color: #ef4444; /* Rojo Alerta */
+    border: 1px solid rgba(239, 68, 68, 0.3);
+}
+
+/* Filas de Contadores Escolares */
+.stats-grid-row {
+    display: flex;
+    gap: 45px;
+}
+
+.stat-box {
+    display: flex;
+    flex-direction: column;
+}
+
+.stat-number {
+    font-size: 19px;
+    font-weight: 700;
+    color: #ffffff;
+}
+
+.verde-neon { color: #4ade80 !important; }
+
+.stat-label {
+    font-size: 13px;
+    color: #64748b;
+}
+
+/* Biografía Estilo Red Social */
+.insta-biografia {
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+.bio-username {
+    font-weight: 700;
+    color: #ffffff;
+    display: block;
+    margin-bottom: 2px;
+}
+
+.insta-biografia p {
+    margin: 0 0 6px 0;
+    color: #cbd5e1;
+}
+
+.btn-editar-bio {
+    background: none;
+    border: none;
+    color: #38bdf8;
+    cursor: pointer;
+    font-size: 12px;
+    padding: 0;
+    text-decoration: underline;
+    font-family: 'Poppins', sans-serif;
+}
+
+.textarea-insta {
+    width: 100%;
+    box-sizing: border-box;
+    height: 75px;
+    background: #0f172a;
+    border: 1px solid #1e293b;
+    border-radius: 8px;
+    color: #fff;
+    padding: 10px;
+    font-family: 'Poppins', sans-serif;
+    resize: none;
+}
+
+.btn-guardar-insta {
+    background: #4ade80;
+    color: #0b0f19;
+    border: none;
+    padding: 6px 16px;
+    font-weight: 600;
+    border-radius: 6px;
+    cursor: pointer;
+    font-family: 'Poppins', sans-serif;
+    margin-top: 5px;
+}
+
+/* Nuevo Bloque de Notas */
+.seccion-notas-estudiante {
+    background: rgba(15, 23, 42, 0.5);
+    border: 1px solid #1e293b;
+    border-radius: 12px;
+    padding: 25px;
+}
+
+.notas-header h3 {
+    margin: 0 0 5px 0;
+    font-size: 16px;
+    color: #38bdf8;
+}
+
+.notas-header p {
+    margin: 0 0 15px 0;
+    font-size: 12.5px;
+    color: #64748b;
+}
+
+#bloqueNotasUsuario {
+    width: 100%;
+    box-sizing: border-box;
+    height: 130px;
+    background: #0b0f19;
+    border: 1px solid #1e293b;
+    border-radius: 8px;
+    color: #e2e8f0;
+    padding: 15px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+    resize: vertical;
+}
+
+#bloqueNotasUsuario:focus {
+    outline: none;
+    border-color: #4ade80;
+}
+
+.notas-status-bar {
+    margin-top: 8px;
+    font-size: 11px;
+    color: #4ade80;
+    text-align: right;
+}
+
+.error-msg {
+    background: rgba(239, 68, 68, 0.1);
+    color: #fca5a5;
+    border: 1px solid rgba(239, 68, 68, 0.3);
+    padding: 8px 12px;
+    border-radius: 6px;
+    font-size: 12px;
+}
+
+/* Responsivo */
+@media (max-width: 650px) {
+    .insta-header { flex-direction: column; text-align: center; }
+    .stats-grid-row { justify-content: center; }
+}
+/* Color para resaltar el nivel del estudiante */
+.azul-neon {
+    color: #38bdf8 !important;
+}
+
+/* Reajuste automático para que las 3 columnas queden perfectas */
+.stats-grid-row {
+    display: flex;
+    gap: 35px;
+    flex-wrap: wrap; /* Evita desbordes en pantallas compactas */
+}

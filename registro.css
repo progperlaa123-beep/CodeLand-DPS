@@ -1,0 +1,246 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* BODY */
+
+body{
+
+    font-family: 'Poppins', sans-serif;
+
+    background: #020b2d;
+
+    width: 100%;
+    min-height: 100vh;
+      overflow-x: hidden;
+    overflow-y: auto;
+}
+
+/* CONTENEDOR */
+
+.contenedor{
+
+    width: 100%;
+    min-height: 100vh;
+
+    position: relative;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: visible;
+}
+
+/* PLANETA */
+
+.planeta{
+
+    position: absolute;
+
+    width: 900px;
+
+    opacity: 0.35;
+
+    top: 50%;
+    left: 50%;
+
+    transform: translate(-50%, -50%);
+}
+
+/* LOGO */
+
+.logo{
+
+    position: absolute;
+
+    top: 55px;
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    font-size: 60px;
+    font-weight: 800;
+
+    z-index: 5;
+}
+.azul{
+    color: #0b84ff;
+}
+
+.verde{
+    color: #37df73;
+}
+
+/* CARD */
+
+.card{
+
+    width: 340px;
+
+    padding: 14px;
+
+    margin-top: 200px;
+
+    border-radius: 22px;
+
+    background: rgba(10, 20, 45, 0.82);
+
+    backdrop-filter: blur(12px);
+
+    box-shadow:
+    0 0 30px rgba(0,0,0,0.35);
+
+    z-index: 2;
+
+    text-align: center;
+}
+
+/* TITULOS */
+
+.card h2{
+
+    color: white;
+
+    font-size: 25px;
+    font-weight: 700;
+}
+
+.card p{
+
+    color: #d8dce8;
+
+    margin-top: 5px;
+    margin-bottom: 20px;
+
+    font-size: 15px;
+    font-weight: 600;
+}
+
+/* FORM */
+
+form{
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 4px;
+
+    margin-top: px;
+}
+/* INPUTS */
+
+input,
+select{
+
+    width: 100%;
+    height: 40px;
+
+    border-radius: 12px;
+
+    outline: none;
+
+    padding: 0 18px;
+
+    font-size: 14px;
+    font-weight: 500;
+    font-family: 'Poppins', sans-serif;
+
+    transition: 0.3s;
+}
+
+/* INPUTS */
+
+input{
+
+    border: none;
+
+    background: #0a2d66;
+
+    color: white;
+}
+
+/* PLACEHOLDER */
+
+input::placeholder{
+
+    color: white;
+    opacity: 1;
+}
+
+/* SELECT */
+
+select{
+
+    border: 2px solid #0b84ff;
+
+    background: transparent;
+
+    color: #d8dce8;
+
+    cursor: pointer;
+}
+
+/* EFECTO FOCUS */
+/* CAMBIA DE AZUL A VERDE */
+
+select:focus{
+
+    border: 2px solid #37df73;
+
+    box-shadow:
+    0 0 12px rgba(55,223,115,0.5);
+}
+
+/* INPUT FOCUS */
+
+input:focus{
+
+    border: 2px solid #37df73;
+
+    box-shadow:
+    0 0 12px rgba(55,223,115,0.5);
+}
+
+/* OPCIONES */
+
+option{
+
+    background: #081c42;
+    color: white;
+}
+
+/* BOTON */
+
+button{
+
+    width: 100%;
+    height: 40px;
+
+    margin-top: 20px;
+
+    border: none;
+    border-radius: 12px;
+
+    background: #237647;
+
+    color: white;
+
+    font-size: 16px;
+    font-weight: 600;
+    font-family: 'Poppins', sans-serif;
+
+    cursor: pointer;
+
+    transition: 0.3s;
+}
+
+/* HOVER */
+
+button:hover{
+
+    transform: scale(1.03);
+
+    background: #2fa35f;
+}

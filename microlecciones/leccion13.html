@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/estilo_lecciones.css">
+    <title>Estación Orbital 13 | CodeLand DPS</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght=300;400;600;800&display=swap" rel="stylesheet">
+    <script src="https://player.vimeo.com/api/player.js"></script>
+</head>
+<body>
+    <header class="header-leccion">
+        <div><h2>Módulo I ➔ Estación 13</h2></div>
+        <div id="cronometroContenedor" style="background: rgba(0, 162, 255, 0.15); border: 1px solid #00a2ff; padding: 6px 16px; border-radius: 20px; font-weight: 600; color: #00a2ff; font-family: 'Poppins', sans-serif; display: flex; align-items: center; gap: 8px;">
+            ⏱️ Tiempo: <span id="timerVisual">00:00</span>
+        </div>
+        <button class="btn-salir" onclick="solicitarSalida()">Abandona Misión 🛸</button>
+    </header>
+
+    <section class="seccion-contexto">
+        <h3>🚀 Contexto de Aplicación Real</h3>
+        <p>Imagínate que vas a registrar legalmente el nombre de tu nuevo hijo y decides llamarlo "ActaDeNacimiento" o "ConstituciónPolitica". El juez del registro te lo denegaría de inmediato porque esos términos ya tienen un uso oficial e inalterable en las leyes del país. En programación ocurre lo mismo: no puedes nombrar a una variable común con palabras como `Entero`, `Mientras` o `Leer`, ya que el compilador se confundirá por completo.</p>
+    </section>
+
+    <section class="seccion-multimedia">
+        <h3>🎥 Contenido Audiovisual </h3>
+        <p class="instruccion-video">⚠️ Debes visualizar el video completo sin adelantar para desbloquear la evaluación.</p>
+        
+        <div class="contenedor-video" style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; margin-bottom: 15px;">
+            <iframe id="videoVimeo" 
+                    src="https://player.vimeo.com/video/1198447886?api=1&controls=1&badge=0&autopause=0&player_id=0" 
+                    frameborder="0" 
+                    allow="autoplay; fullscreen; picture-in-picture" 
+                    style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border-radius: 8px;" 
+                    title="Contenido Educativo Orbital">
+            </iframe>
+        </div>
+
+        <p style="font-size: 0.85rem; color: #64748b; text-align: center; margin-top: 12px; font-style: italic; font-family: 'Poppins', sans-serif;">
+            Material audiovisual adaptado con fines estrictamente educativos. Créditos del autor: Jarol Cuaran | Clases.
+        </p>
+        <div class="contenedor-imagen-apoyo">
+            <img src="img/esquema_leccion13.png" alt="Sintaxis e Identificadores" onerror="this.style.display='none';">
+        </div>
+    </section>
+
+    <section class="seccion-teoria">
+        <h1>13. Palabras Reservadas e Identificadores</h1>
+        <p>Los lenguajes de programación poseen una gramática estricta. Existen comandos protegidos por el propio motor de compilación que no pueden ser alterados por el programador bajo ninguna circunstancia.</p>
+        
+        <div class="ideas-clave">
+            <h3>💡 Conceptos Clave y Definiciones Académicas:</h3>
+            <ul>
+                <li><strong>Palabras Reservadas:</strong> Términos con un significado predefinido dentro de la sintaxis de un lenguaje (ej. `Si`, `Entonces`, `FinProceso`, `Repetir`) que el desarrollador no puede usar como nombres.</li>
+                <li><strong>Identificadores:</strong> Nombres personalizados asignados a variables, constantes o funciones creadas por el programador.</li>
+                <li><strong>Reglas Técnicas de Nombrado:</strong> Un identificador válido debe iniciar de forma obligatoria con una letra o un guion bajo (`_`), jamás contener espacios en blanco y no incluir caracteres especiales.</li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="seccion-bloqueada-control" id="controlBloqueo">
+        <button id="btnDesbloquearQuiz" class="btn-verificar" disabled onclick="mostrarEvaluacionOculta()">
+            Bloqueado por Reproducción 🔒
+        </button>
+    </section>
+
+    <section class="seccion-quiz" id="quizOculto" style="display: none;">
+        <h2>📝 Evaluación </h2>
+        <p style="margin-bottom: 20px; color: #a0aec0;">Demuestra tu dominio sobre las restricciones de nombrado de variables:</p>
+
+        <div id="contenedorPreguntasDinamicas">
+            <div class="pregunta-bloque" data-correcta="3">
+                <h3> ¿Cuál de los siguientes es un identificador completamente válido en pseudocódigo?</h3>
+                <ul class="opciones-lista">
+                    <li onclick="seleccionarOpcion(this)" data-id="1">33_puntos</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="2">sueldo mensual</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="3">precio_final</li>
+                </ul>
+                <div class="retroalimentacion" style="display:none; color:#e74c3c; margin-top:5px; font-size:0.9rem;">
+                    ❌ Incorrecto. Los identificadores válidos no pueden iniciar con números ni llevar espacios intermedios.
+                </div>
+            </div>
+
+            <div class="pregunta-bloque" data-correcta="1">
+                <h3> ¿Por qué no puedes declarar una variable llamada `Mientras`?</h3>
+                <ul class="opciones-lista">
+                    <li onclick="seleccionarOpcion(this)" data-id="1">Porque es una palabra reservada que el compilador usa para definir bucles cíclicos.</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="2">Porque tiene más de 5 letras y satura la memoria RAM.</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="3">Porque las variables solo pueden tener nombres en inglés.</li>
+                </ul>
+                <div class="retroalimentacion" style="display:none; color:#e74c3c; margin-top:5px; font-size:0.9rem;">
+                    ❌ Incorrecto. 'Mientras' le pertenece al lenguaje para construir bucles indeterminados.
+                </div>
+            </div>
+
+            <div class="pregunta-bloque" data-correcta="2">
+                <h3> ¿Con qué carácter está permitido iniciar el nombre de una variable además de una letra?</h3>
+                <ul class="opciones-lista">
+                    <li onclick="seleccionarOpcion(this)" data-id="1">Con el signo de porcentaje `%`</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="2">Con un guion bajo `_`</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="3">Con un signo de exclamación `!`</li>
+                </ul>
+                <div class="retroalimentacion" style="display:none; color:#e74c3c; margin-top:5px; font-size:0.9rem;">
+                    ❌ Incorrecto. El guion bajo es el único carácter especial permitido al arranque de un identificador.
+                </div>
+            </div>
+
+            <div class="pregunta-bloque" data-correcta="3">
+                <h3> ¿Qué es un identificador en el contexto del desarrollo de software?</h3>
+                <ul class="opciones-lista">
+                    <li onclick="seleccionarOpcion(this)" data-id="1">El número de serie del procesador central.</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="2">Un virus que cambia las palabras del código fuente.</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="3">El nombre personalizado que el programador le asigna a variables o funciones.</li>
+                </ul>
+                <div class="retroalimentacion" style="display:none; color:#e74c3c; margin-top:5px; font-size:0.9rem;">
+                    ❌ Incorrecto. Los identificadores identifican los contenedores de datos que creas.
+                </div>
+            </div>
+
+            <div class="pregunta-bloque" data-correcta="1">
+                <h3> ¿Cuál de los siguientes nombres causará un error de sintaxis por contener un espacio en blanco?</h3>
+                <ul class="opciones-lista">
+                    <li onclick="seleccionarOpcion(this)" data-id="1">`valor inicial`</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="2">`valor_inicial`</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="3">`valorInicial`</li>
+                </ul>
+                <div class="retroalimentacion" style="display:none; color:#e74c3c; margin-top:5px; font-size:0.9rem;">
+                    ❌ Incorrecto. Separar términos con un espacio en blanco rompe la lectura del compilador.
+                </div>
+            </div>
+
+            <div class="pregunta-bloque" data-correcta="2">
+                <h3> ¿Las palabras reservadas cambian su significado dependiendo de lo que el programador desee?</h3>
+                <ul class="opciones-lista">
+                    <li onclick="seleccionarOpcion(this)" data-id="1">Sí, se pueden reconfigurar usando condicionales.</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="2">No, su significado es inalterable y permanente dentro de la gramática del lenguaje.</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="3">Solo si el programa corre en servidores locales.</li>
+                </ul>
+                <div class="retroalimentacion" style="display:none; color:#e74c3c; margin-top:5px; font-size:0.9rem;">
+                    ❌ Incorrecto. Son inalterables; el programador debe respetarlas de manera estricta.
+                </div>
+            </div>
+
+            <div class="pregunta-bloque" data-correcta="3">
+                <h3> ¿Cuál es un error típico al intentar nombrar una variable que almacena el costo de un producto?</h3>
+                <ul class="opciones-lista">
+                    <li onclick="seleccionarOpcion(this)" data-id="1">`costoProducto`</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="2">`_costo`</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="3">`costo$`</li>
+                </ul>
+                <div class="retroalimentacion" style="display:none; color:#e74c3c; margin-top:5px; font-size:0.9rem;">
+                    ❌ Incorrecto. El carácter `$` está prohibido en la construcción de identificadores estándar.
+                </div>
+            </div>
+
+            <div class="pregunta-bloque" data-correcta="1">
+                <h3> ¿Es buena práctica nombrar variables con letras sueltas como `x`, `y`, `z` para sistemas comerciales grandes?</h3>
+                <ul class="opciones-lista">
+                    <li onclick="seleccionarOpcion(this)" data-id="1">No, porque destruye la claridad del código y complica el mantenimiento preventivo.</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="2">Sí, es la mejor práctica recomendada por los ingenieros de Google.</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="3">Sí, porque así la computadora procesa los nombres instantáneamente.</li>
+                </ul>
+                <div class="retroalimentacion" style="display:none; color:#e74c3c; margin-top:5px; font-size:0.9rem;">
+                    ❌ Incorrecto. Las variables deben ser descriptivas (mNemotécnicas) para entender qué resguardan.
+                </div>
+            </div>
+
+            <div class="pregunta-bloque" data-correcta="2">
+                <h3> ¿Cuál término representa una palabra reservada para indicar un tipo de dato decimal?</h3>
+                <ul class="opciones-lista">
+                    <li onclick="seleccionarOpcion(this)" data-id="1">Contador</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="2">Real (o Flotante)</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="3">ResultadoSuma</li>
+                </ul>
+                <div class="retroalimentacion" style="display:none; color:#e74c3c; margin-top:5px; font-size:0.9rem;">
+                    ❌ Incorrecto. `Real` define formalmente que el casillero de memoria aceptará fracciones y puntos decimales.
+                </div>
+            </div>
+
+            <div class="pregunta-bloque" data-correcta="1">
+                <h3> Si el compilador arroja el error "Tokens conflict with keyword", significa que:</h3>
+                <ul class="opciones-lista">
+                    <li onclick="seleccionarOpcion(this)" data-id="1">Usaste una palabra reservada de forma ilegal como identificador propio.</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="2">Tu computadora se quedó sin internet orbital.</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="3">Se te olvidó cerrar el programa con la palabra Fin.</li>
+                </ul>
+                <div class="retroalimentacion" style="display:none; color:#e74c3c; margin-top:5px; font-size:0.9rem;">
+                    ❌ Incorrecto. Ese error manifiesta directamente la colisión gramatical por intentar apropiarse de un comando interno.
+                </div>
+            </div>
+        </div>
+
+        <button class="btn-verificar" onclick="validarCuestionario()">Enviar Respuestas</button>
+    </section>
+
+    <div id="overlayExito" class="pantalla-exito-overlay">
+        <div id="textoExito" class="mensaje-exito-grande">🛸 ¡ESTACIÓN SUPERADA! +50 XP</div>
+        <button class="btn-comenzar" id="btnSiguienteNivel" onclick="irAlMapa()" style="display: none; margin: 20px auto 0 auto; padding: 12px 35px; border-radius: 20px; border: none; background: #38e27a; color: #020617; font-weight: bold; cursor: pointer;">
+            Regresar al Mapa Estelar 🚀
+        </button>
+    </div>
+
+    <script>
+        const idLeccionActual = 13;
+        const xpGanada = 50;
+        let segundosTranscurridos = 0;
+        let cronometroIntervalo;
+
+        let videoPlayer;
+        let tiempoMaximoVisto = 0;
+        let duracionVideo = 0;
+        let videoCompletado = false;
+
+        window.onload = function() {
+            cronometroIntervalo = setInterval(() => {
+                segundosTranscurridos++;
+                let mins = Math.floor(segundosTranscurridos / 60);
+                let secs = segundosTranscurridos % 60;
+                document.getElementById('timerVisual').innerText = 
+                    (mins < 10 ? "0" + mins : mins) + ":" + (secs < 10 ? "0" + secs : secs);
+            }, 1000);
+
+            barajarEstructuraQuiz();
+
+            const iframe = document.getElementById('videoVimeo');
+            videoPlayer = new Vimeo.Player(iframe);
+
+            videoPlayer.getDuration().then(function(d) {
+                duracionVideo = d;
+            });
+
+            videoPlayer.on('timeupdate', function(data) {
+                if (data.seconds > tiempoMaximoVisto) {
+                    if (data.seconds - tiempoMaximoVisto > 2.5) {
+                        videoPlayer.setCurrentTime(tiempoMaximoVisto);
+                    } else {
+                        tiempoMaximoVisto = data.seconds;
+                    }
+                }
+                
+                if (tiempoMaximoVisto >= (duracionVideo - 3) && !videoCompletado) {
+                    const btnDesbloquear = document.getElementById('btnDesbloquearQuiz');
+                    btnDesbloquear.removeAttribute('disabled');
+                    btnDesbloquear.innerText = "Desbloquear Evaluación 🔓";
+                    btnDesbloquear.style.background = "#38e27a";
+                    btnDesbloquear.style.color = "#020617";
+                    videoCompletado = true;
+                }
+            });
+
+            videoPlayer.on('seeked', function(data) {
+                if (data.seconds > tiempoMaximoVisto) {
+                    videoPlayer.setCurrentTime(tiempoMaximoVisto);
+                }
+            });
+        };
+
+        function barajarEstructuraQuiz() {
+            const contenedor = document.getElementById('contenedorPreguntasDinamicas');
+            const preguntas = Array.from(contenedor.children);
+            for (let i = preguntas.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                contenedor.appendChild(preguntas[j]);
+            }
+            const listasOpciones = document.querySelectorAll('.opciones-lista');
+            listasOpciones.forEach(lista => {
+                const opciones = Array.from(lista.children);
+                for (let i = opciones.length - 1; i > 0; i--) {
+                    const j = Math.floor(Math.random() * (i + 1));
+                    lista.appendChild(opciones[j]);
+                }
+            });
+        }
+
+        function mostrarEvaluacionOculta() {
+            document.getElementById('controlBloqueo').style.display = 'none';
+            document.getElementById('quizOculto').style.display = 'block';
+            document.getElementById('quizOculto').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function seleccionarOpcion(elementoClicado) {
+            const listaHermanos = elementoClicado.parentNode.children;
+            for (let li of listaHermanos) {
+                li.classList.remove('seleccionada');
+            }
+            elementoClicado.classList.add('seleccionada');
+            elementoClicado.parentNode.setAttribute('data-seleccionada', elementoClicado.getAttribute('data-id'));
+        }
+
+        function validarCuestionario() {
+            const bloquesPregunta = document.querySelectorAll('.pregunta-bloque');
+            let todasRespondidas = true;
+            let todasCorrectas = true;
+
+            bloquesPregunta.forEach(bloque => {
+                const lista = bloque.querySelector('.opciones-lista');
+                const respuestaUsuario = lista.getAttribute('data-seleccionada');
+                const respuestaCorrecta = bloque.getAttribute('data-correcta');
+
+                if (!respuestaUsuario) { todasRespondidas = false; }
+                if (respuestaUsuario !== respuestaCorrecta) { todasCorrectas = false; }
+            });
+
+            if (!todasRespondidas) {
+                alert("⚠️ Por favor, responde los 10 reactivos antes de enviar las respuestas.");
+                return;
+            }
+
+            if (!todasCorrectas) {
+                alert("❌ Error en los sistemas lógicos. Revisa tus respuestas e inténtalo de nuevo.");
+                document.querySelectorAll('.retroalimentacion').forEach(div => div.style.display = "block");
+                return;
+            }
+
+            clearInterval(cronometroIntervalo);
+            registrarProgresoYXP(idLeccionActual);
+        }
+
+             function registrarProgresoYXP(l) {
+            fetch('../api/procesar_leccion_completada.php', { 
+                method: 'POST', 
+                headers: { 'Content-Type': 'application/json' }, 
+                body: JSON.stringify({ 
+                    id_leccion: l, 
+                    xp_ganada: xpGanada,
+                    tiempo_segundos: segundosTranscurridos 
+                }) 
+            })
+            .then(res => res.json())
+            .then(d => { 
+                mostrarPantallaExito();
+            })
+            .catch(() => { 
+                mostrarPantallaExito();
+            });
+        }
+
+        function mostrarPantallaExito() {
+            document.getElementById('overlayExito').classList.add('visible'); 
+            const btnRegresar = document.getElementById('btnSiguienteNivel');
+            btnRegresar.style.setProperty('display', 'flex', 'important');
+        }
+
+        function solicitarSalida() {
+            if(confirm("🛸 ¿Seguro que deseas abortar la lección actual?")) {
+                window.location.href = "../mundoI.php";
+            }
+        }
+
+        function irAlMapa() { window.location.href = "../mundoI.php"; }
+    </script>
+</body>
+</html>

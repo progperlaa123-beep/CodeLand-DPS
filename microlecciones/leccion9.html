@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/estilo_lecciones.css">
+    <title>Estación Orbital 09 | CodeLand DPS</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght=300;400;600;800&display=swap" rel="stylesheet">
+    <script src="https://player.vimeo.com/api/player.js"></script>
+</head>
+<body>
+    <header class="header-leccion">
+        <div><h2>Módulo I ➔ Estación 09</h2></div>
+        <div id="cronometroContenedor" style="background: rgba(0, 162, 255, 0.15); border: 1px solid #00a2ff; padding: 6px 16px; border-radius: 20px; font-weight: 600; color: #00a2ff; font-family: 'Poppins', sans-serif; display: flex; align-items: center; gap: 8px;">
+            ⏱️ Tiempo: <span id="timerVisual">00:00</span>
+        </div>
+        <button class="btn-salir" onclick="solicitarSalida()">Abandona Misión 🛸</button>
+    </header>
+
+    <section class="seccion-contexto">
+        <h3>🚀 Contexto de Aplicación Real</h3>
+        <p>Para ingresar a una plataforma bancaria o un videojuego protegido, la seguridad evalúa condiciones relacionales unidas por un operador lógico: debes escribir la contraseña correcta (`clave == correcta`) **Y** debes tener tu cuenta activa (`estado == activo`). Si se cumplen ambas, el sistema te da acceso. En programación, estas evaluaciones lógicas complejas rigen el comportamiento inteligente de las aplicaciones para tomar decisiones en fracciones de segundo.</p>
+    </section>
+
+    <section class="seccion-multimedia">
+        <h3>🎥 Contenido Audiovisual </h3>
+        <p class="instruccion-video">⚠️ Debes visualizar el video completo sin adelantar para desbloquear la evaluación.</p>
+        
+        <div class="contenedor-video" style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; margin-bottom: 15px;">
+            <iframe id="videoVimeo" 
+                    src="https://player.vimeo.com/video/1198286479?api=1&controls=1&badge=0&autopause=0&player_id=0" 
+                    frameborder="0" 
+                    allow="autoplay; fullscreen; picture-in-picture" 
+                    style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border-radius: 8px;" 
+                    title="Contenido Educativo Orbital">
+            </iframe>
+        </div>
+
+        <p style="font-size: 0.85rem; color: #64748b; text-align: center; margin-top: 12px; font-style: italic; font-family: 'Poppins', sans-serif;">
+            Material audiovisual adaptado con fines estrictamente educativos. Créditos del autor: code Path.
+        </p>
+        <div class="contenedor-imagen-apoyo">
+            <img src="img/esquema_leccion9.png" alt="Esquema conceptual" onerror="this.style.display='none';">
+        </div>
+    </section>
+
+    <section class="seccion-teoria">
+        <h1>09. Operadores Relacionales y Estructuras de Comparación Lógica</h1>
+        <p>Los operadores relacionales y lógicos nos permiten comparar valores y entrelazar condiciones múltiples, dando como resultado un único valor booleano (Verdadero o Falso) que altera el rumbo del código.</p>
+        
+        <div class="ideas-clave">
+            <h3>💡 Conceptos Clave y Definiciones Académicas:</h3>
+            <ul>
+                <li><strong>Operadores Relacionales:</strong> Símbolos de comparación matemática como mayor que (&gt;), menor que (&lt;), igual a (==) y diferente de (!=) que evalúan la relación entre dos variables.</li>
+                <li><strong>Operador Lógico Y (AND):</strong> Exige estrictamente que **todas** las condiciones evaluadas sean verdaderas simultáneamente para que el resultado final sea Verdadero.</li>
+                <li><strong>Operador Lógico O (OR) y NO (NOT):</strong> El operador O devuelve Verdadero con que **al menos una** condición sea cierta. El operador NO (Negación) invierte por completo el estado lógico del booleano.</li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="seccion-bloqueada-control" id="controlBloqueo">
+        <button id="btnDesbloquearQuiz" class="btn-verificar" disabled onclick="mostrarEvaluacionOculta()">
+            Bloqueado por Reproducción 🔒
+        </button>
+    </section>
+
+    <section class="seccion-quiz oculto-inicial" id="moduloEvaluacion">
+        <h2>⚡ Evaluación </h2>
+        
+        <div id="contenedorPreguntas">
+            
+            <div class="pregunta-bloque" data-correcta="2">
+                <p><strong> ¿Qué tipo de dato arroja obligatoriamente cualquier operación realizada con operadores relacionales?</strong></p>
+                <ul class="opciones-lista">
+                    <li onclick="seleccionarOpcion(this)" data-id="1">Una cadena de texto alfanumérica.</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="2">Un valor Booleano (Verdadero o Falso).</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="3">Un número entero de precisión flotante.</li>
+                </ul>
+            </div>
+
+            <div class="pregunta-bloque" data-correcta="1">
+                <p><strong> ¿Qué operador relacional se utiliza para comprobar si dos variables contienen exactamente el mismo valor?</strong></p>
+                <ul class="opciones-lista">
+                    <li onclick="seleccionarOpcion(this)" data-id="1">El operador de igualdad `==`.</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="2">El operador de asignación simple `=`.</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="3">El operador de diferencia `!=`.</li>
+                </ul>
+            </div>
+
+            <div class="pregunta-bloque" data-correcta="3">
+                <p><strong> ¿Qué condición se debe cumplir para que una expresión unida por el operador lógico Y (AND) sea considerada VERDADERA?</strong></p>
+                <ul class="opciones-lista">
+                    <li onclick="seleccionarOpcion(this)" data-id="1">Que al menos una de las condiciones sea verdadera.</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="2">Que todas las condiciones sean falsas de manera simultánea.</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="3">Que todas y cada una de las condiciones individuales sean verdaderas obligatoriamente.</li>
+                </ul>
+            </div>
+
+            <div class="pregunta-bloque" data-correcta="1">
+                <p><strong> Si evaluamos la expresión lógica `(5 > 3) O (2 > 10)`, ¿cuál es el resultado final calculado por el sistema?</strong></p>
+                <ul class="opciones-lista">
+                    <li onclick="seleccionarOpcion(this)" data-id="1">Verdadero (porque con el operador O basta con que la primera condición sea cierta).</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="2">Falso (porque la segunda es falsa y el operador O exige que ambas sean ciertas).</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="3">Error de compilación aritmética.</li>
+                </ul>
+            </div>
+
+            <div class="pregunta-bloque" data-correcta="2">
+                <p><strong> ¿Qué función realiza el operador lógico especial NO (NOT)?</strong></p>
+                <ul class="opciones-lista">
+                    <li onclick="seleccionarOpcion(this)" data-id="1">Suma dos variables que contienen estados booleanos.</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="2">Invierte por completo el estado de un booleano (convierte Verdadero en Falso y viceversa).</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="3">Desconecta los servidores de sesión PHP.</li>
+                </ul>
+            </div>
+
+            <div class="pregunta-bloque" data-correcta="3">
+                <p><strong> ¿Cuál es el significado del símbolo de comparación relacional `!=` en lógica computacional?</strong></p>
+                <ul class="opciones-lista">
+                    <li onclick="seleccionarOpcion(this)" data-id="1">Mayor o igual que.</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="2">Igualdad estricta de variables.</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="3">Diferente de / No es igual a.</li>
+                </ul>
+            </div>
+
+            <div class="pregunta-bloque" data-correcta="1">
+                <p><strong> Si tenemos la variable `edad = 16`, ¿qué devolverá la evaluación condicional `edad >= 18`?</strong></p>
+                <ul class="opciones-lista">
+                    <li onclick="seleccionarOpcion(this)" data-id="1">Falso.</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="2">Verdadero.</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="3">Nulo.</li>
+                </ul>
+            </div>
+
+            <div class="pregunta-bloque" data-correcta="2">
+                <p><strong> En el ejemplo de acceso a la banca, ¿qué operador lógico es el adecuado para asegurar que se cumpla la contraseña Y que la cuenta esté activa juntas?</strong></p>
+                <ul class="opciones-lista">
+                    <li onclick="seleccionarOpcion(this)" data-id="1">El operador lógico O (OR).</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="2">El operador lógico Y (AND).</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="3">El operador relacional de menor que.</li>
+                </ul>
+            </div>
+
+            <div class="pregunta-bloque" data-correcta="3">
+                <p><strong> ¿Qué resultado se obtiene al evaluar la expresión combinada `NO(10 == 10)`?</strong></p>
+                <ul class="opciones-lista">
+                    <li onclick="seleccionarOpcion(this)" data-id="1">Verdadero.</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="2">Indefinido.</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="3">Falso (porque 10 == 10 es verdadero, pero la negación lo invierte a falso).</li>
+                </ul>
+            </div>
+
+            <div class="pregunta-bloque" data-correcta="1">
+                <p><strong> Si un sistema de videojuegos evalúa `(vidas > 0) Y (nivelCompletado == falso)`, significa que el jugador:</strong></p>
+                <ul class="opciones-lista">
+                    <li onclick="seleccionarOpcion(this)" data-id="1">Aún tiene créditos disponibles pero no ha terminado el mapa actual.</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="2">Ha ganado la partida y acumulado los 100 XP stelares.</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="3">Se ha quedado sin vidas en la memoria RAM del servidor.</li>
+                </ul>
+            </div>
+
+        </div>
+
+        <button class="btn-verificar" onclick="validarCuestionario()">Enviar Respuestas al Servidor</button>
+    </section>
+
+    <div id="overlayExito" class="pantalla-exito-overlay">
+        <div id="textoExito" class="mensaje-exito-grande">¡Correcto! Has ganado 50 XP.</div>
+        <button class="btn-comenzar" id="btnSiguienteNivel" onclick="irAlMapa()">Regresar a las Regiones 🚀</button>
+    </div>
+
+    <script>
+        const idLeccionActual = 9;
+        const xpGanada = 50;
+        
+        let segundosTranscurridos = 0;
+        const timerElemento = document.getElementById("timerVisual");
+        
+        const cronometroIntervalo = setInterval(() => {
+            segundosTranscurridos++;
+            let minutos = Math.floor(segundosTranscurridos / 60);
+            let segundos = segundosTranscurridos % 60;
+            let minTexto = minutos < 10 ? "0" + minutos : minutes;
+            let segTexto = segundos < 10 ? "0" + segundos : segundos;
+            timerElemento.innerText = minTexto + ":" + segTexto;
+        }, 1000);
+
+        const btnDesbloquear = document.getElementById("btnDesbloquearQuiz");
+        const moduloEvaluacion = document.getElementById("moduloEvaluacion");
+
+        const iframe = document.getElementById('videoVimeo');
+        const player = new Vimeo.Player(iframe);
+        
+        let tiempoMaximoVisto = 0;
+        let ejecutandoRegreso = false;
+        let duracionVideo = 0;
+
+        player.getDuration().then(function(duration) {
+            duracionVideo = duration;
+        }).catch(function() {
+            duracionVideo = 60; 
+        });
+
+        player.on('timeupdate', function(data) {
+            if (!ejecutandoRegreso) {
+                if (data.seconds > tiempoMaximoVisto + 1.5) {
+                    ejecutandoRegreso = true;
+                    player.setCurrentTime(tiempoMaximoVisto).then(function() {
+                        ejecutandoRegreso = false;
+                        alert("🔒 Bloqueo de Seguridad: No puedes adelantar la explicación audiovisual.");
+                    });
+                } else if (data.seconds > tiempoMaximoVisto) {
+                    tiempoMaximoVisto = data.seconds;
+                }
+            }
+        });
+
+        player.on('seeked', function(data) {
+            if (data.seconds > tiempoMaximoVisto + 1.5) {
+                ejecutandoRegreso = true;
+                player.setCurrentTime(tiempoMaximoVisto).then(function() {
+                    ejecutandoRegreso = false;
+                });
+            }
+        });
+
+        player.on('ended', function() {
+            if (tiempoMaximoVisto >= (duracionVideo - 3)) {
+                btnDesbloquear.removeAttribute("disabled");
+                btnDesbloquear.innerText = "Acceder a Evaluación ⚔️";
+                btnDesbloquear.style.background = "linear-gradient(135deg, #00ff87, #00c2ff)";
+                btnDesbloquear.style.color = "#020617";
+                btnDesbloquear.style.boxShadow = "0 0 20px rgba(0, 255, 135, 0.6)";
+            } else {
+                tiempoMaximoVisto = 0;
+                player.setCurrentTime(0);
+                alert("❌ Trampa detectada: Debes reproducir el contenido completo paso a paso.");
+            }
+        });
+
+        function barajearTodo() {
+            const contenedorPreguntas = document.getElementById('contenedorPreguntas');
+            const bloquesPreguntas = Array.from(contenedorPreguntas.children);
+            for (let i = bloquesPreguntas.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                contenedorPreguntas.appendChild(bloquesPreguntas[j]);
+            }
+            const listasOpciones = document.querySelectorAll('.opciones-lista');
+            listasOpciones.forEach(lista => {
+                const opciones = Array.from(lista.children);
+                for (let i = opciones.length - 1; i > 0; i--) {
+                    const j = Math.floor(Math.random() * (i + 1));
+                    lista.appendChild(opciones[j]);
+                }
+            });
+        }
+
+        window.addEventListener("DOMContentLoaded", barajearTodo);
+
+        function mostrarEvaluacionOculta() {
+            moduloEvaluacion.classList.remove("oculto-inicial");
+            moduloEvaluacion.classList.add("mostrar-animado");
+            document.getElementById("controlBloqueo").style.display = "none";
+            moduloEvaluacion.scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function solicitarSalida() { 
+            if (confirm("¿Abortar misión? El progreso actual no se guardará.")) {
+                window.location.href = "../mundoI.php"; 
+            }
+        }
+        
+        function seleccionarOpcion(elementoLli) { 
+            const listaPadre = elementoLli.parentElement; 
+            Array.from(listaPadre.children).forEach(li => li.classList.remove('seleccionada')); 
+            elementoLli.classList.add('seleccionada'); 
+            listaPadre.setAttribute("data-seleccionada", elementoLli.getAttribute("data-id")); 
+        }
+
+        function validarCuestionario() {
+            const bloques = document.querySelectorAll('.pregunta-bloque'); 
+            let todasRespondidas = true; 
+            let todasCorrectas = true;
+
+            bloques.forEach(bloque => {
+                const listaOpciones = bloque.querySelector('.opciones-lista');
+                const seleccionadaId = listaOpciones.getAttribute('data-seleccionada');
+                const respuestaCorrecta = bloque.getAttribute('data-correcta');
+
+                if (!seleccionadaId) {
+                    todasRespondidas = false;
+                    return; 
+                }
+                if (seleccionadaId !== respuestaCorrecta) {
+                    todasCorrectas = false;
+                }
+            });
+
+            if (!todasRespondidas) { 
+                alert("⚠️ Por favor, responde los 10 reactivos antes de enviar la telemetría."); 
+                return; 
+            }
+            if (!todasCorrectas) { 
+                alert("❌ Error en los sistemas lógicos. Revisa tus respuestas e inténtalo de nuevo."); 
+                return; 
+            }
+
+            clearInterval(cronometroIntervalo);
+            registrarProgresoYXP(idLeccionActual);
+        }
+
+        function registrarProgresoYXP(l) {
+            fetch('../api/procesar_leccion_completada.php', { 
+                method: 'POST', 
+                headers: { 'Content-Type': 'application/json' }, 
+                body: JSON.stringify({ 
+                    id_leccion: l, 
+                    xp_ganada: xpGanada,
+                    tiempo_segundos: segundosTranscurridos 
+                }) 
+            })
+            .then(res => res.json())
+            .then(() => { mostrarPantallaExito(); })
+            .catch(() => { mostrarPantallaExito(); });
+        }
+
+        function mostrarPantallaExito() {
+            document.getElementById('overlayExito').classList.add('visible'); 
+            const btnRegresar = document.getElementById('btnSiguienteNivel');
+            btnRegresar.style.setProperty('display', 'flex', 'important');
+        }
+
+        function irAlMapa() { window.location.href = "../mundoI.php"; }
+    </script>
+</body>
+</html>

@@ -1,0 +1,350 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background-color: #020617; 
+    background-image: url('Espacio_CodeLand.png'); /* 🌌 El fondo espacial se aplica a todo el lienzo */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed; /* Mantiene el fondo fijo mientras bajas por el mapa */
+    color: #ffffff;
+    overflow-x: hidden;
+}
+
+/* NAVBAR HORIZONTAL */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 6%;
+    background-color: #020617;
+    position: relative;
+    z-index: 10;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: 800;
+}
+
+.logo .azul { color: #00c2ff; }
+.logo .verde { color: #00ff87; }
+
+.menu {
+    display: flex;
+    align-items: center;
+}
+
+.menu a {
+    color: #cbd5e1;
+    text-decoration: none;
+    margin-left: 28px;
+    font-size: 15px;
+    font-weight: 500;
+    transition: color 0.2s ease;
+}
+
+.menu a:hover {
+    color: #00ff87;
+}
+
+.linea {
+    height: 2px;
+    background: linear-gradient(90deg, #00c2ff, #00ff87);
+    width: 100%;
+}
+
+/* LANDING */
+.universo-main {
+    width: 100%;
+    min-height: calc(100vh - 66px);
+    position: relative;
+}
+
+.landing-espacial {
+    width: 100%;
+    min-height: calc(100vh - 66px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 40px 20px;
+    background-image: url('Espacio_CodeLand.png'); 
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+/* ESPACIO PARA TUS IMÁGENES */
+.contenedor-visual {
+   position: relative;
+    width: 300px;
+    height: 300px;
+    overflow: visible !important; /* Permite que el astronauta viaje desde fuera del espacio */
+    margin-bottom: 20px;
+}
+
+.capa-planeta {
+    width: 100%;
+    height: 100%;
+    background-image: url('CodeLandDPS_logo (1).png'); 
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+/* TEXTOS */
+.titulo-modulo {
+    font-size: 32px;
+    font-weight: 800;
+    margin-bottom: 15px;
+    max-width: 850px;
+}
+
+.badge-contenedor {
+    display: inline-block;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 15px 35px;
+    border-radius: 30px;
+    margin-bottom: 35px;
+}
+
+.nivel-texto {
+    font-size: 18px;
+    font-weight: 500;
+    color: #e2e8f0;
+    line-height: 1.6;
+}
+.tarjeta-mision {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 60px 40px;
+    margin: 50px auto;
+    max-width: 950px;
+    background: rgba(2, 6, 23, 0.50); /* Fondo oscuro semitransparente */
+    border: 1px solid rgba(0, 194, 255, 0.15);
+    border-radius: 24px;
+    backdrop-filter: blur(5px); /* Efecto de cristal difuminado moderno */
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+}
+/* BOTÓN ESTILO CODELAND */
+.btn-comenzar {
+    background-color: transparent;
+    color: #00ff87;
+    border: 2px solid #00ff87;
+    padding: 14px 45px;
+    font-size: 16px;
+    font-weight: 600;
+    border-radius: 12px;
+    cursor: pointer;
+    box-shadow: 0 0 15px rgba(0, 255, 135, 0.2);
+    transition: all 0.3s ease;
+}
+
+.btn-comenzar:hover {
+    background-color: #00ff87;
+    color: #020617;
+    box-shadow: 0 0 25px rgba(0, 255, 135, 0.6);
+    transform: translateY(-2px);
+}
+.oculto {
+    display: none !important;
+}
+
+/* MAPA */
+.mapa-interactivo {
+    width: 90%;
+    max-width: 1100px;
+    margin: 40px auto 250px auto; 
+}
+
+.mapa-header-navegacion {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+}
+
+.btn-regresar {
+    background: transparent;
+    border: 1px solid #00c2ff;
+    color: #00c2ff;
+    padding: 8px 18px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.3s;
+}
+.btn-regresar:hover {
+    background: #00c2ff;
+    color: #020617;
+}
+
+.mapa-nodos {
+    display: grid !important;
+    grid-template-columns: repeat(5, 1fr) !important; 
+    gap: 30px !important;
+    background: rgba(2, 6, 23, 0.50) !important; /* Más transparente y estilizado */
+    padding: 40px !important;
+    border-radius: 24px !important;
+    border: 1px solid rgba(0, 194, 255, 0.25) !important;
+    backdrop-filter: blur(4px) !important; /* Efecto de cristal esmerilado */
+    min-height: 200px; 
+}
+
+/* ESTILOS DE LOS NODOS GENERADOS POR JS */
+.nodo-estacion {
+    background: rgba(13, 27, 42, 0.85) !important;
+    border: 2px solid #00c2ff !important;
+    border-radius: 50% !important; /* Garantiza la forma circular */
+    width: 90px !important; 
+    height: 90px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+    align-items: center !important;
+    cursor: pointer !important;
+    color: #ffffff !important;
+    margin: 0 auto;
+    position: relative;
+    box-shadow: 0 0 15px rgba(0, 194, 255, 0.2) !important;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
+}
+
+.nodo-estacion .icono-nodo {
+    font-size: 1.3rem !important;
+    font-weight: 800 !important;
+    text-shadow: 0 0 8px rgba(255,255,255,0.4);
+}
+
+.nodo-estacion .etiqueta-nodo {
+    font-size: 11px !important;
+    display: block !important;
+    margin-top: 2px !important;
+}
+
+/* Estados de interacción corregidos */
+.nodo-estacion.completado {
+    border-color: #00ff87 !important;
+    box-shadow: 0 0 12px rgba(0, 255, 135, 0.3) !important;
+}
+
+.nodo-estacion.actual {
+    border-color: #00c2ff !important;
+    box-shadow: 0 0 20px rgba(0, 194, 255, 0.6) !important;
+    animation: flotarAvatarMundo 2s ease-in-out infinite;
+}
+
+.nodo-estacion.completado:hover,
+.nodo-estacion.actual:hover {
+    transform: scale(1.15) !important; /* Se hace un poquito más grande */
+    border-color: #00ff87 !important; /* Cambia a verde CodeLand */
+    box-shadow: 0 0 30px rgba(0, 255, 135, 0.8), inset 0 0 15px rgba(0, 255, 135, 0.4) !important; /* Brillo de energía intenso */
+}
+
+.nodo-estacion.bloqueado {
+    border-color: #334155 !important;
+    background: rgba(15, 23, 42, 0.9) !important;
+    color: #64748b !important;
+    cursor: not-allowed !important;
+    box-shadow: none !important;
+    opacity: 0.4 !important;
+}
+
+/* Astronauta del Landing Principal */
+.capa-astronauta {
+    width: 120px;
+    height: 120px;
+    display: block;
+    position: absolute;
+    z-index: 2;
+    top: 15%;
+    left: 20%;
+    background-image: url('Astronauta_CodeLand.png'); 
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    animation: flotarAvatarMundo 4s ease-in-out infinite;
+}
+
+/* Componente del Cuadro de Diálogo Flotante */
+.astronauta-guia-contenedor {
+    position: fixed;
+    bottom: 30px;
+    right: 60px;
+    display: flex;
+    align-items: flex-end;
+    gap: 25px;
+    z-index: 100;
+}
+
+.cuadro-dialogo-espacial {
+    background: rgba(2, 6, 23, 0.95);
+    border: 2px solid #00c2ff;
+    border-radius: 18px;
+    padding: 22px;
+    max-width: 360px;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.6);
+}
+
+.cuadro-dialogo-espacial h3 { 
+    margin: 0 0 8px 0; 
+    color: #00ff87; 
+    font-size: 1.15rem; 
+    font-weight: 700; 
+}
+.cuadro-dialogo-espacial p { 
+    margin: 0; 
+    font-size: 0.92rem; 
+    line-height: 1.5; 
+    color: #cbd5e1; 
+    font-weight: 300; 
+}
+
+/* Sprite guía animado */
+.sprite-astronauta-animado { 
+    width: 90px;  
+    height: 90px;
+    display: block;
+    background-image: url('astronauta_guia.png'); 
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    animation: flotarAvatarMundo 3.5s ease-in-out infinite; 
+    user-select: none;
+}
+
+/* ANIMACIONES */
+@keyframes flotarAvatarMundo {
+    0% { transform: translateY(0px) rotate(0deg); }
+    50% { transform: translateY(-12px) rotate(2deg); }
+    100% { transform: translateY(0px) rotate(0deg); }
+}
+
+@keyframes caerAlMundo {
+    0% {
+        transform: translateY(-800px) scale(0.4);
+        opacity: 0;
+    }
+    75% {
+        transform: translateY(15px) scale(1.05);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(0) scale(1);
+        opacity: 1 !important; 
+    }
+}
+
+.animacion-caida {
+    animation: caerAlMundo 1.4s cubic-bezier(0.25, 1, 0.5, 1) forwards !important;
+}

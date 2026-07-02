@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/estilo_lecciones.css">
+    <title>Estación Orbital 26 | CodeLand DPS</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght=300;400;600;800&display=swap" rel="stylesheet">
+    <script src="https://player.vimeo.com/api/player.js"></script>
+</head>
+<body>
+    <header class="header-leccion">
+        <div><h2>Módulo I ➔ Estación 26</h2></div>
+        <div id="cronometroContenedor" style="background: rgba(0, 162, 255, 0.15); border: 1px solid #00a2ff; padding: 6px 16px; border-radius: 20px; font-weight: 600; color: #00a2ff; font-family: 'Poppins', sans-serif; display: flex; align-items: center; gap: 8px;">
+            ⏱️ Tiempo: <span id="timerVisual">00:00</span>
+        </div>
+        <button class="btn-salir" onclick="solicitarSalida()">Abandona Misión 🛸</button>
+    </header>
+
+    <section class="seccion-contexto">
+        <h3>🚀 Contexto de Aplicación Real</h3>
+        <p>Imagina que en el hangar de almacenamiento hay una fila consecutiva de contenedores sellados y necesitas encontrar el que contiene el repuesto de hipernúcleo "ID-905". Como no están ordenados, el sistema informático activa un escáner que revisa el primer contenedor, luego el segundo, luego el tercero, y así de uno en uno hasta encontrar la pieza o confirmar que no existe. Esta técnica secuencial es la base de los motores de búsqueda de bases de datos primarias.</p>
+    </section>
+
+    <section class="seccion-multimedia">
+        <h3>🎥 Contenido Audiovisual </h3>
+        <p class="instruccion-video">⚠️ Debes visualizar el video completo sin adelantar para desbloquear la evaluación.</p>
+        
+        <div class="contenedor-video" style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; margin-bottom: 15px;">
+            <iframe id="videoVimeo" 
+                    src="https://player.vimeo.com/video/1198525715?api=1&controls=1&badge=0&autopause=0&player_id=0" 
+                    frameborder="0" 
+                    allow="autoplay; fullscreen; picture-in-picture" 
+                    style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border-radius: 8px;" 
+                    title="Contenido Educativo Orbital">
+            </iframe>
+        </div>
+
+        <p style="font-size: 0.85rem; color: #64748b; text-align: center; margin-top: 12px; font-style: italic; font-family: 'Poppins', sans-serif;">
+            Material audiovisual adaptado con fines estrictamente educativos. Créditos del autor: ProgramaTutos.
+        </p>
+        <div class="contenedor-imagen-apoyo">
+            <img src="img/esquema_leccion26.png" alt="Esquema conceptual" onerror="this.style.display='none';">
+        </div>
+    </section>
+
+    <section class="seccion-teoria">
+        <h1>26. Operaciones en Vectores: Búsqueda Lineal</h1>
+        <p>Una vez almacenados los datos dentro de un arreglo unidimensional, una de las necesidades más recurrentes del software es la localización de un elemento específico mediante un valor clave.</p>
+        
+        <div class="ideas-clave">
+            <h3>💡 Conceptos Clave y Definiciones Académicas:</h3>
+            <ul>
+                <li><strong>Algoritmo de Búsqueda Lineal:</strong> Método secuencial que compara el elemento buscado con cada uno de los componentes de un vector, recorriendo los índices uno a uno (<code>0, 1, 2... N-1</code>) hasta hallar una coincidencia o llegar al final de la estructura <em>(Joyanes Aguilar, 2013)</em>.</li>
+                <li><strong>Eficiencia Temporal:</strong> En el peor de los escenarios (si el elemento está en la última celda o no existe), el algoritmo realizará <code>N</code> comparaciones, donde <code>N</code> es el tamaño total del arreglo.</li>
+                <li><strong>Condición de Parada:</strong> Utiliza una variable tipo *Bandera* que cambia a <code>Verdadero</code> en el momento exacto de la coincidencia, permitiendo interrumpir el recorrido o retornar la posición del índice hallado.</li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="seccion-bloqueada-control" id="controlBloqueo">
+        <button id="btnDesbloquearQuiz" class="btn-verificar" disabled onclick="mostrarEvaluacionOculta()">
+            Bloqueado por Reproducción 🔒
+        </button>
+    </section>
+
+    <section class="seccion-quiz oculto-inicial" id="moduloEvaluacion">
+        <h2>⚡ Evaluación </h2>
+        
+        <div id="contenedorPreguntas">
+            
+            <div class="pregunta-bloque" data-correcta="2">
+                <p><strong> Si aplicas una búsqueda lineal sobre un arreglo que contiene 500 registros y el elemento objetivo no se encuentra en la colección, ¿cuántas comparaciones obligatorias realizará el algoritmo?</strong></p>
+                <ul class="opciones-lista">
+                    <li onclick="seleccionarOpcion(this)" data-id="1">Solamente 1 comparación en el índice central.</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="2">Realizará 500 comparaciones, ya que debe examinar minuciosamente cada casillero hasta el final de la secuencia.</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="3">Cero comparaciones, porque el compilador detecta la ausencia de forma automática.</li>
+                </ul>
+            </div>
+
+            <div class="pregunta-bloque" data-correcta="1">
+                <p><strong> ¿Cuál es el rol académico de utilizar una variable de tipo "Bandera" (Flag) dentro de un ciclo de búsqueda lineal?</strong></p>
+                <ul class="opciones-lista">
+                    <li onclick="seleccionarOpcion(this)" data-id="1">Actuar como testigo para indicar si la clave ya fue localizada y detener o evaluar el estado final del proceso.</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="2">Duplicar el tamaño del vector en la memoria virtual del sistema.</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="3">Sumar los valores de los índices visitados.</li>
+                </ul>
+            </div>
+
+            <div class="pregunta-bloque" data-correcta="3">
+                <p><strong> En base al ejemplo del hangar espacial, ¿cuál es la razón por la que se debe activar una búsqueda secuencial de uno en uno?</strong></p>
+                <ul class="opciones-lista">
+                    <li onclick="seleccionarOpcion(this)" data-id="1">Porque el robot escáner consume menos energía de batería si avanza despacio.</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="2">Porque los contenedores se abren automáticamente al detectar calor.</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="3">Porque los contenedores de almacenamiento no se encuentran ordenados previamente.</li>
+                </ul>
+            </div>
+
+            <div class="pregunta-bloque" data-correcta="2">
+                <p><strong> ¿Cuáles son los límites de los índices que recorre de forma sucesiva el algoritmo de búsqueda lineal dentro de un vector de N elementos?</strong></p>
+                <ul class="opciones-lista">
+                    <li onclick="seleccionarOpcion(this)" data-id="1">Desde el índice 1 hasta el índice N sin excepciones.</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="2">Recorriendo minuciosamente los índices uno a uno desde 0 hasta N-1.</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="3">Saltando de dos en dos únicamente por las posiciones pares.</li>
+                </ul>
+            </div>
+
+            <div class="pregunta-bloque" data-correcta="1">
+                <p><strong> Según Joyanes Aguilar (2013), ¿qué define conceptualmente a la búsqueda lineal o secuencial?</strong></p>
+                <ul class="opciones-lista">
+                    <li onclick="seleccionarOpcion(this)" data-id="1">Un método secuencial que compara el elemento buscado con cada uno de los componentes de un vector.</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="2">Un sistema para borrar de forma definitiva el espacio de almacenamiento.</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="3">Un proceso que reorganiza los elementos de menor a mayor de forma automática.</li>
+                </ul>
+            </div>
+
+            <div class="pregunta-bloque" data-correcta="3">
+                <p><strong> ¿Cuál es el peor de los escenarios posibles en cuanto a eficiencia temporal al ejecutar este algoritmo?</strong></p>
+                <ul class="opciones-lista">
+                    <li onclick="seleccionarOpcion(this)" data-id="1">Que el elemento sea localizado exactamente en la posición 0.</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="2">Que el sistema operativo se apague a la mitad del ciclo.</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="3">Que el elemento objetivo se encuentre en la última celda del vector o que no exista en absoluto.</li>
+                </ul>
+            </div>
+
+            <div class="pregunta-bloque" data-correcta="1">
+                <p><strong> Cuando una variable de tipo Bandera conmuta su estado lógico a Verdadero durante el recorrido, ¿qué acción se permite realizar de forma inmediata?</strong></p>
+                <ul class="opciones-lista">
+                    <li onclick="seleccionarOpcion(this)" data-id="1">Interrumpir el recorrido del ciclo o retornar directamente la posición del índice hallado.</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="2">Formatear la memoria RAM asignada al arreglo unidimensional.</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="3">Volver a iniciar la comparación desde el casillero inicial.</li>
+                </ul>
+            </div>
+
+            <div class="pregunta-bloque" data-correcta="3">
+                <p><strong> En términos de complejidad algorítmica y eficiencia, si duplicamos la cantidad de datos (2N) en un vector desordenado, ¿qué ocurre con el número de comparaciones en el peor caso?</strong></p>
+                <ul class="opciones-lista">
+                    <li onclick="seleccionarOpcion(this)" data-id="1">Se mantiene exactamente constante sin importar los datos.</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="2">Se reduce a la mitad gracias al procesamiento paralelo de la CPU.</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="3">Aumenta de forma directamente proporcional, requiriendo realizar 2N comparaciones.</li>
+                </ul>
+            </div>
+
+            <div class="pregunta-bloque" data-correcta="2">
+                <p><strong> De acuerdo a Sznajdleder (2012), ¿cómo se controla el flujo posterior del algoritmo mediante el uso de la bandera?</strong></p>
+                <ul class="opciones-lista">
+                    <li onclick="seleccionarOpcion(this)" data-id="1">Cambiando el tipo de dato del vector de entero a flotante en tiempo de ejecución.</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="2">Conmutando su estado lógico binario cuando se cumple la coincidencia exacta de la clave.</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="3">Enviando una alerta sonora directamente a los monitores de telemetría.</li>
+                </ul>
+            </div>
+
+            <div class="pregunta-bloque" data-correcta="1">
+                <p><strong> ¿Cuál de las siguientes opciones describe el verdadero propósito de los motores de búsqueda en bases de datos primarias que usan esta técnica?</strong></p>
+                <ul class="opciones-lista">
+                    <li onclick="seleccionarOpcion(this)" data-id="1">Localizar un elemento específico mediante un valor clave recorriendo una estructura lineal.</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="2">Dividir el arreglo en sub-colecciones independientes de tamaño variable.</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="3">Cambiar el diseño tipográfico y visual del reporte final del hangar.</li>
+                </ul>
+            </div>
+
+        </div>
+
+        <button class="btn-verificar" onclick="validarCuestionario()">Enviar Respuestas al Servidor</button>
+    </section>
+
+    <div id="overlayExito" class="pantalla-exito-overlay">
+        <div id="textoExito" class="mensaje-exito-grande">¡Correcto! Has ganado 50 XP.</div>
+        <button class="btn-comenzar" id="btnSiguienteNivel" onclick="irAlMapa()">Regresar a las Regiones 🚀</button>
+    </div>
+
+    <script>
+        const idLeccionActual = 26;
+        const xpGanada = 50;
+        
+        let segundosTranscurridos = 0;
+        const timerElemento = document.getElementById("timerVisual");
+        
+        const cronometroIntervalo = setInterval(() => {
+            segundosTranscurridos++;
+            let minutos = Math.floor(segundosTranscurridos / 60);
+            let segundos = segundosTranscurridos % 60;
+            let minTexto = minutos < 10 ? "0" + minutos : minutos;
+            let segTexto = segundos < 10 ? "0" + segundos : segundos;
+            timerElemento.innerText = minTexto + ":" + segTexto;
+        }, 1000);
+
+        const btnDesbloquear = document.getElementById("btnDesbloquearQuiz");
+        const moduloEvaluacion = document.getElementById("moduloEvaluacion");
+
+        const iframe = document.getElementById('videoVimeo');
+        const player = new Vimeo.Player(iframe);
+        
+        let tiempoMaximoVisto = 0;
+        let ejecutandoRegreso = false;
+        let duracionVideo = 0;
+
+        player.getDuration().then(function(duration) {
+            duracionVideo = duration;
+        }).catch(function() {
+            duracionVideo = 60; 
+        });
+
+        player.on('timeupdate', function(data) {
+            if (!ejecutandoRegreso) {
+                if (data.seconds > tiempoMaximoVisto + 1.5) {
+                    ejecutandoRegreso = true;
+                    player.setCurrentTime(tiempoMaximoVisto).then(function() {
+                        ejecutandoRegreso = false;
+                        alert("🔒 Bloqueo de Seguridad: No puedes adelantar la explicación audiovisual.");
+                    });
+                } else if (data.seconds > tiempoMaximoVisto) {
+                    tiempoMaximoVisto = data.seconds;
+                }
+            }
+        });
+
+        player.on('seeked', function(data) {
+            if (data.seconds > tiempoMaximoVisto + 1.5) {
+                ejecutandoRegreso = true;
+                player.setCurrentTime(tiempoMaximoVisto).then(function() {
+                    ejecutandoRegreso = false;
+                });
+            }
+        });
+
+        player.on('ended', function() {
+            if (tiempoMaximoVisto >= (duracionVideo - 3)) {
+                btnDesbloquear.removeAttribute("disabled");
+                btnDesbloquear.innerText = "Acceder a Evaluación ⚔️";
+                btnDesbloquear.style.background = "linear-gradient(135deg, #00ff87, #00c2ff)";
+                btnDesbloquear.style.color = "#020617";
+                btnDesbloquear.style.boxShadow = "0 0 20px rgba(0, 255, 135, 0.6)";
+            } else {
+                tiempoMaximoVisto = 0;
+                player.setCurrentTime(0);
+                alert("❌ Trampa detectada: Debes reproducir el contenido completo paso a paso.");
+            }
+        });
+
+        function barajearTodo() {
+            const contenedorPreguntas = document.getElementById('contenedorPreguntas');
+            const bloquesPreguntas = Array.from(contenedorPreguntas.children);
+            
+            for (let i = bloquesPreguntas.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                contenedorPreguntas.appendChild(bloquesPreguntas[j]);
+            }
+
+            const listasOpciones = document.querySelectorAll('.opciones-lista');
+            listasOpciones.forEach(lista => {
+                const opciones = Array.from(lista.children);
+                for (let i = opciones.length - 1; i > 0; i--) {
+                    const j = Math.floor(Math.random() * (i + 1));
+                    lista.appendChild(opciones[j]);
+                }
+            });
+        }
+
+        window.addEventListener("DOMContentLoaded", barajearTodo);
+
+        function mostrarEvaluacionOculta() {
+            moduloEvaluacion.classList.remove("oculto-inicial");
+            moduloEvaluacion.classList.add("mostrar-animado");
+            document.getElementById("controlBloqueo").style.display = "none";
+            moduloEvaluacion.scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function solicitarSalida() { 
+            if (confirm("¿Abortar misión? El progreso actual no se guardará.")) {
+                window.location.href = "../mundoI.php"; 
+            }
+        }
+        
+        function seleccionarOpcion(elementoLli) { 
+            const listaPadre = elementoLli.parentElement; 
+            Array.from(listaPadre.children).forEach(li => li.classList.remove('seleccionada')); 
+            elementoLli.classList.add('seleccionada'); 
+            listaPadre.setAttribute("data-seleccionada", elementoLli.getAttribute("data-id")); 
+        }
+
+        function validarCuestionario() {
+            const bloques = document.querySelectorAll('.pregunta-bloque'); 
+            let todasRespondidas = true; 
+            let todasCorrectas = true;
+
+            bloques.forEach(bloque => {
+                const listaOpciones = block = bloque.querySelector('.opciones-lista');
+                const seleccionadaId = listaOpciones.getAttribute('data-seleccionada');
+                const respuestaCorrecta = bloque.getAttribute('data-correcta');
+
+                if (!seleccionadaId) {
+                    todasRespondidas = false;
+                    return; 
+                }
+                if (seleccionadaId !== respuestaCorrecta) {
+                    todasCorrectas = false;
+                }
+            });
+
+            if (!todasRespondidas) { 
+                alert("⚠️ Por favor, responde los 10 reactivos antes de enviar las respuestas."); 
+                return; 
+            }
+
+            if (!todasCorrectas) { 
+                alert("❌ Error en los sistemas lógicos. Revisa tus respuestas e inténtalo de nuevo."); 
+                return; 
+            }
+
+            clearInterval(cronometroIntervalo);
+            registrarProgresoYXP(idLeccionActual);
+        }
+
+        function registrarProgresoYXP(l) {
+            fetch('../api/procesar_leccion_completada.php', { 
+                method: 'POST', 
+                headers: { 'Content-Type': 'application/json' }, 
+                body: JSON.stringify({ 
+                    id_leccion: l, 
+                    xp_ganada: xpGanada,
+                    tiempo_segundos: segundosTranscurridos 
+                }) 
+            })
+            .then(res => res.json())
+            .then(d => { 
+                mostrarPantallaExito();
+            })
+            .catch(() => { 
+                mostrarPantallaExito();
+            });
+        }
+
+        function mostrarPantallaExito() {
+            document.getElementById('overlayExito').classList.add('visible'); 
+            const btnRegresar = document.getElementById('btnSiguienteNivel');
+            btnRegresar.style.setProperty('display', 'flex', 'important');
+        }
+
+        function irAlMapa() { window.location.href = "../mundoI.php"; }
+    </script>
+</body>
+</html>

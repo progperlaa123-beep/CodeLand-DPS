@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/estilo_lecciones.css">
+    <title>Estación Orbital 29 | CodeLand DPS</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght=300;400;600;800&display=swap" rel="stylesheet">
+    <script src="https://player.vimeo.com/api/player.js"></script>
+</head>
+<body>
+    <header class="header-leccion">
+        <div><h2>Módulo I ➔ Estación 29</h2></div>
+        <div id="cronometroContenedor" style="background: rgba(0, 162, 255, 0.15); border: 1px solid #00a2ff; padding: 6px 16px; border-radius: 20px; font-weight: 600; color: #00a2ff; font-family: 'Poppins', sans-serif; display: flex; align-items: center; gap: 8px;">
+            ⏱️ Tiempo: <span id="timerVisual">00:00</span>
+        </div>
+        <button class="btn-salir" onclick="solicitarSalida()">Abandona Misión 🛸</button>
+    </header>
+
+    <section class="seccion-contexto">
+        <h3>🚀 Contexto de Aplicación Real</h3>
+        <p>Un plano de ingeniería con anotaciones ilegibles, cables sin identificar y sin una guía clara es una trampa mortal ante un fallo del sistema. En el desarrollo de software industrial ocurre lo mismo: el código se escribe una vez, pero se lee y repara cientos de veces por otros desarrolladores. Aplicar buenas prácticas como indentar el código o nombrar de forma descriptiva las variables diferencia a un programador novato de un Ingeniero de Software profesional.</p>
+    </section>
+
+    <section class="seccion-multimedia">
+        <h3>🎥 Contenido Audiovisual </h3>
+        <p class="instruccion-video">⚠️ Debes visualizar el video completo sin adelantar para desbloquear la evaluación.</p>
+        
+        <div class="contenedor-video" style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; margin-bottom: 15px;">
+            <iframe id="videoVimeo" 
+                    src="https://player.vimeo.com/video/1198525713?api=1&controls=1&badge=0&autopause=0&player_id=0" 
+                    frameborder="0" 
+                    allow="autoplay; fullscreen; picture-in-picture" 
+                    style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border-radius: 8px;" 
+                    title="Contenido Educativo Orbital">
+            </iframe>
+        </div>
+
+        <p style="font-size: 0.85rem; color: #64748b; text-align: center; margin-top: 12px; font-style: italic; font-family: 'Poppins', sans-serif;">
+            Material audiovisual adaptado con fines estrictamente educativos. Créditos del autor: Codigo en la Web.
+        </p>
+        <div class="contenedor-imagen-apoyo">
+            <img src="img/esquema_leccion29.png" alt="Esquema conceptual" onerror="this.style.display='none';">
+        </div>
+    </section>
+
+    <section class="seccion-teoria">
+        <h1>29. Buenas Prácticas de Programación Estructurada</h1>
+        <p>El estándar de calidad de un algoritmo estructurado no solo se evalúa por su correcto funcionamiento, sino por su legibilidad, facilidad de mantenimiento y apego a normas estandarizadas.</p>
+        
+        <div class="ideas-clave">
+            <h3>💡 Conceptos Clave y Definiciones Académicas:</h3>
+            <ul>
+                <li><strong>Indentación (Sangrado):</strong> Espaciado horizontal sistemático colocado al inicio de una línea de código para delimitar visualmente el nivel jerárquico de pertenencia de una instrucción con respecto a su estructura contenedora (bucles, condicionales) <em>(Joyanes Aguilar, 2013)</em>.</li>
+                <li><strong>Nombres Mnemotécnicos:</strong> Regla formal que prohíbe el uso de variables con nombres genéricos o mudos (ej: <code>x</code>, <code>a</code>, <code>n1</code>). En su lugar, se deben emplear identificadores descriptivos autoexplicativos (ej: <code>salario_neto</code>, <code>contador_errores</code>).</li>
+                <li><strong>Documentación y Comentarios:</strong> Inserción de líneas de texto aclaratorias no ejecutables destinadas a describir de forma conceptual el propósito de un bloque algorítmico complejo para acelerar el mantenimiento del sistema.</li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="seccion-bloqueada-control" id="controlBloqueo">
+        <button id="btnDesbloquearQuiz" class="btn-verificar" disabled onclick="mostrarEvaluacionOculta()">
+            Bloqueado por Reproducción 🔒
+        </button>
+    </section>
+
+    <section class="seccion-quiz oculto-inicial" id="moduloEvaluacion">
+        <h2>⚡ Evaluación </h2>
+        
+        <div id="contenedorPreguntas">
+            
+            <div class="pregunta-bloque" data-correcta="2">
+                <p><strong> Si un programador de sistemas nombra a una variable crítica como `p` en lugar de asignarle el nombre `precio_combustible`, ¿qué regla formal de ingeniería de software está vulnerando?</strong></p>
+                <ul class="opciones-lista">
+                    <li onclick="seleccionarOpcion(this)" data-id="1">La modularidad explícita de punteros físicos.</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="2">El uso de identificadores mnemotécnicos descriptivos para la legibilidad del código fuente.</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="3">La declaración estática de arreglos dimensionales homogéneos.</li>
+                </ul>
+            </div>
+
+            <div class="pregunta-bloque" data-correcta="3">
+                <p><strong> ¿Cuál es el beneficio directo e inmediato de aplicar una correcta "Indentación" o sangrado dentro de las estructuras de control anidadas?</strong></p>
+                <ul class="opciones-lista">
+                    <li onclick="seleccionarOpcion(this)" data-id="1">Aumentar la velocidad de reloj del procesador central de la máquina.</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="2">Obligar al compilador a ignorar los errores sintácticos de punto y coma.</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="3">Visualizar de forma inmediata la jerarquía y el alcance espacial de cada bucle o condicional abierto.</li>
+                </ul>
+            </div>
+
+            <div class="pregunta-bloque" data-correcta="1">
+                <p><strong> Según el contexto real planteado, ¿cuál es la proporción operativa del código fuente en la industria del software profesional?</strong></p>
+                <ul class="opciones-lista">
+                    <li onclick="seleccionarOpcion(this)" data-id="1">El código se escribe una sola vez, pero se lee, analiza y repara cientos de veces por otros desarrolladores.</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="2">Se borra y se reescribe desde cero cada que ocurre un cambio de personal.</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="3">Solo lo lee la máquina que lo ejecuta, nunca un ser humano de forma directa.</li>
+                </ul>
+            </div>
+
+            <div class="pregunta-bloque" data-correcta="2">
+                <p><strong> De acuerdo con Joyanes Aguilar (2013), ¿qué es exactamente el "sangrado" o indentación?</strong></p>
+                <ul class="opciones-lista">
+                    <li onclick="seleccionarOpcion(this)" data-id="1">La eliminación de espacios en blanco para ahorrar memoria en el servidor.</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="2">Un espaciado horizontal sistemático colocado al inicio de una línea para delimitar su nivel jerárquico de pertenencia.</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="3">La traducción automatizada del algoritmo a código de máquina binario.</li>
+                </ul>
+            </div>
+
+            <div class="pregunta-bloque" data-correcta="1">
+                <p><strong> ¿Qué tipo de identificadores prohíbe explícitamente la regla formal de nombres mnemotécnicos?</strong></p>
+                <ul class="opciones-lista">
+                    <li onclick="seleccionarOpcion(this)" data-id="1">Variables con nombres genéricos o mudos, tales como x, a, o n1.</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="2">Nombres largos escritos combinando mayúsculas y minúsculas (CamelCase).</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="3">Identificadores traducidos de forma estricta al idioma español.</li>
+                </ul>
+            </div>
+
+            <div class="pregunta-bloque" data-correcta="3">
+                <p><strong> ¿Cuál es la definición académica y el propósito de las líneas de comentario en un algoritmo estructurado?</strong></p>
+                <ul class="opciones-lista">
+                    <li onclick="seleccionarOpcion(this)" data-id="1">Instrucciones de alta prioridad ejecutadas exclusivamente por el núcleo de la CPU.</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="2">Estructuras cíclicas diseñadas para capturar errores de sintaxis en tiempo real.</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="3">Líneas de texto aclaratorias no ejecutables destinadas a describir el propósito conceptual de un bloque complejo.</li>
+                </ul>
+            </div>
+
+            <div class="pregunta-bloque" data-correcta="2">
+                <p><strong> En lugar de usar la variable genérica `e`, ¿cuál de las opciones cumple la regla de legibilidad para registrar un conteo de fallos astronómicos?</strong></p>
+                <ul class="opciones-lista">
+                    <li onclick="seleccionarOpcion(this)" data-id="1">`var_auxiliar`</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="2">`contador_errores`</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="3">`c1`</li>
+                </ul>
+            </div>
+
+            <div class="pregunta-bloque" data-correcta="1">
+                <p><strong> ¿Por qué se afirma en la lección que un código fuente desordenado y sin documentación es un peligro comparable a un plano de ingeniería ilegible?</strong></p>
+                <ul class="opciones-lista">
+                    <li onclick="seleccionarOpcion(this)" data-id="1">Porque representa una trampa mortal ante un fallo del sistema, dificultando su reparación inmediata.</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="2">Porque provoca un daño físico e irreversible en los discos de almacenamiento masivo.</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="3">Porque los navegadores modernos bloquean su apertura automáticamente.</li>
+                </ul>
+            </div>
+
+            <div class="pregunta-bloque" data-correcta="3">
+                <p><strong> ¿Qué métricas determinan el estándar de calidad y excelencia de un algoritmo más allá de que funcione correctamente?</strong></p>
+                <ul class="opciones-lista">
+                    <li onclick="seleccionarOpcion(this)" data-id="1">El costo económico de la licencia de software utilizada para codificarlo.</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="2">La cantidad total de líneas escritas sin importar su disposición espacial.</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="3">Su legibilidad, facilidad de mantenimiento preventivo y el apego estricto a normas estandarizadas.</li>
+                </ul>
+            </div>
+
+            <div class="pregunta-bloque" data-correcta="2">
+                <p><strong> ¿Cuál es el beneficio directo para un equipo de ingeniería al utilizar nombres descriptivos y autoexplicativos?</strong></p>
+                <ul class="opciones-lista">
+                    <li onclick="seleccionarOpcion(this)" data-id="1">Eliminar de forma permanente la necesidad de compilar el código fuente.</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="2">Permitir que cualquier desarrollador del equipo comprenda la lógica sin recurrir a manuales externos.</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="3">Hacer que la interfaz web sea visualmente más atractiva para el usuario.</li>
+                </ul>
+            </div>
+
+        </div>
+
+        <button class="btn-verificar" onclick="validarCuestionario()">Enviar Respuestas </button>
+    </section>
+
+    <div id="overlayExito" class="pantalla-exito-overlay">
+        <div id="textoExito" class="mensaje-exito-grande">¡Correcto! Has ganado 50 XP.</div>
+        <button class="btn-comenzar" id="btnSiguienteNivel" onclick="irAlMapa()">Regresar a las Regiones 🚀</button>
+    </div>
+
+    <script>
+        const idLeccionActual = 29;
+        const xpGanada = 50;
+        
+        let segundosTranscurridos = 0;
+        const timerElemento = document.getElementById("timerVisual");
+        
+        const cronometroIntervalo = setInterval(() => {
+            segundosTranscurridos++;
+            let minutos = Math.floor(segundosTranscurridos / 60);
+            let segundos = segundosTranscurridos % 60;
+            let minTexto = minutos < 10 ? "0" + minutos : minutos;
+            let segTexto = segundos < 10 ? "0" + segundos : segundos;
+            timerElemento.innerText = minTexto + ":" + segTexto;
+        }, 1000);
+
+        const btnDesbloquear = document.getElementById("btnDesbloquearQuiz");
+        const moduloEvaluacion = document.getElementById("moduloEvaluacion");
+
+        const iframe = document.getElementById('videoVimeo');
+        const player = new Vimeo.Player(iframe);
+        
+        let tiempoMaximoVisto = 0;
+        let ejecutandoRegreso = false;
+        let duracionVideo = 0;
+
+        player.getDuration().then(function(duration) {
+            duracionVideo = duration;
+        }).catch(function() {
+            duracionVideo = 60; 
+        });
+
+        player.on('timeupdate', function(data) {
+            if (!ejecutandoRegreso) {
+                if (data.seconds > tiempoMaximoVisto + 1.5) {
+                    ejecutandoRegreso = true;
+                    player.setCurrentTime(tiempoMaximoVisto).then(function() {
+                        ejecutandoRegreso = false;
+                        alert("🔒 Bloqueo de Seguridad: No puedes adelantar la explicación audiovisual.");
+                    });
+                } else if (data.seconds > tiempoMaximoVisto) {
+                    tiempoMaximoVisto = data.seconds;
+                }
+            }
+        });
+
+        player.on('seeked', function(data) {
+            if (data.seconds > tiempoMaximoVisto + 1.5) {
+                ejecutandoRegreso = true;
+                player.setCurrentTime(tiempoMaximoVisto).then(function() {
+                    ejecutandoRegreso = false;
+                });
+            }
+        });
+
+        player.on('ended', function() {
+            if (tiempoMaximoVisto >= (duracionVideo - 3)) {
+                btnDesbloquear.removeAttribute("disabled");
+                btnDesbloquear.innerText = "Acceder a Evaluación ⚔️";
+                btnDesbloquear.style.background = "linear-gradient(135deg, #00ff87, #00c2ff)";
+                btnDesbloquear.style.color = "#020617";
+                btnDesbloquear.style.boxShadow = "0 0 20px rgba(0, 255, 135, 0.6)";
+            } else {
+                tiempoMaximoVisto = 0;
+                player.setCurrentTime(0);
+                alert("❌ Trampa detectada: Debes reproducir el contenido completo paso a paso.");
+            }
+        });
+
+        function barajearTodo() {
+            const contenedorPreguntas = document.getElementById('contenedorPreguntas');
+            const bloquesPreguntas = Array.from(contenedorPreguntas.children);
+            
+            for (let i = bloquesPreguntas.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                contenedorPreguntas.appendChild(bloquesPreguntas[j]);
+            }
+
+            const listasOpciones = document.querySelectorAll('.opciones-lista');
+            listasOpciones.forEach(lista => {
+                const opciones = Array.from(lista.children);
+                for (let i = opciones.length - 1; i > 0; i--) {
+                    const j = Math.floor(Math.random() * (i + 1));
+                    lista.appendChild(opciones[j]);
+                }
+            });
+        }
+
+        window.addEventListener("DOMContentLoaded", barajearTodo);
+
+        function mostrarEvaluacionOculta() {
+            moduloEvaluacion.classList.remove("oculto-inicial");
+            moduloEvaluacion.classList.add("mostrar-animado");
+            document.getElementById("controlBloqueo").style.display = "none";
+            moduloEvaluacion.scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function solicitarSalida() { 
+            if (confirm("¿Abortar misión? El progreso actual no se guardará.")) {
+                window.location.href = "../mundoI.php"; 
+            }
+        }
+        
+        function seleccionarOpcion(elementoLli) { 
+            const listaPadre = elementoLli.parentElement; 
+            Array.from(listaPadre.children).forEach(li => li.classList.remove('seleccionada')); 
+            elementoLli.classList.add('seleccionada'); 
+            listaPadre.setAttribute("data-seleccionada", elementoLli.getAttribute("data-id")); 
+        }
+
+        function validarCuestionario() {
+            const bloques = document.querySelectorAll('.pregunta-bloque'); 
+            let todasRespondidas = true; 
+            let todasCorrectas = true;
+
+            bloques.forEach(bloque => {
+                const listaOpciones = bloque.querySelector('.opciones-lista');
+                const seleccionadaId = listaOpciones.getAttribute('data-seleccionada');
+                const respuestaCorrecta = bloque.getAttribute('data-correcta');
+
+                if (!seleccionadaId) {
+                    todasRespondidas = false;
+                    return; 
+                }
+                if (seleccionadaId !== respuestaCorrecta) {
+                    todasCorrectas = false;
+                }
+            });
+
+            if (!todasRespondidas) { 
+                alert("⚠️ Por favor, responde los 10 reactivos antes de enviar las respuestas."); 
+                return; 
+            }
+
+            if (!todasCorrectas) { 
+                alert("❌ Error en los sistemas lógicos. Revisa tus respuestas e inténtalo de nuevo."); 
+                return; 
+            }
+
+            clearInterval(cronometroIntervalo);
+            registrarProgresoYXP(idLeccionActual);
+        }
+
+        function registrarProgresoYXP(l) {
+            fetch('../api/procesar_leccion_completada.php', { 
+                method: 'POST', 
+                headers: { 'Content-Type': 'application/json' }, 
+                body: JSON.stringify({ 
+                    id_leccion: l, 
+                    xp_ganada: xpGanada,
+                    tiempo_segundos: segundosTranscurridos 
+                }) 
+            })
+            .then(res => res.json())
+            .then(d => { 
+                mostrarPantallaExito();
+            })
+            .catch(() => { 
+                mostrarPantallaExito();
+            });
+        }
+
+        function mostrarPantallaExito() {
+            document.getElementById('overlayExito').classList.add('visible'); 
+            const btnRegresar = document.getElementById('btnSiguienteNivel');
+            btnRegresar.style.setProperty('display', 'flex', 'important');
+        }
+
+        function irAlMapa() { window.location.href = "../mundoI.php"; }
+    </script>
+</body>
+</html>

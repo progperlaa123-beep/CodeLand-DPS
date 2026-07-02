@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Cuestionario Diagnóstico | CodeLand DPS</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="style_Cuesti.css">
+
+    <!-- Poppins -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+    rel="stylesheet">
+
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+
+    <header class="navbar">
+
+        <div class="logo">
+            <span class="azul">CodeLand</span>
+            <span class="verde">DPS</span>
+        </div>
+
+        <nav class="menu">
+
+            <a href="index.php">
+                Inicio
+            </a>
+
+            <a href="mailto:codelanddps@gmail.com">
+                Contacto
+            </a>
+
+        </nav>
+
+    </header>
+
+    <div class="linea"></div>
+
+    <!-- CONTENIDO -->
+
+    <main class="contenedor">
+
+        <img src="galaxia_CodeLand.png" class="fondo">
+
+        <section class="contenido">
+
+            <h1>
+                Comencemos la aventura!
+            </h1>
+
+            <p>
+                Obtén una ruta de aprendizaje personalizada según tus conocimientos.
+            </p>
+
+            <!-- PREGUNTA -->
+
+            <div class="pregunta-box">
+
+                <h2 id="pregunta">
+                    ¿Qué es un algoritmo?
+                </h2>
+
+                <div class="respuestas" id="respuestas">
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <!-- RESULTADO -->
+
+    <section class="resultado oculto" id="resultado">
+
+        <div class="resultado-card">
+
+            <h2>
+                Resultado Diagnóstico
+            </h2>
+
+            <h3 id="nivel"></h3>
+
+            <p id="descripcion"></p>
+
+            <button onclick="window.location.href='mundoI.php'">
+                    Comenzar Ruta
+            </button>
+
+        </div>
+
+    </section>
+
+    <!-- JS -->
+    <script src="cuestionario.js"></script>
+<!-- FOOTER 
+
+<footer class="footer">
+
+    <div class="footer-contenedor">
+
+        <!-- LOGO -
+
+        <div class="footer-box">
+
+            <h2>
+                <span class="azul">CodeLand</span>
+                <span class="verde">DPS</span>
+            </h2>
+
+            <p>
+                Plataforma interactiva enfocada en el aprendizaje
+                de programación, lógica computacional y desarrollo
+                de habilidades digitales.
+            </p>
+
+        </div>
+
+        <!-- NAVEGACION 
+
+        <div class="footer-box">
+
+            <h3>
+                Navegación
+            </h3>
+
+            <a href="index.html">Inicio</a>
+            <a href="#">Cursos</a>
+            <a href="#">Nosotros</a>
+            <a href="#">Contacto</a>
+
+        </div>
+
+        <!-- RECURSOS 
+
+        <div class="footer-box">
+
+            <h3>
+                Recursos
+            </h3>
+
+            <a href="#">Guías</a>
+            <a href="#">Algoritmos</a>
+            <a href="#">Programación</a>
+            <a href="#">Tecnologías</a>
+
+        </div>
+
+        <!-- CONTACTO 
+
+        <div class="footer-box">
+
+            <h3>
+                Contacto
+            </h3>
+
+            <p>
+                Abasolo, Guanajuato, México
+            </p>
+
+            <p>
+                codelanddps@gmail.com
+            </p>
+
+            <p>
+                +52 (429) 000-0000
+            </p>
+
+        </div>
+
+    </div>
+
+    <!-- LINEA -
+
+    <div class="footer-linea"></div>
+
+    <!-- PARTE INFERIOR 
+
+    <div class="footer-bottom">
+
+        <p>
+            © 2026 CodeLand DPS. Todos los derechos reservados.
+        </p>
+    </div>
+
+</footer>-->
+</body>
+</html>

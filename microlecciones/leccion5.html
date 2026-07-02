@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/estilo_lecciones.css">
+    <title>Estación Orbital 05 | Evaluación de Bloque</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght=300;400;600;800&display=swap" rel="stylesheet">
+    <style>
+        /* Estilos complementarios para la interfaz de las nuevas actividades académicas */
+        .bloque-actividad {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(56, 226, 122, 0.2);
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 25px;
+        }
+        .actividad-titulo {
+            color: #38e27a;
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .bloom-tag {
+            font-size: 0.75rem;
+            background: rgba(0, 162, 255, 0.2);
+            color: #00a2ff;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-weight: 600;
+        }
+        .emparejamiento-contenedor {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-top: 15px;
+        }
+        .columna-conceptos, .columna-definiciones {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .item-conectar {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid #64748b;
+            padding: 10px;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-size: 0.9rem;
+        }
+        .item-conectar:hover {
+            border-color: #00a2ff;
+            background: rgba(0, 162, 255, 0.1);
+        }
+        .item-conectar.seleccionado {
+            background: #00a2ff;
+            color: #020617;
+            border-color: #fff;
+            font-weight: 600;
+        }
+        .item-conectar.emparejado {
+            background: rgba(56, 226, 122, 0.2);
+            border-color: #38e27a;
+            color: #38e27a;
+            cursor: not-allowed;
+        }
+        .opciones-select {
+            background: #0f172a;
+            color: #fff;
+            border: 1px solid #38e27a;
+            padding: 8px;
+            border-radius: 6px;
+            width: 100%;
+            margin-top: 8px;
+            font-family: 'Poppins', sans-serif;
+        }
+    </style>
+</head>
+<body>
+    <header class="header-leccion">
+        <div><h2>Módulo I ➔ Estación 05 (Examen de Fase)</h2></div>
+        <div id="cronometroContenedor" style="background: rgba(0, 162, 255, 0.15); border: 1px solid #00a2ff; padding: 6px 16px; border-radius: 20px; font-weight: 600; color: #00a2ff; font-family: 'Poppins', sans-serif; display: flex; align-items: center; gap: 8px;">
+            ⏱️ Tiempo: <span id="timerVisual">00:00</span>
+        </div>
+        <button class="btn-salir" onclick="solicitarSalida()">Abandona Misión 🛸</button>
+    </header>
+
+    <section class="seccion-contexto" style="margin-bottom: 25px; padding: 20px; background: rgba(56, 226, 122, 0.03); border-left: 4px solid #38e27a; border-radius: 4px;">
+        <h3>👾 ¡Alerta de Misión Crítica!</h3>
+        <p>Los sistemas de soporte de vida de la Estación 05 se han desconfigurado. Para reiniciarlos, debes resolver el reto de ordenamiento algorítmico y completar la evaluación extra basada en la taxonomía de Bloom para validar tus competencias de retención y análisis. ¡Consigue los 100 XP y desbloquea el siguiente sector del mapa!</p>
+    </section>
+
+    <section class="seccion-teoria">
+        <h1>Reto Principal: Reorganiza el Flujo Lógico</h1>
+        <p style="margin-bottom: 20px;">Haz clic en los bloques en el orden correcto en el que debe ejecutarse el algoritmo de principio a fin:</p>
+        
+        <div class="ef-flex">
+            <div class="ef-block" id="B" onclick="seleccionarBloque('B')">🔄 Calcular: Area = Base * Altura</div>
+            <div class="ef-block" id="D" onclick="seleccionarBloque('D')">🛑 FIN</div>
+            <div class="ef-block" id="A" onclick="seleccionarBloque('A')">📥 Leer valores de Base y Altura</div>
+            <div class="ef-block" id="C" onclick="seleccionarBloque('C')">🖥️ Mostrar el resultado de Area</div>
+            <div class="ef-block" id="I" onclick="seleccionarBloque('I')">🚀 INICIO</div>
+        </div>
+
+        <div style="margin-top: 25px; padding: 15px; background: rgba(255,255,255,0.02); border-radius: 8px;">
+            <p id="orden-actual" style="font-weight: 600; color: #00a2ff;">Tu diagrama: Ninguno</p>
+        </div>
+    </section>
+
+    <section class="seccion-teoria" style="margin-top: 30px;">
+        <h2>📋 Evaluación de Bloque Especial (Bloom: Recordar y Comprender)</h2>
+        <p style="margin-bottom: 25px; color: #64748b;">Completa las siguientes actividades para reconfigurar los procesadores orbitales de la lección 1 a la 4.</p>
+
+        <div class="bloque-actividad">
+            <div class="actividad-titulo">
+                <span>🧩 Actividad 1: Code Pair - Símbolos de Ingeniería</span>
+                <span class="bloom-tag">Taxonomía: Recordar</span>
+            </div>
+            <p>Empareja cada forma geométrica correspondiente al diagrama de flujo con su función operativa correspondiente en un diagrama de flujo de datos.</p>
+            
+            <div class="emparejamiento-contenedor">
+                <div class="columna-conceptos" id="colConceptos">
+                    <div class="item-conectar" data-tipo="concepto" data-par="1" id="c1" onclick="seleccionarNodo('c1')">Óvalo</div>
+                    <div class="item-conectar" data-tipo="concepto" data-par="2" id="c2" onclick="seleccionarNodo('c2')">Rectángulo regular</div>
+                    <div class="item-conectar" data-tipo="concepto" data-par="3" id="c3" onclick="seleccionarNodo('c3')">romboide</div>
+                </div>
+                <div class="columna-definiciones" id="colDefiniciones">
+                    <div class="item-conectar" data-tipo="definicion" data-par="2" id="d2" onclick="seleccionarNodo('d2')">Representa operaciones internas, fórmulas y asignaciones aritméticas.</div>
+                    <div class="item-conectar" data-tipo="definicion" data-par="1" id="d1" onclick="seleccionarNodo('d1')">Delimita físicamente el alcance determinando el INICIO y FIN.</div>
+                    <div class="item-conectar" data-tipo="definicion" data-par="3" id="d3" onclick="seleccionarNodo('d3')">Indica la captura, lectura o introducción de variables desde el exterior.</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="bloque-actividad">
+            <div class="actividad-titulo">
+                <span>🧩 Actividad 2: Code Pair - Arquitectura EPS</span>
+                <span class="bloom-tag">Taxonomía: Recordar</span>
+            </div>
+            <p>Selecciona el bloque de procesamiento de datos que se asocia correctamente con cada componente operativo de un cajero automático real.</p>
+            <div style="margin-top: 15px;">
+                <label>1. Ingresar la tarjeta de débito y teclear el PIN secreto:</label>
+                <select class="opciones-select" id="eps1">
+                    <option value="">-- Elige la etapa adecuada --</option>
+                    <option value="salida">Salida (Output)</option>
+                    <option value="entrada">Entrada (Input)</option>
+                    <option value="proceso">Proceso (Processing)</option>
+                </select>
+            </div>
+            <div style="margin-top: 15px;">
+                <label>2. La computadora interna del banco valida el saldo y resta el monto solicitado:</label>
+                <select class="opciones-select" id="eps2">
+                    <option value="">-- Elige la etapa adecuada --</option>
+                    <option value="salida">Salida (Output)</option>
+                    <option value="entrada">Entrada (Input)</option>
+                    <option value="proceso">Proceso (Processing)</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="bloque-actividad">
+            <div class="actividad-titulo">
+                <span>📐 Actividad 3: CodEF - Traducción Algorítmica</span>
+                <span class="bloom-tag">Taxonomía: Comprender</span>
+            </div>
+            <p>Analiza el siguiente fragmento lógico interpretado en pseudocódigo y selecciona el símbolo gráfico adecuado que debe contener dicha operación en el diagrama:</p>
+            <div style="background: rgba(0,0,0,0.3); padding: 12px; border-radius: 6px; font-family: monospace; margin: 12px 0; color: #38e27a;">
+                Escribir "El alumno ha aprobado la misión orbital"
+            </div>
+            <select class="opciones-select" id="codef1">
+                <option value="">-- Selecciona el símbolo técnico correcto --</option>
+                <option value="incorrecto1">Un rectángulo de asignación matemática</option>
+                <option value="correcto">Un bloque de base ondulada (Impresión en pantalla)</option>
+                <option value="incorrecto2">Un paralelogramo inclinado de lectura de teclado</option>
+            </select>
+        </div>
+
+        <div class="bloque-actividad">
+            <div class="actividad-titulo">
+                <span>📐 Actividad 4: CodEF - Mapeo de Flujo Técnico</span>
+                <span class="bloom-tag">Taxonomía: Comprender</span>
+            </div>
+            <p>Si alteramos un algoritmo de cálculo estructurado de manera que el bloque de <strong>Salida</strong> se dibuje antes que el bloque de <strong>Proceso</strong>, ¿cuál es la consecuencia lógica inmediata que tú comprendes que ocurrirá?</p>
+            <select class="opciones-select" id="codef2">
+                <option value="">-- Elige la interpretación analítica --</option>
+                <option value="incorrecto">El código se ejecutará el doble de rápido en los servidores.</option>
+                <option value="correcto">Se genera un quiebre de secuencia, provocando que se intente imprimir una variable nula o sin calcular.</option>
+                <option value="incorrecto2">El diagrama se adaptará automáticamente invirtiendo las fórmulas matemáticas.</option>
+            </select>
+        </div>
+
+        <div class="bloque-actividad">
+            <div class="actividad-titulo">
+                <span>📐 Actividad 5: CodEF - Propiedades Matemáticas</span>
+                <span class="bloom-tag">Taxonomía: Comprender</span>
+            </div>
+            <p>Lee la siguiente situación: <em>"Un programador olvida agregar una condición de salida dentro de una sección iterativa, causando que la aplicación se congele al entrar en un ciclo sin fin."</em> Interpretando lo aprendido, ¿qué propiedad de la algoritmia clásica se rompió?</p>
+            <select class="opciones-select" id="codef3">
+                <option value="">-- Selecciona la propiedad afectada --</option>
+                <option value="correcto">La propiedad de Finitud, que exige terminar tras un número limitado de pasos.</option>
+                <option value="incorrecto1">La propiedad de Univocidad, que dicta que cambie el resultado.</option>
+                <option value="incorrecto2">La propiedad de Modularidad de las hojas CSS estelares.</option>
+            </select>
+        </div>
+
+        <div style="margin-top: 20px; display: flex; gap: 15px;">
+            <button class="btn-verificar" style="background-color: #2ecc71 !important;" onclick="verificarEvaluacionCompleta()">Verificar Ruta Lógica</button>
+            <button class="btn-verificar" style="background-color: #e74c3c !important;" onclick="reiniciarTodoAlumnos()">Limpiar Consola</button>
+        </div>
+        
+        <div id="resultado-juego" style="margin-top: 20px; font-weight: 600; padding: 15px; border-radius: 6px; display: none;"></div>
+    </section>
+
+    <div id="overlayExito" class="pantalla-exito-overlay">
+        <div id="textoExito" class="mensaje-exito-grande">¡SECTOR COMPLETADO! 🌟 +100 XP</div>
+        <button class="btn-comenzar" id="btnSiguienteNivel" style="display:none; padding: 15px 40px; background-color: #007BFF !important; color: white; border: none; border-radius: 30px; cursor: pointer;" onclick="irAlMapa()">Avanzar al Siguiente Sector 🚀</button>
+    </div>
+
+    <script>
+        const idLeccionActual = 5;
+        const secuenciaCorrecta = ['I', 'A', 'B', 'C', 'D'];
+        let secuenciaUsuario = [];
+        
+        // Mecanismo de control para el emparejamiento de Code Pair
+        let nodoSeleccionado = null;
+        let emparejamientosCorrectosTotales = 0;
+
+        // --- SISTEMA DE CRONÓMETRO ASÍNCRONO ---
+        let segundosTranscurridos = 0;
+        const timerElemento = document.getElementById("timerVisual");
+        
+        const cronometroIntervalo = setInterval(() => {
+            segundosTranscurridos++;
+            let minutos = Math.floor(segundosTranscurridos / 60);
+            let segundos = segundosTranscurridos % 60;
+            let minTexto = minutos < 10 ? "0" + minutos : minutos;
+            let segTexto = segundos < 10 ? "0" + segundos : segundos;
+            timerElemento.innerText = minTexto + ":" + segTexto;
+        }, 1000);
+
+        function solicitarSalida() {
+            if (confirm("¿Deseas abortar la evaluación? Perderás los 100 XP.")) {
+                window.location.href = "../mundoI.php";
+            }
+        }
+
+        function seleccionarBloque(idBloque) {
+            const boton = document.getElementById(idBloque);
+            
+            if (secuenciaUsuario.includes(idBloque)) {
+                secuenciaUsuario = secuenciaUsuario.filter(item => item !== idBloque);
+                boton.style.background = "rgba(255, 255, 255, 0.05)";
+                boton.style.borderColor = "#38e27a";
+            } else {
+                secuenciaUsuario.push(idBloque);
+                boton.style.background = "#00a2ff"; 
+                boton.style.borderColor = "#ffffff";
+            }
+            
+            document.getElementById('orden-actual').innerText = "Tu diagrama: " + secuenciaUsuario.join(" ➔ ");
+        }
+
+        // Lógica de emparejamiento de Code Pair
+        function seleccionarNodo(idNodo) {
+            const el = document.getElementById(idNodo);
+            if (el.classList.contains('emparejado')) return;
+
+            if (nodoSeleccionado === null) {
+                nodoSeleccionado = el;
+                el.classList.add('seleccionado');
+            } else {
+                if (nodoSeleccionado.id === idNodo) {
+                    el.classList.remove('seleccionado');
+                    nodoSeleccionado = null;
+                    return;
+                }
+
+                const tipo1 = nodoSeleccionado.getAttribute('data-tipo');
+                const tipo2 = el.getAttribute('data-tipo');
+                const par1 = nodoSeleccionado.getAttribute('data-par');
+                const par2 = el.getAttribute('data-par');
+
+                if (tipo1 !== tipo2) {
+                    if (par1 === par2) {
+                        // Emparejamiento correcto
+                        nodoSeleccionado.classList.remove('seleccionado');
+                        nodoSeleccionado.classList.add('emparejado');
+                        el.classList.add('emparejado');
+                        emparejamientosCorrectosTotales++;
+                    } else {
+                        alert("❌ Combinación de conceptos errónea en los sistemas de enlace.");
+                        nodoSeleccionado.classList.remove('seleccionado');
+                    }
+                    nodoSeleccionado = null;
+                } else {
+                    nodoSeleccionado.classList.remove('seleccionado');
+                    nodoSeleccionado = el;
+                    el.classList.add('seleccionado');
+                }
+            }
+        }
+
+        function reiniciarTodoAlumnos() {
+            secuenciaUsuario = [];
+            document.getElementById('orden-actual').innerText = "Tu diagrama: Ninguno";
+            const resultadoDiv = document.getElementById('resultado-juego');
+            resultadoDiv.style.display = "none";
+            
+            document.querySelectorAll('.ef-block').forEach(b => {
+                b.style.background = "rgba(255, 255, 255, 0.05)";
+                b.style.borderColor = "#38e27a";
+            });
+
+            // Reiniciar selectores
+            document.getElementById('eps1').value = "";
+            document.getElementById('eps2').value = "";
+            document.getElementById('codef1').value = "";
+            document.getElementById('codef2').value = "";
+            document.getElementById('codef3').value = "";
+
+            // Reiniciar Code Pair
+            nodoSeleccionado = null;
+            emparejamientosCorrectosTotales = 0;
+            document.querySelectorAll('.item-conectar').forEach(nodo => {
+                nodo.className = "item-conectar";
+            });
+        }
+
+        function verificarEvaluacionCompleta() {
+            const resultadoDiv = document.getElementById('resultado-juego');
+            resultadoDiv.style.display = "block";
+
+            // Validar Reto Principal
+            if (secuenciaUsuario.length !== secuenciaCorrecta.length) {
+                resultadoDiv.style.background = "rgba(231, 76, 60, 0.1)";
+                resultadoDiv.style.color = "#e74c3c";
+                resultadoDiv.innerHTML = "⚠️ Tu diagrama del Reto Principal está incompleto. El algoritmo debe mapear sus fases desde Inicio hasta Fin.";
+                return;
+            }
+
+            if (JSON.stringify(secuenciaUsuario) !== JSON.stringify(secuenciaCorrecta)) {
+                resultadoDiv.style.background = "rgba(231, 76, 60, 0.1)";
+                resultadoDiv.style.color = "#e74c3c";
+                resultadoDiv.innerHTML = "❌ ¡Flujo lógico del Reto Principal roto! Reorganiza las fases adecuadamente.";
+                return;
+            }
+
+            // Validar Actividad 1 (Code Pair)
+            if (emparejamientosCorrectosTotales < 3) {
+                resultadoDiv.style.background = "rgba(231, 76, 60, 0.1)";
+                resultadoDiv.style.color = "#e74c3c";
+                resultadoDiv.innerHTML = "⚠️ Actividad 1 incompleta o con errores. Debes emparejar todos los elementos geométricos.";
+                return;
+            }
+
+            // Validar Actividad 2
+            const eps1 = document.getElementById('eps1').value;
+            const eps2 = document.getElementById('eps2').value;
+            if (eps1 !== 'entrada' || eps2 !== 'proceso') {
+                resultadoDiv.style.background = "rgba(231, 76, 60, 0.1)";
+                resultadoDiv.style.color = "#e74c3c";
+                resultadoDiv.innerHTML = "❌ Error en los componentes de la Actividad 2 (Arquitectura EPS). Revisa el análisis del problema.";
+                return;
+            }
+
+            // Validar Actividad 3
+            if (document.getElementById('codef1').value !== 'correcto') {
+                resultadoDiv.style.background = "rgba(231, 76, 60, 0.1)";
+                resultadoDiv.style.color = "#e74c3c";
+                resultadoDiv.innerHTML = "❌ Error en la Actividad 3. El pseudocódigo evaluado no coincide con el símbolo del diagrama seleccionado.";
+                return;
+            }
+
+            // Validar Actividad 4
+            if (document.getElementById('codef2').value !== 'correcto') {
+                resultadoDiv.style.background = "rgba(231, 76, 60, 0.1)";
+                resultadoDiv.style.color = "#e74c3c";
+                resultadoDiv.innerHTML = "❌ Error en la Actividad 4. Analiza de nuevo el quiebre de secuencia lógica planteado.";
+                return;
+            }
+
+            // Validar Actividad 5
+            if (document.getElementById('codef3').value !== 'correcto') {
+                resultadoDiv.style.background = "rgba(231, 76, 60, 0.1)";
+                resultadoDiv.style.color = "#e74c3c";
+                resultadoDiv.innerHTML = "❌ Error en la Actividad 5. El ciclo sin fin quebranta una propiedad algorítmica distinta.";
+                return;
+            }
+
+            // Si todo es correcto
+            resultadoDiv.style.background = "rgba(46, 204, 113, 0.1)";
+            resultadoDiv.style.color = "#2ecc71";
+            resultadoDiv.innerHTML = "🗺️ ¡Evaluación Exitosa! Has ordenado el diagrama y resuelto correctamente las actividades de la taxonomía de Bloom.";
+            
+            clearInterval(cronometroIntervalo);
+            registrarProgresoEvaluacion(idLeccionActual);
+        }
+
+        function registrarProgresoEvaluacion(leccion) {
+            // Se envían los 100 puntos de experiencia por ser examen de bloque
+            fetch('../api/procesar_leccion_completada.php', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ 
+                    id_leccion: leccion, 
+                    xp_ganada: 100,
+                    tiempo_segundos: segundosTranscurridos
+                })
+            })
+            .then(res => res.json())
+            .then(data => {
+                mostrarPantallaExito();
+            })
+            .catch(err => {
+                console.error("Error en la petición de guardado:", err);
+                mostrarPantallaExito();
+            });
+        }
+
+        function mostrarPantallaExito() {
+            document.getElementById('overlayExito').classList.add('visible');
+            setTimeout(() => { 
+                document.getElementById('btnSiguienteNivel').style.display = "block"; 
+            }, 2000);
+        }
+
+        function irAlMapa() { 
+            window.location.href = "../mundoI.php"; 
+        }
+    </script>
+</body>
+</html>

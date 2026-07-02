@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/estilo_lecciones.css">
+    <title>Estación Orbital 25 | Evaluación de Bloque I</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght=300;400;600;800&display=swap" rel="stylesheet">
+    <style>
+        /* Estilos complementarios para la interfaz de las nuevas actividades académicas (Extraídos de Lección 5) */
+        .bloque-actividad {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(56, 226, 122, 0.2);
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 25px;
+        }
+        .actividad-titulo {
+            color: #38e27a;
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .bloom-tag {
+            font-size: 0.75rem;
+            background: rgba(0, 162, 255, 0.2);
+            color: #00a2ff;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+        .opciones-lista {
+            list-style: none;
+            padding: 0;
+            margin: 15px 0 0 0;
+        }
+        .opciones-lista li {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            padding: 12px 15px;
+            margin-bottom: 8px;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        .opciones-lista li:hover {
+            background: rgba(0, 162, 255, 0.08);
+            border-color: rgba(0, 162, 255, 0.4);
+        }
+        .opciones-lista li.seleccionada {
+            background: rgba(56, 226, 122, 0.1) !important;
+            border-color: #38e27a !important;
+            color: #38e27a;
+        }
+        .retroalimentacion {
+            margin-top: 10px;
+            padding: 10px;
+            border-radius: 4px;
+            background: rgba(239, 68, 68, 0.1);
+            border-left: 3px solid #ef4444;
+            display: none;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+    <header class="header-leccion">
+        <div><h2>Módulo I ➔ Estación 25 (Examen de Bloque)</h2></div>
+        <div id="cronometroContenedor" style="background: rgba(56, 226, 122, 0.15); border: 1px solid #38e27a; padding: 6px 16px; border-radius: 20px; font-weight: 600; color: #38e27a; font-family: 'Poppins', sans-serif; display: flex; align-items: center; gap: 8px;">
+            ⏱️ Telemetría: <span id="timerVisual">00:00</span>
+        </div>
+        <button class="btn-salir" onclick="solicitarSalida()">Abandona Misión 🛸</button>
+    </header>
+
+    <section class="seccion-teoria">
+        <h1>🌌 Evaluación Extraordinaria de Bloque: Estación 25</h1>
+        <p>Has llegado al nodo de control de mitad de módulo. Para validar los sistemas de navegación, debes resolver 5 desafíos prácticos basados en los niveles lógicos de <strong>Evaluar</strong> y <strong>Crear</strong> de la Taxonomía de Bloom.</p>
+    </section>
+
+    <section class="seccion-quiz" style="display: block;">
+        
+        <div class="bloque-actividad">
+            <div class="actividad-titulo">🛠️ Actividad 1: Debug Pro <span class="bloom-tag" style="background: rgba(239, 68, 68, 0.2); color: #ef4444;">Evaluar</span></div>
+            <p><strong>Contexto:</strong> Un script del reactor espacial intenta apagar el motor cuando la temperatura excede los 500°C tres veces consecutivas. Sin embargo, el contador no incrementa correctamente y el ciclo se vuelve infinito.</p>
+            <pre style="background: #0f141c; padding: 15px; border-radius: 6px; font-family: monospace; color: #e2e8f0; border: 1px solid #2d3748;">
+Mientras motor_activo == Verdadero Hacer
+    Si temperatura > 500 Entonces
+        Contador = 0  // <-- Analiza esta línea
+        Contador = Contador + 1
+        Si Contador == 3 Entonces
+            motor_activo = Falso
+        FinSi
+    FinSi
+FinMientras</pre>
+            <p><strong>Pregunta:</strong> ¿Por qué el contador falla en registrar las 3 anomalías térmicas consecutivas?</p>
+            <ul class="opciones-lista" id="ans_act1">
+                <li onclick="marcarOpcionAct(this, 'act1', '1')" data-id="1">Porque se está utilizando un acumulador en lugar de una bandera binaria.</li>
+                <li onclick="marcarOpcionAct(this, 'act1', '2')" data-id="2">Porque el contador se reinicia a 0 en cada iteración dentro del condicional, perdiendo la memoria del estado anterior.</li>
+                <li onclick="marcarOpcionAct(this, 'act1', '3')" data-id="3">Porque las variables lógicas no aceptan la operación de incremento aritmético continuo.</li>
+            </ul>
+        </div>
+
+        <div class="bloque-actividad">
+            <div class="actividad-titulo">🕵️‍♂️ Actividad 2: Code Detective <span class="bloom-tag" style="background: rgba(239, 68, 68, 0.2); color: #ef4444;">Evaluar</span></div>
+            <p><strong>Contexto:</strong> Un subalgoritmo calcula la potencia del escudo orbital. Tu misión es predecir con exactitud la salida en consola del bloque principal.</p>
+            <pre style="background: #0f141c; padding: 15px; border-radius: 6px; font-family: monospace; color: #e2e8f0; border: 1px solid #2d3748;">
+Funcion CalcularEscudo(base, factor)
+    Retornar (base * factor) + 50
+FinFuncion
+
+// Algoritmo Principal
+Principal
+    Imprimir CalcularEscudo(100, 2)
+FinPrincipal</pre>
+            <p><strong>Pregunta:</strong> ¿Qué valor exacto registrará el monitor de telemetría de la nave al ejecutarse este módulo?</p>
+            <ul class="opciones-lista" id="ans_act2">
+                <li onclick="marcarOpcionAct(this, 'act2', '1')" data-id="1">250 unidades térmicas de energía.</li>
+                <li onclick="marcarOpcionAct(this, 'act2', '2')" data-id="2">150 unidades térmicas de energía.</li>
+                <li onclick="marcarOpcionAct(this, 'act2', '3')" data-id="3">200 unidades térmicas de energía.</li>
+            </ul>
+        </div>
+
+        <div class="bloque-actividad">
+            <div class="actividad-titulo">🕵️‍♂️ Actividad 3: Code Detective <span class="bloom-tag" style="background: rgba(239, 68, 68, 0.2); color: #ef4444;">Evaluar</span></div>
+            <p><strong>Contexto:</strong> El módulo de hipervelocidad altera la reserva de combustible mediante una llamada por referencia y otra por valor. Analiza detenidamente el comportamiento de la variable original en memoria.</p>
+            <pre style="background: #0f141c; padding: 15px; border-radius: 6px; font-family: monospace; color: #e2e8f0; border: 1px solid #2d3748;">
+Funcion Inyectar(Por Valor galones, Por Referencia tanque)
+    galones = galones * 2
+    tanque = tanque - 20
+FinFuncion
+
+// Algoritmo Principal
+Principal
+    Definir g Como Entero -> g = 10
+    Definir t Como Entero -> t = 100
+    Inyectar(g, t)
+    Imprimir "G:", g, " T:", t
+FinPrincipal</pre>
+            <p><strong>Pregunta:</strong> ¿Cuáles son los valores impresos finales de las variables `g` y `t` tras concluir la ejecución?</p>
+            <ul class="opciones-lista" id="ans_act3">
+                <li onclick="marcarOpcionAct(this, 'act3', '1')" data-id="1">G: 20 y T: 100</li>
+                <li onclick="marcarOpcionAct(this, 'act3', '2')" data-id="2">G: 10 y T: 80</li>
+                <li onclick="marcarOpcionAct(this, 'act3', '3')" data-id="3">G: 20 y T: 80</li>
+            </ul>
+        </div>
+
+        <div class="bloque-actividad">
+            <div class="actividad-titulo">🛠️ Actividad 4: Debug Pro <span class="bloom-tag" style="background: rgba(239, 68, 68, 0.2); color: #ef4444;">Evaluar</span></div>
+            <p><strong>Contexto:</strong> Una sonda recolecta 4 lecturas de radiación electromagnética y las almacena en un vector de tamaño 4. Al intentar sumar los datos mediante un bucle, el software colapsa por desbordamiento (Out of Bounds).</p>
+            <pre style="background: #0f141c; padding: 15px; border-radius: 6px; font-family: monospace; color: #e2e8f0; border: 1px solid #2d3748;">
+Definir radiacion[4] Como Entero // Índices válidos: 0, 1, 2, 3
+Suma = 0
+Para i = 0 Hasta 4 Con Paso 1 Hacer // <-- Examina los límites del ciclo
+    Suma = Suma + radiacion[i]
+FinPara</pre>
+            <p><strong>Pregunta:</strong> ¿Qué ajuste de código soluciona de forma inmediata el desbordamiento de memoria?</p>
+            <ul class="opciones-lista" id="ans_act4">
+                <li onclick="marcarOpcionAct(this, 'act4', '1')" data-id="1">Cambiar la instrucción del ciclo para que itere desde `i = 0 Hasta 3`.</li>
+                <li onclick="marcarOpcionAct(this, 'act4', '2')" data-id="2">Modificar el incremento de la variable para que avance con paso 2 de forma binaria.</li>
+                <li onclick="marcarOpcionAct(this, 'act4', '3')" data-id="3">Cambiar el tipo de dato del vector para que sea de tipo Carácter.</li>
+            </ul>
+        </div>
+
+        <div class="bloque-actividad">
+            <div class="actividad-titulo">🚀 Actividad 5: MiniProjects <span class="bloom-tag" style="background: rgba(16, 185, 129, 0.2); color: #10b981;">Crear</span></div>
+            <p><strong>Desafío de Arquitectura:</strong> Tienes la tarea de estructurar un sistema automatizado que procese la temperatura de un panel de reactores. El sistema debe llamar a una función pasándole un <strong>Vector</strong> con las temperaturas, calcular el promedio acumulado y encender una <strong>Bandera</strong> si el promedio supera los límites críticos.</p>
+            <p><strong>Pregunta:</strong> ¿Cuál de las siguientes propuestas metodológicas representa la arquitectura de código más limpia y óptima para resolver este proyecto corporativo?</p>
+            <ul class="opciones-lista" id="ans_act5">
+                <li onclick="marcarOpcionAct(this, 'act5', '1')" data-id="1">Escribir un único bloque de código monolítico sin funciones dentro del cuerpo principal, usando variables genéricas globales denominadas x, y, z.</li>
+                <li onclick="marcarOpcionAct(this, 'act5', '2')" data-id="2">Diseñar un subalgoritmo modular que reciba el vector por referencia; usar un ciclo interno acotado para actualizar un acumulador de sumas, obtener el promedio matemático e invertir el estado lógico de una bandera si se viola el umbral de seguridad.</li>
+                <li onclick="marcarOpcionAct(this, 'act5', '3')" data-id="3">Declarar variables infinitas independientes para evadir el uso de vectores unidimensionales, eliminando la necesidad de ciclos iterativos automáticos.</li>
+            </ul>
+        </div>
+
+        <div id="resultadoValidacion" style="margin-top: 20px; padding: 15px; border-radius: 6px; text-align: center; font-weight: bold; font-family: 'Poppins', sans-serif;"></div>
+
+        <button class="btn-verificar" onclick="validarExamenBloque()">Validar Respuestas del Bloque 🛰️</button>
+    </section>
+
+    <div id="overlayExito" class="pantalla-exito-overlay">
+        <div id="textoExito" class="mensaje-exito-grande">🎯 ¡Excelente! Has superado la Evaluación de Bloque (+100 XP)</div>
+        <button class="btn-comenzar" id="btnSiguienteNivel" onclick="irAlMapa()">Regresar al Mapa Estelar 🗺️</button>
+    </div>
+
+    <script>
+        const idLeccionActual = 25;
+        const xpGanada = 100;
+        let segundosTranscurridos = 0;
+        const timerVisual = document.getElementById("timerVisual");
+
+        const cronometroIntervalo = setInterval(() => {
+            segundosTranscurridos++;
+            let min = Math.floor(segundosTranscurridos / 60);
+            let seg = segundosTranscurridos % 60;
+            timerVisual.innerText = (min < 10 ? "0" + min : min) + ":" + (seg < 10 ? "0" + seg : seg);
+        }, 1000);
+
+        function marcarOpcionAct(el, actividad, id) {
+            const ul = el.parentElement;
+            Array.from(ul.children).forEach(li => li.classList.remove('seleccionada'));
+            el.classList.add('seleccionada');
+            ul.setAttribute('data-seleccionada', id);
+        }
+
+        function solicitarSalida() {
+            if (confirm("¿Seguro que deseas abandonar la evaluación? Perderás el tiempo registrado.")) {
+                window.location.href = "../mundoI.php";
+            }
+        }
+
+        function validarExamenBloque() {
+            const r1 = document.getElementById('ans_act1').getAttribute('data-seleccionada');
+            const r2 = document.getElementById('ans_act2').getAttribute('data-seleccionada');
+            const r3 = document.getElementById('ans_act3').getAttribute('data-seleccionada');
+            const r4 = document.getElementById('ans_act4').getAttribute('data-seleccionada');
+            const r5 = document.getElementById('ans_act5').getAttribute('data-seleccionada');
+
+            const resultadoDiv = document.getElementById('resultadoValidacion');
+
+            if (!r1 || !r2 || !r3 || !r4 || !r5) {
+                resultadoDiv.style.color = "#f59e0b";
+                resultadoDiv.innerText = "⚠️ Alerta: Debes completar las 5 actividades lógicas antes de realizar el envío.";
+                return;
+            }
+
+            if (r1 === "2" && r2 === "1" && r3 === "2" && r4 === "1" && r5 === "2") {
+                clearInterval(cronometroIntervalo);
+                resultadoDiv.style.color = "#38e27a";
+                resultadoDiv.innerText = "✓ Sincronización exitosa. Procesando datos asíncronos con el servidor...";
+                registrarProgresoEvaluacion(idLeccionActual);
+            } else {
+                resultadoDiv.style.color = "#ef4444";
+                resultadoDiv.innerText = "❌ Error detectado en los sistemas lógicos. Revisa tus respuestas e inténtalo de nuevo.";
+            }
+        }
+
+        function registrarProgresoEvaluacion(leccion) {
+            fetch('../api/procesar_leccion_completada.php', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ 
+                    id_leccion: leccion, 
+                    xp_ganada: xpGanada,
+                    tiempo_segundos: segundosTranscurridos
+                })
+            })
+            .then(res => res.json())
+            .then(() => { mostrarPantallaExito(); })
+            .catch(() => { mostrarPantallaExito(); });
+        }
+
+        function mostrarPantallaExito() {
+            document.getElementById('overlayExito').classList.add('visible');
+            document.getElementById('btnSiguienteNivel').style.setProperty('display', 'flex', 'important');
+        }
+
+        function irAlMapa() {
+            window.location.href = "../mundoI.php";
+        }
+    </script>
+</body>
+</html>

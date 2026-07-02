@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/estilo_lecciones.css">
+    <title>Estación Orbital 27 | CodeLand DPS</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght=300;400;600;800&display=swap" rel="stylesheet">
+    <script src="https://player.vimeo.com/api/player.js"></script>
+</head>
+<body>
+    <header class="header-leccion">
+        <div><h2>Módulo I ➔ Estación 27</h2></div>
+        <div id="cronometroContenedor" style="background: rgba(0, 162, 255, 0.15); border: 1px solid #00a2ff; padding: 6px 16px; border-radius: 20px; font-weight: 600; color: #00a2ff; font-family: 'Poppins', sans-serif; display: flex; align-items: center; gap: 8px;">
+            ⏱️ Tiempo: <span id="timerVisual">00:00</span>
+        </div>
+        <button class="btn-salir" onclick="solicitarSalida()">Abandona Misión 🛸</button>
+    </header>
+
+    <section class="seccion-contexto">
+        <h3>🚀 Contexto de Aplicación Real</h3>
+        <p>Una hoja de cálculo electrónica (como Excel) o el mapa de asientos de un teatro comercial se organizan de la misma forma: mediante filas y columnas. Si quieres ubicar un dato, no basta con dar un número; debes especificar dos coordenadas exactas, como "Fila 3, Columna 5". En programación, esta estructura se denomina Matriz y se utiliza para renderizar gráficos de videojuegos, pixeles de imágenes y mapas de coordenadas geográficas.</p>
+    </section>
+
+    <section class="seccion-multimedia">
+        <h3>🎥 Contenido Audiovisual </h3>
+        <p class="instruccion-video">⚠️ Debes visualizar el video completo sin adelantar para desbloquear la evaluación.</p>
+        
+        <div class="contenedor-video" style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; margin-bottom: 15px;">
+            <iframe id="videoVimeo" 
+                    src="https://player.vimeo.com/video/1198525714?api=1&controls=1&badge=0&autopause=0&player_id=0" 
+                    frameborder="0" 
+                    allow="autoplay; fullscreen; picture-in-picture" 
+                    style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border-radius: 8px;" 
+                    title="Contenido Educativo Orbital">
+            </iframe>
+        </div>
+
+        <p style="font-size: 0.85rem; color: #64748b; text-align: center; margin-top: 12px; font-style: italic; font-family: 'Poppins', sans-serif;">
+            Material audiovisual adaptado con fines estrictamente educativos. Créditos del autor: Retro.
+        </p>
+        <div class="contenedor-imagen-apoyo">
+            <img src="img/esquema_leccion27.png" alt="Esquema conceptual" onerror="this.style.display='none';">
+        </div>
+    </section>
+
+    <section class="seccion-teoria">
+        <h1>27. Matrices (Arreglos Bidimensionales)</h1>
+        <p>Una matriz es una estructura de datos lineal extendida que organiza elementos homogéneos en una cuadrícula de dos dimensiones.</p>
+        
+        <div class="ideas-clave">
+            <h3>💡 Conceptos Clave y Definiciones Académicas:</h3>
+            <ul>
+                <li><strong>Arreglo Bidimensional:</strong> Colección de elementos del mismo tipo ordenados de forma matemática en **filas (horizontales)** y **columnas (verticales)** <em>(Joyanes Aguilar, 2013)</em>.</li>
+                <li><strong>Doble Indexación:</strong> Para acceder o modificar cualquier celda de la estructura, es estrictamente obligatorio proporcionar dos índices: el primero representa la posición de la fila <code>i</code>, y el segundo corresponde a la columna <code>j</code> (ej: <code>matriz[i][j]</code>).</li>
+                <li><strong>Recorrido con Ciclos Aninados:</strong> El procesamiento completo de una matriz requiere el uso de un bucle "Para" interno (para iterar las columnas) anidado de forma interna dentro de otro bucle "Para" externo (que controla las filas).</li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="seccion-bloqueada-control" id="controlBloqueo">
+        <button id="btnDesbloquearQuiz" class="btn-verificar" disabled onclick="mostrarEvaluacionOculta()">
+            Bloqueado por Reproducción 🔒
+        </button>
+    </section>
+
+    <section class="seccion-quiz oculto-inicial" id="moduloEvaluacion">
+        <h2>⚡ Evaluación </h2>
+        
+        <div id="contenedorPreguntas">
+            
+            <div class="pregunta-bloque" data-correcta="3">
+                <p><strong> Si una matriz llamada `mapa_estelar` se declara con dimensiones de 3 filas y 4 columnas, ¿cuántos elementos homogéneos totales puede almacenar en memoria RAM?</strong></p>
+                <ul class="opciones-lista">
+                    <li onclick="seleccionarOpcion(this)" data-id="1">7 elementos totales en secuencia.</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="2">34 elementos estructurados en memoria flash.</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="3">12 elementos, equivalentes al producto cartesiano de filas por columnas (3 x 4).</li>
+                </ul>
+            </div>
+
+            <div class="pregunta-bloque" data-correcta="1">
+                <p><strong> ¿Qué sintaxis conceptual representa el acceso correcto al casillero ubicado en la fila 0, columna 2 de una matriz indexada?</strong></p>
+                <ul class="opciones-lista">
+                    <li onclick="seleccionarOpcion(this)" data-id="1">`matriz[0][2]`</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="2">`matriz[0, 2]`</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="3">`matriz[0 + 2]`</li>
+                </ul>
+            </div>
+
+            <div class="pregunta-bloque" data-correcta="2">
+                <p><strong> Según lo explicado en el texto de la lección, ¿cuáles son los componentes espaciales que estructuran un arreglo bidimensional?</strong></p>
+                <ul class="opciones-lista">
+                    <li onclick="seleccionarOpcion(this)" data-id="1">Punteros dinámicos y nodos enlazados orientados verticalmente.</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="2">Filas de disposición horizontal y columnas dispuestas de forma vertical.</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="3">Páginas de disco duro y sectores lógicos aleatorios.</li>
+                </ul>
+            </div>
+
+            <div class="pregunta-bloque" data-correcta="1">
+                <p><strong> ¿Qué significa el término "elementos homogéneos" dentro de la definición de una matriz de datos?</strong></p>
+                <ul class="opciones-lista">
+                    <li onclick="seleccionarOpcion(this)" data-id="1">Que de forma obligatoria todos los valores guardados en las celdas deben ser del mismo tipo de dato.</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="2">Que las dimensiones lógicas se modifican de forma automática cada segundo.</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="3">Que solo almacena variables de tipo texto para interfaces web.</li>
+                </ul>
+            </div>
+
+            <div class="pregunta-bloque" data-correcta="3">
+                <p><strong> Para procesar o leer cada una de las posiciones de una matriz completa, ¿qué diseño algorítmico se requiere estructurar?</strong></p>
+                <ul class="opciones-lista">
+                    <li onclick="seleccionarOpcion(this)" data-id="1">Un ciclo simple que use una variable bandera condicional.</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="2">Tres funciones recursivas ejecutándose en hilos paralelos.</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="3">El uso de un bucle "Para" interno anidado dentro de otro bucle "Para" externo.</li>
+                </ul>
+            </div>
+
+            <div class="pregunta-bloque" data-correcta="1">
+                <p><strong> ¿Cuál es el rol específico que ejecuta el bucle "Para" interno dentro del recorrido estándar de una matriz?</strong></p>
+                <ul class="opciones-lista">
+                    <li onclick="seleccionarOpcion(this)" data-id="1">Iterar de forma secuencial cada una de las columnas de la fila actual.</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="2">Controlar el índice general de las filas del arreglo.</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="3">Reiniciar a cero la memoria RAM consumida por el compilador.</li>
+                </ul>
+            </div>
+
+            <div class="pregunta-bloque" data-correcta="2">
+                <p><strong> En la expresión `matriz[i][j]`, ¿qué coordenadas representan conceptualmente los identificadores `i` y `j` respectivamente?</strong></p>
+                <ul class="opciones-lista">
+                    <li onclick="seleccionarOpcion(this)" data-id="1">`i` mapea la columna de destino y `j` rastrea la fila horizontal.</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="2">`i` representa la posición de la fila, mientras que `j` corresponde a la columna.</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="3">`i` es la dimensión en píxeles y `j` representa la memoria virtual.</li>
+                </ul>
+            </div>
+
+            <div class="pregunta-bloque" data-correcta="1">
+                <p><strong> De acuerdo con Joyanes Aguilar (2013), ¿cómo se define formalmente una matriz en la teoría algorítmica?</strong></p>
+                <ul class="opciones-lista">
+                    <li onclick="seleccionarOpcion(this)" data-id="1">Como una estructura de datos lineal extendida que organiza elementos homogéneos en una cuadrícula de dos dimensiones.</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="2">Como una lista simple donde los elementos se organizan de manera desordenada.</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="3">Como un acumulador aritmético que realiza sumas de vectores flotantes.</li>
+                </ul>
+            </div>
+
+            <div class="pregunta-bloque" data-correcta="3">
+                <p><strong> En aplicaciones de software real, ¿cuál de los siguientes ejemplos justifica directamente el uso de arreglos bidimensionales?</strong></p>
+                <ul class="opciones-lista">
+                    <li onclick="seleccionarOpcion(this)" data-id="1">Calcular el tiempo de respuesta de un clic en pantalla.</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="2">Almacenar el nombre único de un usuario del sistema orbital.</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="3">Mapear las coordenadas geográficas de satélites o los píxeles de una simulación gráfica.</li>
+                </ul>
+            </div>
+
+            <div class="pregunta-bloque" data-correcta="2">
+                <p><strong> Si intentamos acceder a la coordenada `matriz[3][2]` en una cuadrícula declarada con 3 filas (de 0 a 2) y 3 columnas, ¿qué ocurrirá en el sistema?</strong></p>
+                <ul class="opciones-lista">
+                    <li onclick="seleccionarOpcion(this)" data-id="1">El compilador lee la celda inicial de la columna 2.</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="2">Se generará un error de desbordamiento de índice (Out of Bounds) por exceder los límites físicos establecidos.</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="3">Se guardará el elemento en una posición aleatoria de la memoria RAM.</li>
+                </ul>
+            </div>
+
+        </div>
+
+        <button class="btn-verificar" onclick="validarCuestionario()">Enviar Respuestas </button>
+    </section>
+
+    <div id="overlayExito" class="pantalla-exito-overlay">
+        <div id="textoExito" class="mensaje-exito-grande">¡Correcto! Has ganado 50 XP.</div>
+        <button class="btn-comenzar" id="btnSiguienteNivel" onclick="irAlMapa()">Regresar a las Regiones 🚀</button>
+    </div>
+
+    <script>
+        const idLeccionActual = 27;
+        const xpGanada = 50;
+        
+        let segundosTranscurridos = 0;
+        const timerElemento = document.getElementById("timerVisual");
+        
+        const cronometroIntervalo = setInterval(() => {
+            segundosTranscurridos++;
+            let minutos = Math.floor(segundosTranscurridos / 60);
+            let segundos = segundosTranscurridos % 60;
+            let minTexto = minutos < 10 ? "0" + minutos : minutos;
+            let segTexto = segundos < 10 ? "0" + segundos : segundos;
+            timerElemento.innerText = minTexto + ":" + segTexto;
+        }, 1000);
+
+        const btnDesbloquear = document.getElementById("btnDesbloquearQuiz");
+        const moduloEvaluacion = document.getElementById("moduloEvaluacion");
+
+        const iframe = document.getElementById('videoVimeo');
+        const player = new Vimeo.Player(iframe);
+        
+        let tiempoMaximoVisto = 0;
+        let ejecutandoRegreso = false;
+        let duracionVideo = 0;
+
+        player.getDuration().then(function(duration) {
+            duracionVideo = duration;
+        }).catch(function() {
+            duracionVideo = 60; 
+        });
+
+        player.on('timeupdate', function(data) {
+            if (!ejecutandoRegreso) {
+                if (data.seconds > tiempoMaximoVisto + 1.5) {
+                    ejecutandoRegreso = true;
+                    player.setCurrentTime(tiempoMaximoVisto).then(function() {
+                        ejecutandoRegreso = false;
+                        alert("🔒 Bloqueo de Seguridad: No puedes adelantar la explicación audiovisual.");
+                    });
+                } else if (data.seconds > tiempoMaximoVisto) {
+                    tiempoMaximoVisto = data.seconds;
+                }
+            }
+        });
+
+        player.on('seeked', function(data) {
+            if (data.seconds > tiempoMaximoVisto + 1.5) {
+                ejecutandoRegreso = true;
+                player.setCurrentTime(tiempoMaximoVisto).then(function() {
+                    ejecutandoRegreso = false;
+                });
+            }
+        });
+
+        player.on('ended', function() {
+            if (tiempoMaximoVisto >= (duracionVideo - 3)) {
+                btnDesbloquear.removeAttribute("disabled");
+                btnDesbloquear.innerText = "Acceder a Evaluación ⚔️";
+                btnDesbloquear.style.background = "linear-gradient(135deg, #00ff87, #00c2ff)";
+                btnDesbloquear.style.color = "#020617";
+                btnDesbloquear.style.boxShadow = "0 0 20px rgba(0, 255, 135, 0.6)";
+            } else {
+                tiempoMaximoVisto = 0;
+                player.setCurrentTime(0);
+                alert("❌ Trampa detectada: Debes reproducir el contenido completo paso a paso.");
+            }
+        });
+
+        function barajearTodo() {
+            const contenedorPreguntas = document.getElementById('contenedorPreguntas');
+            const bloquesPreguntas = Array.from(contenedorPreguntas.children);
+            
+            for (let i = bloquesPreguntas.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                contenedorPreguntas.appendChild(bloquesPreguntas[j]);
+            }
+
+            const listasOpciones = document.querySelectorAll('.opciones-lista');
+            listasOpciones.forEach(lista => {
+                const opciones = Array.from(lista.children);
+                for (let i = opciones.length - 1; i > 0; i--) {
+                    const j = Math.floor(Math.random() * (i + 1));
+                    lista.appendChild(opciones[j]);
+                }
+            });
+        }
+
+        window.addEventListener("DOMContentLoaded", barajearTodo);
+
+        function mostrarEvaluacionOculta() {
+            moduloEvaluacion.classList.remove("oculto-inicial");
+            moduloEvaluacion.classList.add("mostrar-animado");
+            document.getElementById("controlBloqueo").style.display = "none";
+            moduloEvaluacion.scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function solicitarSalida() { 
+            if (confirm("¿Abortar misión? El progreso actual no se guardará.")) {
+                window.location.href = "../mundoI.php"; 
+            }
+        }
+        
+        function seleccionarOpcion(elementoLli) { 
+            const listaPadre = elementoLli.parentElement; 
+            Array.from(listaPadre.children).forEach(li => li.classList.remove('seleccionada')); 
+            elementoLli.classList.add('seleccionada'); 
+            listaPadre.setAttribute("data-seleccionada", elementoLli.getAttribute("data-id")); 
+        }
+
+        function validarCuestionario() {
+            const bloques = document.querySelectorAll('.pregunta-bloque'); 
+            let todasRespondidas = true; 
+            let todasCorrectas = true;
+
+            bloques.forEach(bloque => {
+                const listaOpciones = bloque.querySelector('.opciones-lista');
+                const seleccionadaId = listaOpciones.getAttribute('data-seleccionada');
+                const respuestaCorrecta = bloque.getAttribute('data-correcta');
+
+                if (!seleccionadaId) {
+                    todasRespondidas = false;
+                    return; 
+                }
+                if (seleccionadaId !== respuestaCorrecta) {
+                    todasCorrectas = false;
+                }
+            });
+
+            if (!todasRespondidas) { 
+                alert("⚠️ Por favor, responde los 10 reactivos antes de enviar las respuestas."); 
+                return; 
+            }
+
+            if (!todasCorrectas) { 
+                alert("❌ Error en los sistemas lógicos. Revisa tus respuestas e inténtalo de nuevo."); 
+                return; 
+            }
+
+            clearInterval(cronometroIntervalo);
+            registrarProgresoYXP(idLeccionActual);
+        }
+
+        function registrarProgresoYXP(l) {
+            fetch('../api/procesar_leccion_completada.php', { 
+                method: 'POST', 
+                headers: { 'Content-Type': 'application/json' }, 
+                body: JSON.stringify({ 
+                    id_leccion: l, 
+                    xp_ganada: xpGanada,
+                    tiempo_segundos: segundosTranscurridos 
+                }) 
+            })
+            .then(res => res.json())
+            .then(d => { 
+                mostrarPantallaExito();
+            })
+            .catch(() => { 
+                mostrarPantallaExito();
+            });
+        }
+
+        function mostrarPantallaExito() {
+            document.getElementById('overlayExito').classList.add('visible'); 
+            const btnRegresar = document.getElementById('btnSiguienteNivel');
+            btnRegresar.style.setProperty('display', 'flex', 'important');
+        }
+
+        function irAlMapa() { window.location.href = "../mundoI.php"; }
+    </script>
+</body>
+</html>

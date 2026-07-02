@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/estilo_lecciones.css">
+    <title>Estación Orbital 11 | CodeLand DPS</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght=300;400;600;800&display=swap" rel="stylesheet">
+    <script src="https://player.vimeo.com/api/player.js"></script>
+</head>
+<body>
+    <header class="header-leccion">
+        <div><h2>Módulo I ➔ Estación 11</h2></div>
+        <div id="cronometroContenedor" style="background: rgba(0, 162, 255, 0.15); border: 1px solid #00a2ff; padding: 6px 16px; border-radius: 20px; font-weight: 600; color: #00a2ff; font-family: 'Poppins', sans-serif; display: flex; align-items: center; gap: 8px;">
+            ⏱️ Tiempo: <span id="timerVisual">00:00</span>
+        </div>
+        <button class="btn-salir" onclick="solicitarSalida()">Abandona Misión 🛸</button>
+    </header>
+
+    <section class="seccion-contexto">
+        <h3>🚀 Contexto de Aplicación Real</h3>
+        <p>Al construir un rascacielos, los ingenieros civiles no colocan las ventanas antes de cimentar el terreno ni levantan muros sin vigas de soporte. Un programa de computadora requiere exactamente el mismo orden jerárquico. Existe una estructura universal en bloque que le dice al sistema operativo: "aquí me presento, aquí reservo memoria y aquí ejecuto acciones". Ignorar esta arquitectura destruye la legibilidad y causa colapsos sistémicos.</p>
+    </section>
+
+    <section class="seccion-multimedia">
+        <h3>🎥 Contenido Audiovisual </h3>
+        <p class="instruccion-video">⚠️ Debes visualizar el video completo sin adelantar para desbloquear la evaluación.</p>
+        
+        <div class="contenedor-video" style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; margin-bottom: 15px;">
+            <iframe id="videoVimeo" 
+                    src="https://player.vimeo.com/video/1198447882?api=1&controls=1&badge=0&autopause=0&player_id=0" 
+                    frameborder="0" 
+                    allow="autoplay; fullscreen; picture-in-picture" 
+                    style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border-radius: 8px;" 
+                    title="Contenido Educativo Orbital">
+            </iframe>
+        </div>
+
+        <p style="font-size: 0.85rem; color: #64748b; text-align: center; margin-top: 12px; font-style: italic; font-family: 'Poppins', sans-serif;">
+            Material audiovisual adaptado con fines estrictamente educativos. Créditos del autor: Universitat Jaume I.
+        </p>
+        <div class="contenedor-imagen-apoyo">
+            <img src="img/esquema_leccion11.png" alt="Esquema estructural de un programa" onerror="this.style.display='none';">
+        </div>
+    </section>
+
+    <section class="seccion-teoria">
+        <h1>11. Estructura General de un Programa</h1>
+        <p>La arquitectura básica de un script de software define las secciones indispensables que el compilador o intérprete lee para organizar los recursos físicos y las secuencias de comandos lógicos.</p>
+        
+        <div class="ideas-clave">
+            <h3>💡 Conceptos Clave y Definiciones Académicas:</h3>
+            <ul>
+                <li><strong>Cabecera (Header):</strong> Bloque superior del archivo donde se declara el nombre del programa, módulos externos y bibliotecas reutilizables indispensables para la ejecución.</li>
+                <li><strong>Sección de Declaraciones:</strong> Segmento reservado para dar de alta constantes, tipos de datos personalizados y variables globales, permitiendo al sistema operativo asignar memoria RAM antes de computar.</li>
+                <li><strong>Cuerpo Principal (Main Body):</strong> Bloque delimitado entre las palabras clave de inicio y fin que almacena la secuencia cronológica de instrucciones operativas, cálculos y condicionales del algoritmo.</li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="seccion-bloqueada-control" id="controlBloqueo">
+        <button id="btnDesbloquearQuiz" class="btn-verificar" disabled onclick="mostrarEvaluacionOculta()">
+            Bloqueado por Reproducción 🔒
+        </button>
+    </section>
+
+    <section class="seccion-quiz" id="quizOculto" style="display: none;">
+        <h2>📝 Evaluación </h2>
+        <p style="margin-bottom: 20px; color: #a0aec0;">Demuestra tu dominio técnico sobre la anatomía de los programas computacionales:</p>
+
+        <div id="contenedorPreguntasDinamicas">
+            <div class="pregunta-bloque" data-correcta="1">
+                <h3> ¿Cuál es el orden cronológico estándar en la arquitectura general de un programa?</h3>
+                <ul class="opciones-lista">
+                    <li onclick="seleccionarOpcion(this)" data-id="1">Cabecera, Declaración de Variables, Cuerpo del Programa.</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="2">Cuerpo del Programa, Cabecera, Declaración de Variables.</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="3">Declaración de Variables, Cuerpo del Programa, Cabecera.</li>
+                </ul>
+                <div class="retroalimentacion" style="display:none; color:#e74c3c; margin-top:5px; font-size:0.9rem;">
+                    ❌ Incorrecto. Recuerda que la cabecera siempre encabeza el archivo para que el sistema identifique el entorno.
+                </div>
+            </div>
+
+            <div class="pregunta-bloque" data-correcta="3">
+                <h3> ¿Qué instrucción formal marca obligatoriamente el fin de la ejecución de un algoritmo en pseudocódigo estructurado?</h3>
+                <ul class="opciones-lista">
+                    <li onclick="seleccionarOpcion(this)" data-id="1">Cerrar Sistema</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="2">Terminar Proceso</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="3">FinProceso (o Fin)</li>
+                </ul>
+                <div class="retroalimentacion" style="display:none; color:#e74c3c; margin-top:5px; font-size:0.9rem;">
+                    ❌ Incorrecto. La palabra clave universal estandarizada en los diagramas y pseudocódigo es Fin o FinProceso.
+                </div>
+            </div>
+
+            <div class="pregunta-bloque" data-correcta="2">
+                <h3> ¿Para qué sirve la sección de cabecera en un código fuente?</h3>
+                <ul class="opciones-lista">
+                    <li onclick="seleccionarOpcion(this)" data-id="1">Para realizar los cálculos matemáticos del sistema.</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="2">Para nombrar el programa e importar librerías externas o complementarias.</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="3">Para imprimir los mensajes finales en la pantalla del usuario.</li>
+                </ul>
+                <div class="retroalimentacion" style="display:none; color:#e74c3c; margin-top:5px; font-size:0.9rem;">
+                    ❌ Incorrecto. La cabecera gestiona metadatos y dependencias iniciales del programa.
+                </div>
+            </div>
+
+            <div class="pregunta-bloque" data-correcta="1">
+                <h3> ¿Qué acción fundamental realiza el sistema operativo durante la sección de declaraciones?</h3>
+                <ul class="opciones-lista">
+                    <li onclick="seleccionarOpcion(this)" data-id="1">Asignar y reservar espacios de memoria RAM específicos.</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="2">Escribir los resultados en el disco duro de manera definitiva.</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="3">Limpiar los virus informáticos antes de correr el software.</li>
+                </ul>
+                <div class="retroalimentacion" style="display:none; color:#e74c3c; margin-top:5px; font-size:0.9rem;">
+                    ❌ Incorrecto. Declarar variables es sinónimo directo de reservar espacio en la memoria RAM.
+                </div>
+            </div>
+
+            <div class="pregunta-bloque" data-correcta="2">
+                <h3> Si un programa carece de la delimitación del cuerpo principal (como 'Inicio'), ¿qué sucederá?</h3>
+                <ul class="opciones-lista">
+                    <li onclick="seleccionarOpcion(this)" data-id="1">El programa corre el doble de rápido al saltarse pasos.</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="2">Se genera un error sintáctico de compilación al no detectar el punto de partida.</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="3">Las operaciones matemáticas se resuelven solas en la nube.</li>
+                </ul>
+                <div class="retroalimentacion" style="display:none; color:#e74c3c; margin-top:5px; font-size:0.9rem;">
+                    ❌ Incorrecto. Todo compilador exige un punto de entrada explícito para iniciar la ejecución.
+                </div>
+            </div>
+
+            <div class="pregunta-bloque" data-correcta="3">
+                <h3> ¿En qué parte de la estructura general se ubican típicamente las funciones del algoritmo?</h3>
+                <ul class="opciones-lista">
+                    <li onclick="seleccionarOpcion(this)" data-id="1">Únicamente incrustadas dentro de los comentarios iniciales.</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="2">En carpetas externas del sistema operativo.</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="3">Dentro del Cuerpo Principal, ejecutándose de manera secuencial.</li>
+                </ul>
+                <div class="retroalimentacion" style="display:none; color:#e74c3c; margin-top:5px; font-size:0.9rem;">
+                    ❌ Incorrecto. Las instrucciones ejecutables viven estrictamente en el cuerpo del programa.
+                </div>
+            </div>
+
+            <div class="pregunta-bloque" data-correcta="1">
+                <h3> ¿Por qué es vital respetar el orden de las declaraciones antes de usar una variable?</h3>
+                <ul class="opciones-lista">
+                    <li onclick="seleccionarOpcion(this)" data-id="1">Porque la computadora lee el código de arriba hacia abajo y necesita saber qué es la variable antes de procesarla.</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="2">Porque si no se hace, el monitor cambia de resolución de manera aleatoria.</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="3">No es vital, el orden de los renglones no altera ningún lenguaje moderno.</li>
+                </ul>
+                <div class="retroalimentacion" style="display:none; color:#e74c3c; margin-top:5px; font-size:0.9rem;">
+                    ❌ Incorrecto. El flujo de lectura es secuencial descendente; una variable no declarada genera un fallo inmediato.
+                </div>
+            </div>
+
+            <div class="pregunta-bloque" data-correcta="2">
+                <h3> ¿Qué elemento estructural delimita el inicio del procesamiento del algoritmo?</h3>
+                <ul class="opciones-lista">
+                    <li onclick="seleccionarOpcion(this)" data-id="1">La palabra clave Definir.</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="2">La palabra clave Proceso o Inicio.</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="3">Los paréntesis de las funciones matemáticas.</li>
+                </ul>
+                <div class="retroalimentacion" style="display:none; color:#e74c3c; margin-top:5px; font-size:0.9rem;">
+                    ❌ Incorrecto. Proceso o Inicio abren de manera formal el bloque de comandos ejecutables.
+                </div>
+            </div>
+
+            <div class="pregunta-bloque" data-correcta="1">
+                <h3> Las librerías de funciones como Math o Input/Output se importan en:</h3>
+                <ul class="opciones-lista">
+                    <li onclick="seleccionarOpcion(this)" data-id="1">La Cabecera del programa.</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="2">El bloque final de cierre.</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="3">No se importan, se escriben manualmente en cada renglón.</li>
+                </ul>
+                <div class="retroalimentacion" style="display:none; color:#e74c3c; margin-top:5px; font-size:0.9rem;">
+                    ❌ Incorrecto. La inclusión de dependencias y extensiones externas es responsabilidad de la cabecera.
+                </div>
+            </div>
+
+            <div class="pregunta-bloque" data-correcta="3">
+                <h3> ¿Cuál de las siguientes es una buena práctica al estructurar un programa?</h3>
+                <ul class="opciones-lista">
+                    <li onclick="seleccionarOpcion(this)" data-id="1">Escribir todo el código en un solo renglón infinito para ahorrar espacio.</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="2">No usar cabeceras ni nombres identificadores en los archivos lógicos.</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="3">Separar limpiamente la configuración, la declaración y las instrucciones operativas.</li>
+                </ul>
+                <div class="retroalimentacion" style="display:none; color:#e74c3c; margin-top:5px; font-size:0.9rem;">
+                    ❌ Incorrecto. La separación limpia de bloques arquitectónicos garantiza la mantenibilidad del software.
+                </div>
+            </div>
+        </div>
+
+        <button class="btn-verificar" onclick="validarCuestionario()">Enviar Telemetría Estelar</button>
+    </section>
+
+    <div id="overlayExito" class="pantalla-exito-overlay">
+        <div id="textoExito" class="mensaje-exito-grande">🛸 ¡ESTACIÓN SUPERADA! +50 XP</div>
+        <button class="btn-comenzar" id="btnSiguienteNivel" onclick="irAlMapa()" style="display: none; margin: 20px auto 0 auto; padding: 12px 35px; border-radius: 20px; border: none; background: #38e27a; color: #020617; font-weight: bold; cursor: pointer;">
+            Regresar al Mapa Estelar 🚀
+        </button>
+    </div>
+
+    <script>
+        const idLeccionActual = 11;
+        const xpGanada = 50;
+        let segundosTranscurridos = 0;
+        let cronometroIntervalo;
+
+        // Sistema de Monitoreo de Video Anti-Adelanto
+        let videoPlayer;
+        let tiempoMaximoVisto = 0;
+        let duracionVideo = 0;
+        let videoCompletado = false;
+
+        window.onload = function() {
+            // Inicializar cronómetro de cabecera
+            cronometroIntervalo = setInterval(() => {
+                segundosTranscurridos++;
+                let mins = Math.floor(segundosTranscurridos / 60);
+                let secs = segundosTranscurridos % 60;
+                document.getElementById('timerVisual').innerText = 
+                    (mins < 10 ? "0" + mins : mins) + ":" + (secs < 10 ? "0" + secs : secs);
+            }, 1000);
+
+            // Barajar preguntas y opciones antes de que el usuario las visualice
+            barajarEstructuraQuiz();
+
+            // Configurar API de Vimeo
+            const iframe = document.getElementById('videoVimeo');
+            videoPlayer = new Vimeo.Player(iframe);
+
+            videoPlayer.getDuration().then(function(d) {
+                duracionVideo = d;
+            });
+
+            videoPlayer.on('timeupdate', function(data) {
+                if (data.seconds > tiempoMaximoVisto) {
+                    if (data.seconds - tiempoMaximoVisto > 2.5) {
+                        videoPlayer.setCurrentTime(tiempoMaximoVisto);
+                    } else {
+                        tiempoMaximoVisto = data.seconds;
+                    }
+                }
+                
+                // Margen de tolerancia de 3 segundos para el desbloqueo
+                if (tiempoMaximoVisto >= (duracionVideo - 3) && !videoCompletado) {
+                    const btnDesbloquear = document.getElementById('btnDesbloquearQuiz');
+                    btnDesbloquear.removeAttribute('disabled');
+                    btnDesbloquear.innerText = "Desbloquear Evaluación 🔓";
+                    btnDesbloquear.style.background = "#38e27a";
+                    btnDesbloquear.style.color = "#020617";
+                    videoCompletado = true;
+                }
+            });
+
+            videoPlayer.on('seeked', function(data) {
+                if (data.seconds > tiempoMaximoVisto) {
+                    videoPlayer.setCurrentTime(tiempoMaximoVisto);
+                }
+            });
+        };
+
+        function barajarEstructuraQuiz() {
+            const contenedor = document.getElementById('contenedorPreguntasDinamicas');
+            const preguntas = Array.from(contenedor.children);
+            
+            // Algoritmo Fisher-Yates para las preguntas
+            for (let i = preguntas.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                contenedor.appendChild(preguntas[j]);
+            }
+
+            // Barajar las opciones dentro de cada pregunta de forma independiente
+            const listasOpciones = document.querySelectorAll('.opciones-lista');
+            listasOpciones.forEach(lista => {
+                const opciones = Array.from(lista.children);
+                for (let i = opciones.length - 1; i > 0; i--) {
+                    const j = Math.floor(Math.random() * (i + 1));
+                    lista.appendChild(opciones[j]);
+                }
+            });
+        }
+
+        function mostrarEvaluacionOculta() {
+            document.getElementById('controlBloqueo').style.display = 'none';
+            document.getElementById('quizOculto').style.display = 'block';
+            document.getElementById('quizOculto').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function seleccionarOpcion(elementoClicado) {
+            const listaHermanos = elementoClicado.parentNode.children;
+            for (let li of listaHermanos) {
+                li.classList.remove('seleccionada');
+            }
+            elementoClicado.classList.add('seleccionada');
+            elementoClicado.parentNode.setAttribute('data-seleccionada', elementoClicado.getAttribute('data-id'));
+        }
+
+        function validarCuestionario() {
+            const bloquesPregunta = document.querySelectorAll('.pregunta-bloque');
+            let todasRespondidas = true;
+            let todasCorrectas = true;
+
+            bloquesPregunta.forEach(bloque => {
+                const lista = bloque.querySelector('.opciones-lista');
+                const respuestaUsuario = lista.getAttribute('data-seleccionada');
+                const respuestaCorrecta = bloque.getAttribute('data-correcta');
+
+                if (!respuestaUsuario) {
+                    todasRespondidas = false;
+                }
+                if (respuestaUsuario !== respuestaCorrecta) {
+                    todasCorrectas = false;
+                }
+            });
+
+            if (!todasRespondidas) {
+                alert("⚠️ Por favor, responde los 10 reactivos antes de enviar la telemetría.");
+                return;
+            }
+
+            if (!todasCorrectas) {
+                alert("❌ Error en los sistemas lógicos. Revisa tus respuestas e inténtalo de nuevo.");
+                document.querySelectorAll('.retroalimentacion').forEach(div => div.style.display = "block");
+                return;
+            }
+
+            clearInterval(cronometroIntervalo);
+            registrarProgresoYXP(idLeccionActual);
+        }
+
+        function registrarProgresoYXP(l) {
+            fetch('../api/procesar_leccion_completada.php', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    id_leccion: l,
+                    xp_ganada: xpGanada,
+                    tiempo_segundos: segundosTranscurridos
+                })
+            })
+            .then(res => res.json())
+            .then(data => {
+                mostrarPantallaExito();
+            })
+            .catch(() => {
+                // Fallback seguro de desarrollo local
+                mostrarPantallaExito();
+            });
+        }
+
+       function mostrarPantallaExito() {
+            document.getElementById('overlayExito').classList.add('visible'); 
+            const btnRegresar = document.getElementById('btnSiguienteNivel');
+            btnRegresar.style.setProperty('display', 'flex', 'important');
+        }
+
+        function solicitarSalida() {
+            if(confirm("🛸 ¿Seguro que deseas abortar la lección actual? Tu tiempo orbital no se guardará.")) {
+                window.location.href = "../mundoI.php";
+            }
+        }
+
+        function irAlMapa() {
+            window.location.href = "../mundoI.php";
+        }
+    </script>
+</body>
+</html>

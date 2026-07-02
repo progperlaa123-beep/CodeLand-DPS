@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/estilo_lecciones.css">
+    <title>Estación Orbital 07 | CodeLand DPS</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght=300;400;600;800&display=swap" rel="stylesheet">
+    <script src="https://player.vimeo.com/api/player.js"></script>
+</head>
+<body>
+    <header class="header-leccion">
+        <div><h2>Módulo I ➔ Estación 07</h2></div>
+        <div id="cronometroContenedor" style="background: rgba(0, 162, 255, 0.15); border: 1px solid #00a2ff; padding: 6px 16px; border-radius: 20px; font-weight: 600; color: #00a2ff; font-family: 'Poppins', sans-serif; display: flex; align-items: center; gap: 8px;">
+            ⏱️ Tiempo: <span id="timerVisual">00:00</span>
+        </div>
+        <button class="btn-salir" onclick="solicitarSalida()">Abandona Misión 🛸</button>
+    </header>
+
+    <section class="seccion-contexto">
+        <h3>🚀 Contexto de Aplicación Real</h3>
+        <p>Cuando te registras en una red social o plataforma digital, el sistema guarda tu información en diferentes casilleros de su memoria RAM. Tu edad se almacena en un casillero exclusivo para números enteros; el costo de un producto con centavos va a un casillero decimal; y tu nombre se resguarda en uno de texto. Si el sistema confundiera estos tipos de datos e intentara multiplicar tu apellido por dos, el software colapsaría de inmediato. De ahí radica la importancia de clasificar los datos de forma exacta.</p>
+    </section>
+
+    <section class="seccion-multimedia">
+        <h3>🎥 Contenido Audiovisual </h3>
+        <p class="instruccion-video">⚠️ Debes visualizar el video completo sin adelantar para desbloquear la evaluación.</p>
+        
+        <div class="contenedor-video" style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; margin-bottom: 15px;">
+            <iframe id="videoVimeo" 
+                    src="https://player.vimeo.com/video/1198286476?api=1&controls=1&badge=0&autopause=0&player_id=0" 
+                    frameborder="0" 
+                    allow="autoplay; fullscreen; picture-in-picture" 
+                    style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border-radius: 8px;" 
+                    title="Contenido Educativo Orbital">
+            </iframe>
+        </div>
+
+        <p style="font-size: 0.85rem; color: #64748b; text-align: center; margin-top: 12px; font-style: italic; font-family: 'Poppins', sans-serif;">
+            Material audiovisual adaptado con fines estrictamente educativos. Créditos del autor: Retro.
+        </p>
+        <div class="contenedor-imagen-apoyo">
+            <img src="img/esquema_leccion7.png" alt="Esquema conceptual" onerror="this.style.display='none';">
+        </div>
+    </section>
+
+    <section class="seccion-teoria">
+        <h1>07. Clasificación de Tipos de Datos y Variables</h1>
+        <p>Los tipos de datos determinan la naturaleza de los valores que un programa puede manipular en la memoria RAM, fijando sus límites operacionales y las funciones válidas que se pueden ejecutar con ellos.</p>
+        
+        <div class="ideas-clave">
+            <h3>💡 Conceptos Clave y Definiciones Académicas:</h3>
+            <ul>
+                <li><strong>Variables y Constantes:</strong> Una variable representa una zona reservada en memoria cuyo valor cambia a lo largo de la ejecución; la constante permanece inalterable desde el inicio hasta el fin.</li>
+                <li><strong>Datos Primitivos Simples:</strong> Incluyen los <em>Enteros</em> (valores numéricos sin decimales), <em>Reales o Flotantes</em> (con punto fraccionario) y <em>Caracteres/Cadenas</em> (texto delimitado).</li>
+                <li><strong>Tipo de Dato Booleano:</strong> Una estructura binaria fundamental que únicamente admite dos estados posibles independientes: <strong>Verdadero</strong> (True) o <strong>Falso</strong> (False).</li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="seccion-bloqueada-control" id="controlBloqueo">
+        <button id="btnDesbloquearQuiz" class="btn-verificar" disabled onclick="mostrarEvaluacionOculta()">
+            Bloqueado por Reproducción 🔒
+        </button>
+    </section>
+
+    <section class="seccion-quiz oculto-inicial" id="moduloEvaluacion">
+        <h2>⚡ Evaluación </h2>
+        
+        <div id="contenedorPreguntas">
+            
+            <div class="pregunta-bloque" data-correcta="1">
+                <p><strong> ¿Qué pasaría si un sistema confunde un tipo de dato de texto con uno numérico e intenta multiplicarlos?</strong></p>
+                <ul class="opciones-lista">
+                    <li onclick="seleccionarOpcion(this)" data-id="1">El software colapsará de inmediato debido a una incompatibilidad operacional.</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="2">La computadora aumentará de velocidad automáticamente.</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="3">El navegador web convertirá todo a código CSS.</li>
+                </ul>
+            </div>
+
+            <div class="pregunta-bloque" data-correcta="2">
+                <p><strong> ¿Cuál es la diferencia fundamental entre una variable y una constante en la memoria RAM?</strong></p>
+                <ul class="opciones-lista">
+                    <li onclick="seleccionarOpcion(this)" data-id="1">La constante pesa el doble que una variable normal.</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="2">El valor de la variable puede modificarse durante la ejecución; la constante permanece fija desde el principio.</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="3">Las constantes solo sirven para guardar texto y las variables para números enteros.</li>
+                </ul>
+            </div>
+
+            <div class="pregunta-bloque" data-correcta="3">
+                <p><strong> Si guardamos el valor de la temperatura de un reactor espacial como "36.6 °C", ¿qué tipo de dato numérico se está empleando?</strong></p>
+                <ul class="opciones-lista">
+                    <li onclick="seleccionarOpcion(this)" data-id="1">Entero.</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="2">Booleano.</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="3">Real o Flotante.</li>
+                </ul>
+            </div>
+
+            <div class="pregunta-bloque" data-correcta="1">
+                <p><strong> ¿Cuáles son los dos únicos estados lógicos válidos admitidos por un tipo de dato Booleano?</strong></p>
+                <ul class="opciones-lista">
+                    <li onclick="seleccionarOpcion(this)" data-id="1">Verdadero (True) o Falso (False).</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="2">Positivo, Negativo o Neutro.</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="3">Inicio o Fin del algoritmo.</li>
+                </ul>
+            </div>
+
+            <div class="pregunta-bloque" data-correcta="2">
+                <p><strong> Para almacenar la cantidad exacta de alumnos inscritos en la especialidad de programación (por ejemplo, 512), ¿qué tipo de dato es el ideal?</strong></p>
+                <ul class="opciones-lista">
+                    <li onclick="seleccionarOpcion(this)" data-id="1">Flotante con decimales.</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="2">Entero.</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="3">Booleano condicional.</li>
+                </ul>
+            </div>
+
+            <div class="pregunta-bloque" data-correcta="3">
+                <p><strong> ¿En qué lugar físico del hardware se apartan de forma temporal los casilleros de memoria para nuestras variables?</strong></p>
+                <ul class="opciones-lista">
+                    <li onclick="seleccionarOpcion(this)" data-id="1">En el monitor de video de alta definición.</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="2">En el cable de la red escolar.</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="3">En la memoria de acceso aleatorio RAM.</li>
+                </ul>
+            </div>
+
+            <div class="pregunta-bloque" data-correcta="1">
+                <p><strong> ¿Qué tipo de dato usarías para guardar la respuesta a la pregunta: "¿El estudiante completó la misión?"?</strong></p>
+                <ul class="opciones-lista">
+                    <li onclick="seleccionarOpcion(this)" data-id="1">Booleano.</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="2">Entero sin signo.</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="3">Cadena de caracteres alfanuméricos extendidos.</li>
+                </ul>
+            </div>
+
+            <div class="pregunta-bloque" data-correcta="2">
+                <p><strong> Si declaramos una constante con el valor de Pi (3.1416), ¿qué significa esto para el resto del programa?</strong></p>
+                <ul class="opciones-lista">
+                    <li onclick="seleccionarOpcion(this)" data-id="1">Que el usuario podrá cambiar el valor de Pi escribiendo en el teclado.</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="2">Que ninguna línea de instrucción posterior podrá reasignar o modificar ese valor en memoria.</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="3">Que la computadora lo borrará al llegar al bloque de salida.</li>
+                </ul>
+            </div>
+
+            <div class="pregunta-bloque" data-correcta="3">
+                <p><strong> ¿Por qué es necesario definir los límites operacionales de los tipos de datos?</strong></p>
+                <ul class="opciones-lista">
+                    <li onclick="seleccionarOpcion(this)" data-id="1">Para que el diseño CSS se adapte mejor a las pantallas móviles.</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="2">Para cambiar el color de las palabras reservadas en InfinityFree.</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="3">Para asegurar que el procesador sepa exactamente cuánta memoria ocupar y qué cálculos matemáticos son válidos.</li>
+                </ul>
+            </div>
+
+            <div class="pregunta-bloque" data-correcta="1">
+                <p><strong> Un correo electrónico como "usuario@cbtis171.edu.mx" pertenece al tipo de dato de:</strong></p>
+                <ul class="opciones-lista">
+                    <li onclick="seleccionarOpcion(this)" data-id="1">Cadena de texto / Caracteres (String).</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="2">Número Real de doble precisión.</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="3">Estado lógico binario simple.</li>
+                </ul>
+            </div>
+
+        </div>
+
+        <button class="btn-verificar" onclick="validarCuestionario()">Enviar Respuestas </button>
+    </section>
+
+    <div id="overlayExito" class="pantalla-exito-overlay">
+        <div id="textoExito" class="mensaje-exito-grande">¡Correcto! Has ganado 50 XP.</div>
+        <button class="btn-comenzar" id="btnSiguienteNivel" onclick="irAlMapa()">Regresar a las Regiones 🚀</button>
+    </div>
+
+    <script>
+        const idLeccionActual = 7;
+        const xpGanada = 50;
+        
+        let segundosTranscurridos = 0;
+        const timerElemento = document.getElementById("timerVisual");
+        
+        const cronometroIntervalo = setInterval(() => {
+            segundosTranscurridos++;
+            let minutos = Math.floor(segundosTranscurridos / 60);
+            let segundos = segundosTranscurridos % 60;
+            let minTexto = minutes < 10 ? "0" + minutes : minutes;
+            let segTexto = segundos < 10 ? "0" + segundos : segundos;
+            timerElemento.innerText = minTexto + ":" + segTexto;
+        }, 1000);
+
+        const btnDesbloquear = document.getElementById("btnDesbloquearQuiz");
+        const moduloEvaluacion = document.getElementById("moduloEvaluacion");
+
+        const iframe = document.getElementById('videoVimeo');
+        const player = new Vimeo.Player(iframe);
+        
+        let tiempoMaximoVisto = 0;
+        let ejecutandoRegreso = false;
+        let duracionVideo = 0;
+
+        player.getDuration().then(function(duration) {
+            duracionVideo = duration;
+        }).catch(function() {
+            duracionVideo = 60; 
+        });
+
+        player.on('timeupdate', function(data) {
+            if (!ejecutandoRegreso) {
+                if (data.seconds > tiempoMaximoVisto + 1.5) {
+                    ejecutandoRegreso = true;
+                    player.setCurrentTime(tiempoMaximoVisto).then(function() {
+                        ejecutandoRegreso = false;
+                        alert("🔒 Bloqueo de Seguridad: No puedes adelantar la explicación audiovisual.");
+                    });
+                } else if (data.seconds > tiempoMaximoVisto) {
+                    tiempoMaximoVisto = data.seconds;
+                }
+            }
+        });
+
+        player.on('seeked', function(data) {
+            if (data.seconds > tiempoMaximoVisto + 1.5) {
+                ejecutandoRegreso = true;
+                player.setCurrentTime(tiempoMaximoVisto).then(function() {
+                    ejecutandoRegreso = false;
+                });
+            }
+        });
+
+        player.on('ended', function() {
+            if (tiempoMaximoVisto >= (duracionVideo - 3)) {
+                btnDesbloquear.removeAttribute("disabled");
+                btnDesbloquear.innerText = "Acceder a Evaluación ⚔️";
+                btnDesbloquear.style.background = "linear-gradient(135deg, #00ff87, #00c2ff)";
+                btnDesbloquear.style.color = "#020617";
+                btnDesbloquear.style.boxShadow = "0 0 20px rgba(0, 255, 135, 0.6)";
+            } else {
+                tiempoMaximoVisto = 0;
+                player.setCurrentTime(0);
+                alert("❌ Trampa detectada: Debes reproducir el contenido completo paso a paso.");
+            }
+        });
+
+        function barajearTodo() {
+            const contenedorPreguntas = document.getElementById('contenedorPreguntas');
+            const bloquesPreguntas = Array.from(contenedorPreguntas.children);
+            for (let i = bloquesPreguntas.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                contenedorPreguntas.appendChild(bloquesPreguntas[j]);
+            }
+            const listasOpciones = document.querySelectorAll('.opciones-lista');
+            listasOpciones.forEach(lista => {
+                const opciones = Array.from(lista.children);
+                for (let i = opciones.length - 1; i > 0; i--) {
+                    const j = Math.floor(Math.random() * (i + 1));
+                    lista.appendChild(opciones[j]);
+                }
+            });
+        }
+
+        window.addEventListener("DOMContentLoaded", barajearTodo);
+
+        function mostrarEvaluacionOculta() {
+            moduloEvaluacion.classList.remove("oculto-inicial");
+            moduloEvaluacion.classList.add("mostrar-animado");
+            document.getElementById("controlBloqueo").style.display = "none";
+            moduloEvaluacion.scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function solicitarSalida() { 
+            if (confirm("¿Abortar misión? El progreso actual no se guardará.")) {
+                window.location.href = "../mundoI.php"; 
+            }
+        }
+        
+        function seleccionarOpcion(elementoLli) { 
+            const listaPadre = elementoLli.parentElement; 
+            Array.from(listaPadre.children).forEach(li => li.classList.remove('seleccionada')); 
+            elementoLli.classList.add('seleccionada'); 
+            listaPadre.setAttribute("data-seleccionada", elementoLli.getAttribute("data-id")); 
+        }
+
+        function validarCuestionario() {
+            const bloques = document.querySelectorAll('.pregunta-bloque'); 
+            let todasRespondidas = true; 
+            let todasCorrectas = true;
+
+            bloques.forEach(bloque => {
+                const listaOpciones = bloque.querySelector('.opciones-lista');
+                const seleccionadaId = listaOpciones.getAttribute('data-seleccionada');
+                const respuestaCorrecta = bloque.getAttribute('data-correcta');
+
+                if (!seleccionadaId) {
+                    todasRespondidas = false;
+                    return; 
+                }
+                if (seleccionadaId !== respuestaCorrecta) {
+                    todasCorrectas = false;
+                }
+            });
+
+            if (!todasRespondidas) { 
+                alert("⚠️ Por favor, responde los 10 reactivos antes de enviar la telemetría."); 
+                return; 
+            }
+            if (!todasCorrectas) { 
+                alert("❌ Error en los sistemas lógicos. Revisa tus respuestas e inténtalo de nuevo."); 
+                return; 
+            }
+
+            clearInterval(cronometroIntervalo);
+            registrarProgresoYXP(idLeccionActual);
+        }
+
+        function registrarProgresoYXP(l) {
+            fetch('../api/procesar_leccion_completada.php', { 
+                method: 'POST', 
+                headers: { 'Content-Type': 'application/json' }, 
+                body: JSON.stringify({ 
+                    id_leccion: l, 
+                    xp_ganada: xpGanada,
+                    tiempo_segundos: segundosTranscurridos 
+                }) 
+            })
+            .then(res => res.json())
+            .then(() => { mostrarPantallaExito(); })
+            .catch(() => { mostrarPantallaExito(); });
+        }
+
+        function mostrarPantallaExito() {
+            document.getElementById('overlayExito').classList.add('visible'); 
+            const btnRegresar = document.getElementById('btnSiguienteNivel');
+            btnRegresar.style.setProperty('display', 'flex', 'important');
+        }
+
+        function irAlMapa() { window.location.href = "../mundoI.php"; }
+    </script>
+</body>
+</html>

@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/estilo_lecciones.css">
+    <title>Estación Orbital 15 | Evaluación de Cierre de Bloque</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght=300;400;600;800&display=swap" rel="stylesheet">
+    <style>
+        /* Estilos complementarios adaptados de la interfaz académica de la lección 05 */
+        .bloque-actividad {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(56, 226, 122, 0.2);
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 25px;
+        }
+        .actividad-titulo {
+            color: #38e27a;
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .bloom-tag {
+            font-size: 0.75rem;
+            background: rgba(0, 162, 255, 0.15);
+            border: 1px solid #00a2ff;
+            color: #00a2ff;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+        .opciones-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 10px;
+            margin-top: 12px;
+        }
+        @media (min-width: 768px) {
+            .opciones-grid { grid-template-columns: 1fr 1fr; }
+        }
+        .opcion-btn {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: #fff;
+            padding: 12px 16px;
+            border-radius: 6px;
+            cursor: pointer;
+            text-align: left;
+            font-family: 'Poppins', sans-serif;
+            transition: all 0.2s ease;
+        }
+        .opcion-btn:hover {
+            background: rgba(0, 162, 255, 0.1);
+            border-color: #00a2ff;
+        }
+        .opcion-btn.seleccionada {
+            background: rgba(0, 162, 255, 0.25);
+            border-color: #00a2ff;
+            box-shadow: 0 0 10px rgba(0, 162, 255, 0.3);
+        }
+        .retroalimentacion-bloque {
+            margin-top: 12px;
+            padding: 10px 15px;
+            border-radius: 6px;
+            font-size: 0.9rem;
+            display: none;
+            line-height: 1.4;
+        }
+        .retro-error {
+            background: rgba(255, 75, 75, 0.1);
+            border: 1px solid #ff4b4b;
+            color: #ff4b4b;
+        }
+        #btnVerificar {
+            background: #38e27a;
+            color: #0b0f19;
+            border: none;
+            padding: 14px 28px;
+            font-size: 1.1rem;
+            font-weight: 800;
+            border-radius: 30px;
+            cursor: pointer;
+            width: 100%;
+            font-family: 'Poppins', sans-serif;
+            transition: transform 0.2s, box-shadow 0.2s;
+            margin-top: 15px;
+        }
+        #btnVerificar:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(56, 226, 122, 0.4);
+        }
+    </style>
+</head>
+<body>
+    <header class="header-leccion">
+        <div><h2>Módulo I ➔ Estación 15</h2></div>
+        <div id="cronometroContenedor" style="background: rgba(0, 162, 255, 0.15); border: 1px solid #00a2ff; padding: 6px 16px; border-radius: 20px; font-weight: 600; color: #00a2ff; font-family: 'Poppins', sans-serif; display: flex; align-items: center; gap: 8px;">
+            ⏱️ Tiempo: <span id=\"timerVisual\">00:00</span>
+        </div>
+        <button class="btn-salir" onclick="solicitarSalida()">Abandona Misión 🛸</button>
+    </header>
+
+    <main class="contenedor-leccion">
+        <section class="seccion-contexto" style="margin-bottom: 25px; padding: 20px; background: rgba(56, 226, 122, 0.03); border-left: 4px solid #38e27a; border-radius: 4px;">
+            <h3>👾 Examen de Fase: Central de Datos Orbital</h3>
+            <p>Has alcanzado el cierre de la secuencia intermedia. Para estabilizar el núcleo del servidor principal de CodeLand, debes resolver la siguiente batería de reactivos lógicos basados en las estructuras jerárquicas y de control analizadas anteriormente.</p>
+        </section>
+
+        <article class="bloque-actividad" data-pregunta="1" data-correcta="B">
+            <div class="actividad-titulo">
+                <span>🧩 Actividad 1: Code Pair</span>
+                <span class="bloom-tag">Recordar</span>
+            </div>
+            <p><strong>[Lección 11]</strong> Vincula la sección estructural de un programa con su jerarquía correspondiente. ¿Cuál es el orden universal e inalterable que sigue un bloque de código estructurado de inicio a fin?</p>
+            <div class="opciones-grid">
+                <button class="opcion-btn" data-inciso="A" onclick="seleccionarOpcion(1, 'A')">A) Procesos ➔ Entradas ➔ Salidas ➔ Declaración de variables</button>
+                <button class="opcion-btn" data-inciso="B" onclick="seleccionarOpcion(1, 'B')">B) Declaración de variables y librerías ➔ Entrada de datos ➔ Procesamiento lógico ➔ Impresión de salidas</button>
+                <button class="opcion-btn" data-inciso="C" onclick="seleccionarOpcion(1, 'C')">C) Impresión de salidas ➔ Inicialización del entorno ➔ Cálculos matemáticos</button>
+            </div>
+            <div class="retroalimentacion-bloque retro-error" id="retro-1">❌ Secuencia estructural incorrecta. Recuerda la jerarquía de un rascacielos: no puedes procesar o dar salidas sin haber cimentado y reservado la memoria para tus variables primero.</div>
+        </article>
+
+        <article class="bloque-actividad" data-pregunta="2" data-correcta="A">
+            <div class="actividad-titulo">
+                <span>🔍 Actividad 2: Debug Pro</span>
+                <span class="bloom-tag">Comprender</span>
+            </div>
+            <p><strong>[Lección 12]</strong> Un software de un cajero automático procesa la consulta de saldo. Analiza las siguientes instrucciones e identifica cuál contiene un error en el uso de los flujos de Entrada y Salida:</p>
+            <div class="opciones-grid">
+                <button class="opcion-btn" data-inciso="A" onclick="seleccionarOpcion(2, 'A')">A) Guardar el dinero dispensado directamente en la variable 'NIP_Usuario' mediante un bloque de impresión en pantalla.</button>
+                <button class="opcion-btn" data-inciso="B" onclick="seleccionarOpcion(2, 'B')">B) Solicitar el NIP por teclado (Entrada) y desplegar el balance actual en el monitor (Salida).</button>
+                <button class="opcion-btn" data-inciso="C" onclick="seleccionarOpcion(2, 'C')">C) Leer la tarjeta bancaria como dato de entrada y validar el saldo disponible en los sistemas de procesamiento.</button>
+            </div>
+            <div class="retroalimentacion-bloque retro-error" id="retro-2">❌ Análisis incorrecto. Mezclar una salida en pantalla con la captura de un dato crítico de entrada en una variable equivocada altera el comportamiento lógico del cajero.</div>
+        </article>
+
+        <article class="bloque-actividad" data-pregunta="3" data-correcta="C">
+            <div class="actividad-titulo">
+                <span>🏷️ Actividad 3: Code Pair</span>
+                <span class="bloom-tag">Recordar</span>
+            </div>
+            <p><strong>[Lección 13]</strong> En el desarrollo de software, existen palabras con un uso oficial e inalterable por el compilador. ¿Cuál de los siguientes pares representa correctamente una Palabra Reservada y un Identificador válido creado por un desarrollador?</p>
+            <div class="opciones-grid">
+                <button class="opcion-btn" data-inciso="A" onclick="seleccionarOpcion(3, 'A')">A) Palabra Reservada: 'miVariable' / Identificador: 'if'</button>
+                <button class="opcion-btn" data-inciso="B" onclick="seleccionarOpcion(3, 'B')">B) Palabra Reservada: 'calcularSuma' / Identificador: 'while'</button>
+                <button class="opcion-btn" data-inciso="C" onclick="seleccionarOpcion(3, 'C')">C) Palabra Reservada: 'if' (o 'si') / Identificador: 'saldoEstudiante'</button>
+            </div>
+            <div class="retroalimentacion-bloque retro-error" id="retro-3">❌ Confusión de conceptos estelares. Las palabras reservadas pertenecen al lenguaje de programación (como las leyes de la constitución) y los identificadores son los nombres que tú defines para tus variables.</div>
+        </article>
+
+        <article class="bloque-actividad" data-pregunta="4" data-correcta="B">
+            <div class="actividad-titulo">
+                <span>🗺️ Actividad 4: CodEF</span>
+                <span class="bloom-tag">Comprender</span>
+            </div>
+            <p><strong>[Lección 14]</strong> Un automóvil moderno evalúa la temperatura exterior. Si baja de 0°C, muestra una alerta en el tablero. ¿Cómo se traduce esta bifurcación condicional simple a la simbología de un diagrama de flujo estructurado?</p>
+            <div class="opciones-grid">
+                <button class="opcion-btn" data-inciso="A" onclick="seleccionarOpcion(4, 'A')">A) La evaluación condicional se dibuja en un rectángulo de proceso que ejecuta dos caminos paralelos simultáneamente.</button>
+                <button class="opcion-btn" data-inciso="B" onclick="seleccionarOpcion(4, 'B')">B) La condición va dentro de un rombo de decisión; si es verdadera, abre un camino hacia el bloque de alerta; si es falsa, ignora la instrucción y continúa el flujo regular.</button>
+                <button class="opcion-btn" data-inciso="C" onclick="seleccionarOpcion(4, 'C')">C) Se representa mediante un círculo de conectores que repite infinitamente la alerta sin importar la temperatura.</button>
+            </div>
+            <div class="retroalimentacion-bloque retro-error" id="retro-4">❌ Error de traducción lógica. Las bifurcaciones condicionales simples dependen enteramente de un rombo de decisión que separa los flujos cuando la condición resulta verdadera.</div>
+        </article>
+
+        <article class="bloque-actividad" data-pregunta="5" data-correcta="A">
+            <div class="actividad-titulo">
+                <span>🛠️ Actividad 5: Debug Pro</span>
+                <span class="bloom-tag">Comprender</span>
+            </div>
+            <p><strong>[Bloque Completo]</strong> Revisa el diseño del siguiente algoritmo lógico en pseudocódigo escrito para controlar el acceso orbital:</p>
+            <pre style="background: #1e2538; padding: 12px; border-radius: 6px; color: #38e27a; font-family: monospace; font-size: 0.9rem; margin: 10px 0;">
+1. Inicio Acceso
+2. if = 18 entonces // Error sintáctico aquí
+3.    Imprimir "Permitido"
+4. Fin Acceso</pre>
+            <p>¿Qué corrección estructural y semántica es indispensable aplicar en la línea 2 para que el programa interprete correctamente la bifurcación condicional?</p>
+            <div class="opciones-grid">
+                <button class="opcion-btn" data-inciso="A" onclick="seleccionarOpcion(5, 'A')">A) Cambiar 'if = 18' por una evaluación relacional legítima utilizando un identificador válido, por ejemplo: 'if (edad >= 18)'</button>
+                <button class="opcion-btn" data-inciso="B" onclick="seleccionarOpcion(5, 'B')">B) Eliminar la palabra reservada 'if' y sustituirla por una instrucción directa de Salida de datos.</button>
+                <button class="opcion-btn" data-inciso="C" onclick="seleccionarOpcion(5, 'C')">C) Declarar que el número 18 es una palabra reservada del sistema.</button>
+            </div>
+            <div class="retroalimentacion-bloque retro-error" id="retro-5">❌ Corrección inválida. Una estructura condicional requiere forzosamente una expresión lógica o relacional que compare una variable contra un valor determinado.</div>
+        </article>
+
+        <button id="btnVerificar" onclick="validarEvaluacion()">Enviar Respuestas 📡</button>
+
+        <div id="resultado-juego" style="display:none; margin-top:20px; font-weight:600; text-align:center; font-size:1.2rem;"></div>
+    </main>
+
+    <div id="overlayExito" class="overlay-resultado" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(11, 15, 25, 0.95); display: flex; flex-direction: column; justify-content: center; align-items: center; z-index: 9999; opacity: 0; pointer-events: none; transition: opacity 0.3s ease;">
+        <div style="text-align: center; padding: 30px;">
+            <h1 style="color: #38e27a; font-size: 3rem; margin-bottom: 10px;">¡MISIÓN COMPLETADA!</h1>
+            <p id="textoExito" style="color: #fff; font-size: 1.2rem; margin-bottom: 30px;">Sistemas lógicos sincronizados con la base de datos central.</p>
+            <button id="btnSiguienteNivel" onclick="irAlMapa()" style="background: #00a2ff; color: white; border: none; padding: 12px 35px; font-size: 1.1rem; font-weight: bold; border-radius: 25px; cursor: pointer; display: none; margin: 0 auto;">Regresar al Mapa del Mundo I 🛸</button>
+        </div>
+    </div>
+
+    <script>
+        const idLeccionActual = 15;
+        const xpGanada = 100; // 100 XP Oficiales por examen de fase conforme a la Lección 5
+        let segundosTranscurridos = 0;
+        let cronometroIntervalo;
+        const respuestasSeleccionadas = {};
+
+        // Inicialización automática del Cronómetro de Navegación
+        window.addEventListener('DOMContentLoaded', () => {
+            cronometroIntervalo = setInterval(() => {
+                segundosTranscurridos++;
+                const mins = String(Math.floor(segundosTranscurridos / 60)).padStart(2, '0');
+                const segs = String(segundosTranscurridos % 60).padStart(2, '0');
+                document.getElementById('timerVisual').textContent = `${mins}:${segs}`;
+            }, 1000);
+        });
+
+        function solicitarSalida() {
+            if (confirm("⚠️ ¿Abandonar la evaluación? Perderás el progreso actual del bloque.")) {
+                irAlMapa();
+            }
+        }
+
+        function seleccionarOpcion(pregunta, inciso) {
+            // Guardar selección del estudiante
+            respuestasSeleccionadas[pregunta] = inciso;
+            
+            // Actualizar interfaz visual de los botones de la actividad correspondiente
+            const bloque = document.querySelector(`.bloque-actividad[data-pregunta="${pregunta}"]`);
+            bloque.querySelectorAll('.opcion-btn').forEach(btn => {
+                btn.classList.remove('seleccionada');
+                if (btn.getAttribute('data-inciso') === inciso) {
+                    btn.classList.add('seleccionada');
+                }
+            });
+        }
+
+        function validarEvaluacion() {
+            const bloques = document.querySelectorAll('.bloque-actividad');
+            let todasRespondidas = true;
+            let todasCorrectas = true;
+
+            // Ocultar retroalimentaciones previas
+            document.querySelectorAll('.retroalimentacion-bloque').forEach(div => div.style.display = 'none');
+
+            bloques.forEach(bloque => {
+                const idPregunta = bloque.getAttribute('data-pregunta');
+                const respuestaCorrecta = bloque.getAttribute('data-correcta');
+                const respuestaUsuario = respuestasSeleccionadas[idPregunta];
+
+                if (!respuestaUsuario) {
+                    todasRespondidas = false;
+                } else if (respuestaUsuario !== respuestaCorrecta) {
+                    todasCorrectas = false;
+                    // Mostrar retroalimentación específica de error mapeada de la Lección 5
+                    document.getElementById(`retro-${idPregunta}`).style.display = 'block';
+                }
+            });
+
+            if (!todasRespondidas) {
+                alert("⚠️ Por favor, responde las 5 actividades lógicas antes de enviar las respuestas.");
+                return;
+            }
+
+            if (!todasCorrectas) {
+                alert("❌ Error en los sistemas lógicos. Revisa las retroalimentaciones en rojo e inténtalo de nuevo.");
+                return;
+            }
+
+            // Detener contador y reportar a la Base de Datos
+            clearInterval(cronometroIntervalo);
+            registrarProgresoEvaluacion(idLeccionActual);
+        }
+
+        function registrarProgresoEvaluacion(leccion) {
+            fetch('../api/procesar_leccion_completada.php', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ 
+                    id_leccion: leccion, 
+                    xp_ganada: xpGanada,
+                    tiempo_segundos: segundosTranscurridos
+                })
+            })
+            .then(res => res.json())
+            .then(data => {
+                mostrarPantallaExito();
+            })
+            .catch(err => {
+                console.error("Error en la petición de guardado:", err);
+                // Contingencia visual para desarrollo local
+                mostrarPantallaExito();
+            });
+        }
+
+        function mostrarPantallaExito() {
+            const overlay = document.getElementById('overlayExito');
+            overlay.style.opacity = '1';
+            overlay.style.pointerEvents = 'auto';
+            
+            document.getElementById('textoExito').innerHTML = `¡Evaluación Exitosa! Has ganado <strong>${xpGanada} XP</strong> y completado correctamente las actividades de la taxonomía de Bloom.`;
+            
+            setTimeout(() => { 
+                document.getElementById('btnSiguienteNivel').style.display = "block"; 
+            }, 1500);
+        }
+
+        function irAlMapa() { 
+            window.location.href = "../mundoI.php"; 
+        }
+    </script>
+</body>
+</html>

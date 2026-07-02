@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/estilo_lecciones.css">
+    <title>Estación Orbital 14 | CodeLand DPS</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght=300;400;600;800&display=swap" rel="stylesheet">
+    <script src="https://player.vimeo.com/api/player.js"></script>
+</head>
+<body>
+    <header class="header-leccion">
+        <div><h2>Módulo I ➔ Estación 14</h2></div>
+        <div id="cronometroContenedor" style="background: rgba(0, 162, 255, 0.15); border: 1px solid #00a2ff; padding: 6px 16px; border-radius: 20px; font-weight: 600; color: #00a2ff; font-family: 'Poppins', sans-serif; display: flex; align-items: center; gap: 8px;">
+            ⏱️ Tiempo: <span id="timerVisual">00:00</span>
+        </div>
+        <button class="btn-salir" onclick="solicitarSalida()">Abandona Misión 🛸</button>
+    </header>
+
+    <section class="seccion-contexto" style="margin-bottom: 25px; padding: 20px; background: rgba(255, 255, 255, 0.02); border-left: 4px solid #00a2ff; border-radius: 4px;">
+        <h3>🚀 Contexto de Aplicación Real</h3>
+        <p>Cuando un automóvil moderno detecta que la temperatura exterior desciende a menos de 0 °C, activa automáticamente una alerta de congelamiento en el tablero. Si la temperatura es mayor, el sistema no hace absolutamente nada y el viaje continúa normal. Esto es una bifurcación condicional simple: un bloque de instrucciones que solo cobra vida si se cumple una premisa.</p>
+        <p>Imagina el sistema de autenticación de una nave o de cualquier plataforma web moderna. Cuando ingresas tu contraseña, el sistema evalúa una condición. Si la contraseña es correcta, te concede acceso al panel de control (Camino Verdadero). **Sino** (si es falsa), bloquea la terminal y muestra una alerta de intruso (Camino Falso). A diferencia de la condicional simple, aquí la computadora nunca se queda de brazos cruzados: siempre ejecutará una acción obligatoria para cualquiera de las dos alternativas.</p>
+    </section>
+
+    <section class="seccion-multimedia">
+        <h3>🎥 Contenido Audiovisual </h3>
+        <p class="instruccion-video">⚠️ Debes visualizar el video completo sin adelantar para desbloquear la evaluación.</p>
+        
+        <div class="contenedor-video" style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; margin-bottom: 15px;">
+            <iframe id="videoVimeo" 
+                    src="https://player.vimeo.com/video/1198447883?api=1&controls=1&badge=0&autopause=0&player_id=0" 
+                    frameborder="0" 
+                    allow="autoplay; fullscreen; picture-in-picture" 
+                    style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border-radius: 8px;" 
+                    title="Contenido Educativo Orbital">
+            </iframe>
+        </div>
+
+        <p style="font-size: 0.85rem; color: #64748b; text-align: center; margin-top: 12px; font-style: italic; font-family: 'Poppins', sans-serif;">
+            Material audiovisual adaptado con fines estrictamente educativos. Créditos del autor: Retro.
+        </p>
+        <div class="contenedor-imagen-apoyo">
+            <img src="img/esquema_leccion14.png" alt="Estructuras condicionales" onerror="this.style.display='none';">
+        </div>
+        <div class="contenedor-imagen-apoyo">
+            <img src="img/esquema_leccion14(2).png" alt="Estructuras condicionales" onerror="this.style.display='none';">
+        </div>
+    </section>
+
+    <section class="seccion-teoria">
+        <h1>14. Estructuras Condicionales Simples y Estructuras Condicionales Compuestas (Si-Entonces-Sino)</h1>
+        <p>Las estructuras condicionales controlan la ramificación del flujo de un algoritmo. Permiten que un programa tome caminos alternativos en función del resultado (Verdadero o Falso) de una expresión relacional o lógica previamente evaluada.</p>
+        <p>Las estructuras condicionales compuestas permiten bifurcar el flujo de un algoritmo en dos caminos completamente excluyentes entre sí, asegurando el control absoluto del comportamiento del programa ante cualquier resultado lógico.</p>
+        <div class="ideas-clave">
+            <h3>💡 Conceptos Clave y Definiciones Académicas:</h3>
+            <ul>
+                <li><strong>Condicional Simple (Si-Entonces):</strong> Estructura de control que evalúa una condición booleana. Si el resultado es <strong>Verdadero</strong>, ejecuta un conjunto delimitado de instrucciones internas. Si es <strong>Falso</strong>, ignora por completo dicho bloque y el algoritmo continúa con la línea inmediatamente posterior al cierre de la estructura <em>(Joyanes Aguilar, 2013)</em>.</li>
+                <li><strong>Sintaxis Formal:</strong> En pseudocódigo se delimita de la siguiente forma:
+                <li><strong>Cláusula FinSi:</strong> Operador sintáctico indispensable encargado de delimitar la frontera de cierre de la bifurcación condicional.</li>
+                <li><strong>Estructura Alternativa Compuesta:</strong> Modifica el flujo secuencial permitiendo elegir entre dos bloques de instrucciones posibles en función de que la condición sea verdadera o falsa <em>(Joyanes Aguilar, 2013)</em>. Nunca se ejecutarán ambos bloques simultáneamente.</li>
+                <li><strong>La Cláusula Sino (Else):</strong> Palabra reservada que delimita el inicio del bloque de instrucciones que se procesarán única y exclusivamente cuando la expresión lógica de la condición principal devuelva un valor falso.</li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="seccion-bloqueada-control" id="controlBloqueo">
+        <button id="btnDesbloquearQuiz" class="btn-verificar" disabled onclick="mostrarEvaluacionOculta()">
+            Bloqueado por Reproducción 🔒
+        </button>
+    </section>
+
+    <section class="seccion-quiz" id="quizOculto" style="display: none;">
+        <h2>📝 Evaluación </h2>
+        <p style="margin-bottom: 20px; color: #a0aec0;">Demuestra tu dominio técnico sobre condicionales simples:</p>
+
+        <div id="contenedorPreguntasDinamicas">
+            <div class="pregunta-bloque" data-correcta="1">
+                <h3> ¿Qué tipo de valor debe arrojar obligatoriamente la condición de una estructura 'Si-Entonces'?</h3>
+                <ul class="opciones-lista">
+                    <li onclick="seleccionarOpcion(this)" data-id="1">Un valor lógico (Verdadero o Falso).</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="2">Un número entero mayor a mil.</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="3">Una cadena de texto explicativa.</li>
+                </ul>
+            </div>
+
+            <div class="pregunta-bloque" data-correcta="2">
+                <h3> En una condición simple, ¿qué pasa con el bloque interno de instrucciones si la premisa es Falsa?</h3>
+                <ul class="opciones-lista">
+                    <li onclick="seleccionarOpcion(this)" data-id="1">El programa se detiene lanzando un error fatal.</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="2">El bloque se ignora por completo y continúa con la secuencia exterior inferior.</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="3">El bloque se repite hasta volverse verdadero.</li>
+                </ul>
+            </div>
+
+            <div class="pregunta-bloque" data-correcta="3">
+                <h3> ¿Cuál es el propósito del comando sintáctico `FinSi`?</h3>
+                <ul class="opciones-lista">
+                    <li onclick="seleccionarOpcion(this)" data-id="1">Apagar el monitor al terminar el script.</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="2">Iniciar la lectura de una variable de entrada.</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="3">Delimitar con exactitud el cierre físico de las instrucciones condicionadas.</li>
+                </ul>
+            </div>
+
+            <div class="pregunta-bloque" data-correcta="1">
+                <h3> Si declaramos `Si saldo < 0 Entonces Imprimir "Alerta Deuda" FinSi`, y `saldo` vale 50, ¿qué se imprime?</h3>
+                <ul class="opciones-lista">
+                    <li onclick="seleccionarOpcion(this)" data-id="1">No se imprime nada.</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="2">Se imprime "Alerta Deuda".</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="3">Se genera un error por saldo positivo.</li>
+                </ul>
+            </div>
+
+            <div class="pregunta-bloque" data-correcta="2">
+                <h3> ¿Qué símbolo geométrico se utiliza en los diagramas de flujo para representar una estructura condicional?</h3>
+                <ul class="opciones-lista">
+                    <li onclick="seleccionarOpcion(this)" data-id="1">Un rectángulo.</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="2">Un rombo.</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="3">Un ovalo.</li>
+                </ul>
+            </div>
+
+            <div class="pregunta-bloque" data-correcta="3">
+                <h3> ¿Se pueden incluir operaciones matemáticas complejas dentro de un bloque condicional simple?</h3>
+                <ul class="opciones-lista">
+                    <li onclick="seleccionarOpcion(this)" data-id="1">No, solo se permiten mensajes de texto.</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="2">Solo si la variable es de tipo carácter.</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="3">Sí, cualquier instrucción válida puede ejecutarse si se valida la condición.</li>
+                </ul>
+            </div>
+
+            <div class="pregunta-bloque" data-correcta="1">
+                <h3> ¿Cuál es el operador de comparación utilizado para verificar si un número es estrictamente idéntico a otro?</h3>
+                <ul class="opciones-lista">
+                    <li onclick="seleccionarOpcion(this)" data-id="1">El operador relacional `==` (o `=`)</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="2">El operador aritmético `+`</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="3">La palabra reservada Asignar</li>
+                </ul>
+            </div>
+
+            <div class="pregunta-bloque" data-correcta="2">
+                <h3> Un condicional simple se diferencia de uno doble porque el condicional simple:</h3>
+                <ul class="opciones-lista">
+                    <li onclick="seleccionarOpcion(this)" data-id="1">No ocupa la palabra reservada Si.</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="2">Carece de una rama alternativa de acción explícita ('Sino').</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="3">Funciona sin consumir memoria del ordenador espacial.</li>
+                </ul>
+            </div>
+            <p><strong> ¿Cuál es la principal diferencia operativa entre una condicional simple y una condicional compuesta?</strong></p>
+                <ul class="opciones-lista">
+                    <li onclick="seleccionarOpcion(this)" data-id="1">La condicional compuesta puede evaluar más de tres variables a la vez en la misma línea.</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="2">La condicional simple detiene el programa en caso de error y la compuesta lo reinicia por completo.</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="3">La simple solo ejecuta acciones si la condición es verdadera; la compuesta garantiza una respuesta de instrucciones tanto si es verdadera como si es falsa.</li>
+                </ul>
+            </div>
+
+            <div class="pregunta-bloque" data-correcta="1">
+                <p><strong> Si un algoritmo evalúa la línea `Si (oxigeno < 20) Entonces Escribir "Alerta" Sino Escribir "Estable" FinSi`, y el nivel actual de oxigeno es 45, ¿qué se mostrará en la terminal?</strong></p>
+                <ul class="opciones-lista">
+                    <li onclick="seleccionarOpcion(this)" data-id="1">Se imprimirá "Estable".</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="2">Se imprimirá "Alerta".</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="3">No se imprimirá nada porque la condición inicial falló.</li>
+                </ul>
+            </div>
+
+            <div class="pregunta-bloque" data-correcta="2">
+                <p><strong> ¿Qué efecto operativo produce la Estructura Alternativa Compuesta en el flujo de un programa?</strong></p>
+                <ul class="opciones-lista">
+                    <li onclick="seleccionarOpcion(this)" data-id="1">Fuerza la ejecución simultánea de todas las rutas del algoritmo para acelerar la CPU.</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="2">Modifica el flujo secuencial permitiendo elegir entre dos bloques de instrucciones posibles en función del valor booleano.</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="3">Borra los datos almacenados temporalmente en la memoria RAM de manera irreversible.</li>
+                </ul>
+            </div>
+
+            <div class="pregunta-bloque" data-correcta="1">
+                <p><strong> ¿Qué define de forma estricta a la cláusula "Sino" (Else) en una condicional compuesta?</strong></p>
+                <ul class="opciones-lista">
+                    <li onclick="seleccionarOpcion(this)" data-id="1">Es una palabra reservada que delimita las instrucciones que se procesarán única y exclusivamente cuando la condición principal sea falsa.</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="2">Es un comando que sirve para reiniciar los valores booleanos a un estado nulo.</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="3">Un operador matemático utilizado para calcular raíces cuadradas complejas.</li>
+                </ul>
+            </div>
+
+            <div class="pregunta-bloque" data-correcta="1">
+                <p><strong> Observando la sintaxis estructural descrita en el texto, ¿qué instrucción cierra formalmente la condicional compuesta?</strong></p>
+                <ul class="opciones-lista">
+                    <li onclick="seleccionarOpcion(this)" data-id="1">FinSi</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="2">TerminarEstructura</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="3">SinoCierre</li>
+                </ul>
+            </div>
+
+
+            <div class="pregunta-bloque" data-correcta="1">
+                <h3> ¿Qué término abre formalmente la secuencia subordinada tras evaluar la veracidad de la condición?</h3>
+                <ul class="opciones-lista">
+                    <li onclick="seleccionarOpcion(this)" data-id="1">Entonces</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="2">Mientras</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="3">RepetirHasta</li>
+                </ul>
+                <div class="retroalimentacion" style="display:none; color:#e74c3c; margin-top:5px; font-size:0.9rem;">
+                    ❌ Incorrecto. La estructura formal dicta la secuencia sintáctica exacta: Si [Condición] Entonces.
+                </div>
+            </div>
+            </div>
+        </div>
+
+        <button class="btn-verificar" onclick="validarCuestionario()">Enviar Respuestas</button>
+    </section>
+
+    <div id="overlayExito" class="pantalla-exito-overlay">
+        <div id="textoExito" class="mensaje-exito-grande">🛸 ¡ESTACIÓN SUPERADA! +50 XP</div>
+        <button class="btn-comenzar" id="btnSiguienteNivel" onclick="irAlMapa()" style="display: none; margin: 20px auto 0 auto; padding: 12px 35px; border-radius: 20px; border: none; background: #38e27a; color: #020617; font-weight: bold; cursor: pointer;">
+            Regresar al Mapa Estelar 🚀
+        </button>
+    </div>
+
+    <script>
+        const idLeccionActual = 14;
+        const xpGanada = 50;
+        let segundosTranscurridos = 0;
+        let cronometroIntervalo;
+
+        let videoPlayer;
+        let tiempoMaximoVisto = 0;
+        let duracionVideo = 0;
+        let videoCompletado = false;
+
+        window.onload = function() {
+            cronometroIntervalo = setInterval(() => {
+                segundosTranscurridos++;
+                let mins = Math.floor(segundosTranscurridos / 60);
+                let secs = segundosTranscurridos % 60;
+                document.getElementById('timerVisual').innerText = 
+                    (mins < 10 ? "0" + mins : mins) + ":" + (secs < 10 ? "0" + secs : secs);
+            }, 1000);
+
+            barajarEstructuraQuiz();
+
+            const iframe = document.getElementById('videoVimeo');
+            videoPlayer = new Vimeo.Player(iframe);
+
+            videoPlayer.getDuration().then(function(d) {
+                duracionVideo = d;
+            });
+
+            videoPlayer.on('timeupdate', function(data) {
+                if (data.seconds > tiempoMaximoVisto) {
+                    if (data.seconds - tiempoMaximoVisto > 2.5) {
+                        videoPlayer.setCurrentTime(tiempoMaximoVisto);
+                    } else {
+                        tiempoMaximoVisto = data.seconds;
+                    }
+                }
+                
+                if (tiempoMaximoVisto >= (duracionVideo - 3) && !videoCompletado) {
+                    const btnDesbloquear = document.getElementById('btnDesbloquearQuiz');
+                    btnDesbloquear.removeAttribute('disabled');
+                    btnDesbloquear.innerText = "Desbloquear Evaluación 🔓";
+                    btnDesbloquear.style.background = "#38e27a";
+                    btnDesbloquear.style.color = "#020617";
+                    videoCompletado = true;
+                }
+            });
+
+            videoPlayer.on('seeked', function(data) {
+                if (data.seconds > tiempoMaximoVisto) {
+                    videoPlayer.setCurrentTime(tiempoMaximoVisto);
+                }
+            });
+        };
+
+        function barajarEstructuraQuiz() {
+            const contenedor = document.getElementById('contenedorPreguntasDinamicas');
+            const preguntas = Array.from(contenedor.children);
+            for (let i = preguntas.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                contenedor.appendChild(preguntas[j]);
+            }
+            const listasOpciones = document.querySelectorAll('.opciones-lista');
+            listasOpciones.forEach(lista => {
+                const opciones = Array.from(lista.children);
+                for (let i = opciones.length - 1; i > 0; i--) {
+                    const j = Math.floor(Math.random() * (i + 1));
+                    lista.appendChild(opciones[j]);
+                }
+            });
+        }
+
+        function mostrarEvaluacionOculta() {
+            document.getElementById('controlBloqueo').style.display = 'none';
+            document.getElementById('quizOculto').style.display = 'block';
+            document.getElementById('quizOculto').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function seleccionarOpcion(elementoClicado) {
+            const listaHermanos = elementoClicado.parentNode.children;
+            for (let li of listaHermanos) {
+                li.classList.remove('seleccionada');
+            }
+            elementoClicado.classList.add('seleccionada');
+            elementoClicado.parentNode.setAttribute('data-seleccionada', elementoClicado.getAttribute('data-id'));
+        }
+
+        function validarCuestionario() {
+            const bloquesPregunta = document.querySelectorAll('.pregunta-bloque');
+            let todasRespondidas = true;
+            let todasCorrectas = true;
+
+            bloquesPregunta.forEach(bloque => {
+                const lista = bloque.querySelector('.opciones-lista');
+                const respuestaUsuario = lista.getAttribute('data-seleccionada');
+                const respuestaCorrecta = bloque.getAttribute('data-correcta');
+
+                if (!respuestaUsuario) { todasRespondidas = false; }
+                if (respuestaUsuario !== respuestaCorrecta) { todasCorrectas = false; }
+            });
+
+            if (!todasRespondidas) {
+                alert("⚠️ Por favor, responde los 10 reactivos antes de enviar las respuestas.");
+                return;
+            }
+
+            if (!todasCorrectas) {
+                alert("❌ Error en los sistemas lógicos. Revisa tus respuestas e inténtalo de nuevo.");
+                document.querySelectorAll('.retroalimentacion').forEach(div => div.style.display = "block");
+                return;
+            }
+
+            clearInterval(cronometroIntervalo);
+            registrarProgresoYXP(idLeccionActual);
+        }
+
+              function registrarProgresoYXP(l) {
+            fetch('../api/procesar_leccion_completada.php', { 
+                method: 'POST', 
+                headers: { 'Content-Type': 'application/json' }, 
+                body: JSON.stringify({ 
+                    id_leccion: l, 
+                    xp_ganada: xpGanada,
+                    tiempo_segundos: segundosTranscurridos 
+                }) 
+            })
+            .then(res => res.json())
+            .then(d => { 
+                mostrarPantallaExito();
+            })
+            .catch(() => { 
+                mostrarPantallaExito();
+            });
+        }
+
+        function mostrarPantallaExito() {
+            document.getElementById('overlayExito').classList.add('visible'); 
+            const btnRegresar = document.getElementById('btnSiguienteNivel');
+            btnRegresar.style.setProperty('display', 'flex', 'important');
+        }
+
+        function solicitarSalida() {
+            if(confirm("🛸 ¿Seguro que deseas abortar la lección actual?")) {
+                window.location.href = "../mundoI.php";
+            }
+        }
+
+        function irAlMapa() { window.location.href = "../mundoI.php"; }
+    </script>
+</body>
+</html>

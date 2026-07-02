@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/estilo_lecciones.css">
+    <title>Estación Orbital 03 | CodeLand DPS</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <script src="https://player.vimeo.com/api/player.js"></script>
+</head>
+<body>
+    <header class="header-leccion">
+        <div><h2>Módulo I ➔ Estación 03</h2></div>
+        <div id="cronometroContenedor" style="background: rgba(0, 162, 255, 0.15); border: 1px solid #00a2ff; padding: 6px 16px; border-radius: 20px; font-weight: 600; color: #00a2ff; font-family: 'Poppins', sans-serif; display: flex; align-items: center; gap: 8px;">
+            ⏱️ Tiempo: <span id="timerVisual">00:00</span>
+        </div>
+        <button class="btn-salir" onclick="solicitarSalida()">Abandona Misión 🛸</button>
+    </header>
+
+    <section class="seccion-contexto">
+        <h3>🚀 Contexto de Aplicación Real</h3>
+        <p>Cuando un cajero automático te entrega dinero, ocurre un minucioso análisis de tres etapas. Tu tarjeta y el PIN que ingresas representan la <strong>Entrada</strong>. El sistema procesa esta información verificando tu saldo y calculando cuántos billetes debe dispensar; esto es el <strong>Proceso</strong>. Finalmente, la máquina expulsando el dinero en efectivo y el recibo impreso constituyen la <strong>Salida</strong>. Descomponer problemas cotidianos en estos tres bloques es el secreto para diseñar cualquier software exitoso.</p>
+    </section>
+
+    <section class="seccion-multimedia">
+        <h3>🎥 Contenido Audiovisual de Telemetría</h3>
+        <p class="instruccion-video">⚠️ Debes visualizar el video completo sin adelantar para desbloquear la evaluación.</p>
+        
+        <div class="contenedor-video" style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; margin-bottom: 15px;">
+            <iframe id="videoVimeo" 
+                    src="https://player.vimeo.com/video/1198226419?api=1&controls=1&badge=0&autopause=0&player_id=0" 
+                    frameborder="0" 
+                    allow="autoplay; fullscreen; picture-in-picture" 
+                    style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border-radius: 8px;" 
+                    title="Contenido Educativo Orbital">
+            </iframe>
+        </div>
+
+        <p style="font-size: 0.85rem; color: #64748b; text-align: center; margin-top: 12px; font-style: italic; font-family: 'Poppins', sans-serif;">
+            Material audiovisual adaptado con fines estrictamente educativos. Créditos del autor: Eddy Ordoñez.
+        </p>
+        <div class="contenedor-imagen-apoyo">
+            <img src="img/esquema_leccion3.png" alt="Esquema estructural EPS" onerror="this.style.display='none';">
+        </div>
+    </section>
+
+    <section class="seccion-teoria">
+        <h1>3. Análisis de Problemas: Entrada, Proceso y Salida</h1>
+        <p>Antes de sentarse a escribir líneas de código desordenadas, un programador debe aplicar la ingeniería de software para comprender el problema a fondo. El método más efectivo para mapear una solución lógica consiste en segmentar el flujo de la información utilizando la famosa estructura de tres fases de procesamiento de datos.</p>
+        
+        <div class="ideas-clave">
+            <h3>💡 Conceptos Clave y Definiciones Académicas:</h3>
+            <ul>
+                <li><strong>1. Entrada (Inputs):</strong> Constituye toda la materia prima, variables o datos iniciales requeridos del mundo exterior que alimentan al algoritmo para que este pueda operar <em>(Joyanes Aguilar, 2013)</em>. Ejemplo: El peso y la altura de una persona.</li>
+                <li><strong>2. Proceso (Processing):</strong> Comprende el conjunto coordinado de operaciones aritméticas (sumas, multiplicaciones), lógicas (comparaciones de mayor o menor) y estructuras algorítmicas secuenciales que transforman los datos de entrada en una solución útil. Ejemplo: Calcular la fórmula matemática del Índice de Masa Corporal (IMC = peso / altura²).</li>
+                <li><strong>3. Salida (Outputs):</strong> Representa los resultados finales generados tras la ejecución del proceso. Es la resolución explícita del problema orientada al usuario final <em>(Sznajdleder, 2012)</em>. Ejemplo: Desplegar en pantalla el valor numérico del IMC obtenido.</li>
+                <li><strong>La Regla de Oro del Análisis:</strong> Nunca se puede procesar lo que no se ha ingresado como entrada, ni se puede entregar una salida de datos que no haya pasado previamente por un procesamiento lógico estructurado.</li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="seccion-bloqueada-control" id="controlBloqueo">
+        <button id="btnDesbloquearQuiz" class="btn-verificar" disabled onclick="mostrarEvaluacionOculta()">
+            Bloqueado por Reproducción 🔒
+        </button>
+    </section>
+
+    <section class="seccion-quiz oculto-inicial" id="moduloEvaluacion">
+        <h2>⚡ Evaluación </h2>
+        
+        <div id="contenedorPreguntas">
+            
+            <div class="pregunta-bloque" data-correcta="2">
+                <p><strong> Si estamos diseñando un software para calcular el promedio final de calificaciones, ¿cuál corresponde a la fase de Entrada?</strong></p>
+                <ul class="opciones-lista">
+                    <li onclick="seleccionarOpcion(this)" data-id="1">La suma de todas las notas dividida por el total de materias.</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="2">Cada una de las calificaciones numéricas obtenidas por el alumno.</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="3">Un mensaje impreso en pantalla indicando "Aprobado".</li>
+                </ul>
+            </div>
+
+            <div class="pregunta-bloque" data-correcta="1">
+                <p><strong> Dentro de la arquitectura de bloques de un algoritmo, ¿en qué consiste detalladamente la etapa de "Proceso"?</strong></p>
+                <ul class="opciones-lista">
+                    <li onclick="seleccionarOpcion(this)" data-id="1">En la ejecución de todas las fórmulas, cálculos matemáticos y transformaciones lógicas.</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="2">En capturar las pulsaciones de teclado que realiza el usuario en la web.</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="3">En almacenar de forma física los resultados dentro de un disco duro.</li>
+                </ul>
+            </div>
+
+            <div class="pregunta-bloque" data-correcta="3">
+                <p><strong> ¿Qué grave error metodológico ocurre si intentas generar un resultado de Salida sin definir Entrada ni Proceso?</strong></p>
+                <ul class="opciones-lista">
+                    <li onclick="seleccionarOpcion(this)" data-id="1">El algoritmo consumirá demasiada memoria RAM de forma exponencial.</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="2">La interfaz visual del programa cambiará sus colores a tema oscuro.</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="3">Se rompe la secuencia, provocando que el algoritmo carezca de lógica y arroje datos nulos.</li>
+                </ul>
+            </div>
+
+            <div class="pregunta-bloque" data-correcta="1">
+                <p><strong> En el ejemplo del cajero automático, ¿qué representa el dinero en físico y el recibo impreso?</strong></p>
+                <ul class="opciones-lista">
+                    <li onclick="seleccionarOpcion(this)" data-id="1">La Salida (Output) del algoritmo.</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="2">El Proceso intermedio de validación de PIN.</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="3">La Entrada de datos del tarjetahabiente.</li>
+                </ul>
+            </div>
+
+            <div class="pregunta-bloque" data-correcta="2">
+                <p><strong> Según la "Regla de Oro del Análisis" explicada en la lectura, ¿qué es imposible realizar?</strong></p>
+                <ul class="opciones-lista">
+                    <li onclick="seleccionarOpcion(this)" data-id="1">Escribir un código sin usar estilos CSS en la página web.</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="2">Procesar datos que nunca se han ingresado como entrada al sistema.</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="3">Mostrar salidas sin estar conectados a internet.</li>
+                </ul>
+            </div>
+
+            <div class="pregunta-bloque" data-correcta="3">
+                <p><strong> Al calcular el Índice de Masa Corporal (IMC), ¿qué papel juegan el "peso" y la "altura"?</strong></p>
+                <ul class="opciones-lista">
+                    <li onclick="seleccionarOpcion(this)" data-id="1">Son la Salida final que se le muestra al usuario.</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="2">Representan la fórmula matemática del cálculo.</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="3">Son las variables de Entrada (Inputs) indispensables.</li>
+                </ul>
+            </div>
+
+            <div class="pregunta-bloque" data-correcta="1">
+                <p><strong> ¿Qué tipo de operaciones pertenecen estrictamente al bloque de Proceso?</strong></p>
+                <ul class="opciones-lista">
+                    <li onclick="seleccionarOpcion(this)" data-id="1">Operaciones aritméticas (sumas, multiplicaciones) y comparaciones lógicas.</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="2">La lectura de datos desde un lector de código de barras.</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="3">La visualización de alertas en un monitor de telemetría.</li>
+                </ul>
+            </div>
+
+            <div class="pregunta-bloque" data-correcta="2">
+                <p><strong> De acuerdo con Sznajdleder (2012), la Salida se define como:</strong></p>
+                <ul class="opciones-lista">
+                    <li onclick="seleccionarOpcion(this)" data-id="1">La materia prima inicial que alimenta el algoritmo informático.</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="2">La resolución explícita del problema orientada al usuario final.</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="3">El cálculo secuencial que se realiza en la memoria RAM.</li>
+                </ul>
+            </div>
+
+            <div class="pregunta-bloque" data-correcta="1">
+                <p><strong> ¿Qué autor académico respalda la definición de que las Entradas constituyen las variables del mundo exterior requeridas?</strong></p>
+                <ul class="opciones-lista">
+                    <li onclick="seleccionarOpcion(this)" data-id="1">Joyanes Aguilar (2013).</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="2">Sznajdleder (2012).</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="3">CodeLand Team.</li>
+                </ul>
+            </div>
+
+            <div class="pregunta-bloque" data-correcta="3">
+                <p><strong> En informática, ¿cuál es el orden secuencial estricto que sigue la información?</strong></p>
+                <ul class="opciones-lista">
+                    <li onclick="seleccionarOpcion(this)" data-id="1">Proceso ➔ Entrada ➔ Salida.</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="2">Salida ➔ Proceso ➔ Entrada.</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="3">Entrada ➔ Proceso ➔ Salida.</li>
+                </ul>
+            </div>
+
+        </div>
+
+        <button class="btn-verificar" onclick="validarCuestionario()">Enviar Respuestas </button>
+    </section>
+
+    <div id="overlayExito" class="pantalla-exito-overlay">
+        <div id="textoExito" class="mensaje-exito-grande">¡Correcto! Has ganado 50 XP.</div>
+        <button class="btn-comenzar" id="btnSiguienteNivel" onclick="irAlMapa()">Regresar a las Regiones 🚀</button>
+    </div>
+
+    <script>
+        const idLeccionActual = 3;
+        const xpGanada = 50;
+        
+        let segundosTranscurridos = 0;
+        const timerElemento = document.getElementById("timerVisual");
+        
+        const cronometroIntervalo = setInterval(() => {
+            segundosTranscurridos++;
+            let minutos = Math.floor(segundosTranscurridos / 60);
+            let segundos = segundosTranscurridos % 60;
+            let minTexto = minutos < 10 ? "0" + minutos : minutos;
+            let segTexto = segundos < 10 ? "0" + segundos : segundos;
+            timerElemento.innerText = minTexto + ":" + segTexto;
+        }, 1000);
+
+        const btnDesbloquear = document.getElementById("btnDesbloquearQuiz");
+        const moduloEvaluacion = document.getElementById("moduloEvaluacion");
+
+        const iframe = document.getElementById('videoVimeo');
+        const player = new Vimeo.Player(iframe);
+        
+        let tiempoMaximoVisto = 0;
+        let ejecutandoRegreso = false;
+        let duracionVideo = 0;
+
+        player.getDuration().then(function(duration) {
+            duracionVideo = duration;
+        }).catch(function() {
+            duracionVideo = 60; 
+        });
+
+        player.on('timeupdate', function(data) {
+            if (!ejecutandoRegreso) {
+                if (data.seconds > tiempoMaximoVisto + 1.5) {
+                    ejecutandoRegreso = true;
+                    player.setCurrentTime(tiempoMaximoVisto).then(function() {
+                        ejecutandoRegreso = false;
+                        alert("🔒 Bloqueo de Seguridad: No puedes adelantar la explicación audiovisual.");
+                    });
+                } else if (data.seconds > tiempoMaximoVisto) {
+                    tiempoMaximoVisto = data.seconds;
+                }
+            }
+        });
+
+        player.on('seeked', function(data) {
+            if (data.seconds > tiempoMaximoVisto + 1.5) {
+                ejecutandoRegreso = true;
+                player.setCurrentTime(tiempoMaximoVisto).then(function() {
+                    ejecutandoRegreso = false;
+                });
+            }
+        });
+
+        player.on('ended', function() {
+            if (tiempoMaximoVisto >= (duracionVideo - 3)) {
+                btnDesbloquear.removeAttribute("disabled");
+                btnDesbloquear.innerText = "Acceder a Evaluación ⚔️";
+                btnDesbloquear.style.background = "linear-gradient(135deg, #00ff87, #00c2ff)";
+                btnDesbloquear.style.color = "#020617";
+                btnDesbloquear.style.boxShadow = "0 0 20px rgba(0, 255, 135, 0.6)";
+            } else {
+                tiempoMaximoVisto = 0;
+                player.setCurrentTime(0);
+                alert("❌ Trampa detectada: Debes reproducir el contenido completo paso a paso.");
+            }
+        });
+
+        function barajearTodo() {
+            const contenedorPreguntas = document.getElementById('contenedorPreguntas');
+            const bloquesPreguntas = Array.from(contenedorPreguntas.children);
+            for (let i = bloquesPreguntas.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                contenedorPreguntas.appendChild(bloquesPreguntas[j]);
+            }
+
+            const listasOpciones = document.querySelectorAll('.opciones-lista');
+            listasOpciones.forEach(lista => {
+                const opciones = Array.from(lista.children);
+                for (let i = opciones.length - 1; i > 0; i--) {
+                    const j = Math.floor(Math.random() * (i + 1));
+                    lista.appendChild(opciones[j]);
+                }
+            });
+        }
+
+        window.addEventListener("DOMContentLoaded", barajearTodo);
+
+        function mostrarEvaluacionOculta() {
+            moduloEvaluacion.classList.remove("oculto-inicial");
+            moduloEvaluacion.classList.add("mostrar-animado");
+            document.getElementById("controlBloqueo").style.display = "none";
+            moduloEvaluacion.scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function solicitarSalida() { 
+            if (confirm("¿Abortar misión? El progreso actual no se guardará.")) {
+                window.location.href = "../mundoI.php"; 
+            }
+        }
+        
+        function seleccionarOpcion(elementoLli) { 
+            const listaPadre = elementoLli.parentElement; 
+            Array.from(listaPadre.children).forEach(li => li.classList.remove('seleccionada')); 
+            elementoLli.classList.add('seleccionada'); 
+            listaPadre.setAttribute("data-seleccionada", elementoLli.getAttribute("data-id")); 
+        }
+
+        function validarCuestionario() {
+            const bloques = document.querySelectorAll('.pregunta-bloque'); 
+            let todasRespondidas = true; 
+            let todasCorrectas = true;
+
+            bloques.forEach(bloque => {
+                const listaOpciones = bloque.querySelector('.opciones-lista');
+                const seleccionadaId = listaOpciones.getAttribute('data-seleccionada');
+                const respuestaCorrecta = bloque.getAttribute('data-correcta');
+
+                if (!seleccionadaId) {
+                    todasRespondidas = false;
+                    return; 
+                }
+                if (seleccionadaId !== respuestaCorrecta) {
+                    todasCorrectas = false;
+                }
+            });
+
+            if (!todasRespondidas) { 
+                alert("⚠️ Por favor, responde los 10 reactivos antes de enviar la telemetría."); 
+                return; 
+            }
+            if (!todasCorrectas) { 
+                alert("❌ Error en los sistemas lógicos. Revisa tus respuestas e inténtalo de nuevo."); 
+                return; 
+            }
+
+            clearInterval(cronometroIntervalo);
+            registrarProgresoYXP(idLeccionActual);
+        }
+
+        function registrarProgresoYXP(l) {
+            fetch('../api/procesar_leccion_completada.php', { 
+                method: 'POST', 
+                headers: { 'Content-Type': 'application/json' }, 
+                body: JSON.stringify({ 
+                    id_leccion: l, 
+                    xp_ganada: xpGanada,
+                    tiempo_segundos: segundosTranscurridos 
+                }) 
+            })
+            .then(res => res.json())
+            .then(() => { mostrarPantallaExito(); })
+            .catch(() => { mostrarPantallaExito(); });
+        }
+
+      function mostrarPantallaExito() {
+            document.getElementById('overlayExito').classList.add('visible'); 
+            const btnRegresar = document.getElementById('btnSiguienteNivel');
+            btnRegresar.style.setProperty('display', 'flex', 'important');
+        }
+
+        function irAlMapa() { window.location.href = "../mundoI.php"; }
+    </script>
+</body>
+</html>

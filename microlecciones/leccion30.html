@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/estilo_lecciones.css">
+    <title>Estación Orbital 30 | Gran Evaluación de Cierre</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght=300;400;600;800&display=swap" rel="stylesheet">
+    <style>
+        /* Estilos complementarios para la interfaz de las nuevas actividades académicas (Extraídos de Lección 5) */
+        .bloque-actividad {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(56, 226, 122, 0.2);
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 25px;
+        }
+        .actividad-titulo {
+            color: #38e27a;
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .bloom-tag {
+            font-size: 0.75rem;
+            background: rgba(0, 162, 255, 0.2);
+            color: #00a2ff;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+        .opciones-lista {
+            list-style: none;
+            padding: 0;
+            margin: 15px 0 0 0;
+        }
+        .opciones-lista li {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            padding: 12px 15px;
+            margin-bottom: 8px;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        .opciones-lista li:hover {
+            background: rgba(0, 162, 255, 0.08);
+            border-color: rgba(0, 162, 255, 0.4);
+        }
+        .opciones-lista li.seleccionada {
+            background: rgba(56, 226, 122, 0.1) !important;
+            border-color: #38e27a !important;
+            color: #38e27a;
+        }
+        .retroalimentacion {
+            margin-top: 10px;
+            padding: 10px;
+            border-radius: 4px;
+            background: rgba(239, 68, 68, 0.1);
+            border-left: 3px solid #ef4444;
+            display: none;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+    <header class="header-leccion">
+        <div><h2>Módulo I ➔ Estación 30 (Examen Final de Módulo)</h2></div>
+        <div id="cronometroContenedor" style="background: rgba(0, 162, 255, 0.15); border: 1px solid #00a2ff; padding: 6px 16px; border-radius: 20px; font-weight: 600; color: #00a2ff; font-family: 'Poppins', sans-serif; display: flex; align-items: center; gap: 8px;">
+            ⏱️ Telemetría: <span id="timerVisual">00:00</span>
+        </div>
+        <button class="btn-salir" onclick="solicitarSalida()">Abandona Misión 🛸</button>
+    </header>
+
+    <section class="seccion-teoria">
+        <h1>🏆 Magna Evaluación de Cierre: Estación 30</h1>
+        <p>¡Bienvenido a la prueba de fuego de final de módulo! Has asumido el rango de Auditor General de Software. Debes resolver estos 5 retos avanzados basados en los principios lógicos de <strong>Evaluar</strong> y <strong>Crear</strong>.</p>
+    </section>
+
+    <section class="seccion-quiz" style="display: block;">
+        
+        <div class="bloque-actividad">
+            <div class="actividad-titulo">🕵️‍♂️ Actividad 1: Code Detective <span class="bloom-tag" style="background: rgba(239, 68, 68, 0.2); color: #ef4444;">Evaluar</span></div>
+            <p><strong>Contexto:</strong> Un sistema de escaneo busca el identificador de un intruso en un vector de 1000 celdas desordenadas. El elemento objetivo se localiza en la última celda (índice 999).</p>
+            <p><strong>Pregunta:</strong> Basándote en la eficiencia temporal del peor de los casos en búsquedas lineales, ¿cuál es la conclusión correcta?</p>
+            <ul class="opciones-lista" id="ans_act1">
+                <li onclick="marcarOpcionAct(this, 'act1', '1')" data-id="1">El algoritmo ejecutará exactamente 1 comparación debido al uso de memoria RAM dinámica.</li>
+                <li onclick="marcarOpcionAct(this, 'act1', '2')" data-id="2">El algoritmo realizará un recorrido lineal forzoso ejecutando las 1000 comparaciones de forma secuencial celda por celda.</li>
+                <li onclick="marcarOpcionAct(this, 'act1', '3')" data-id="3">Se generará un desbordamiento físico de memoria al evaluar el último índice del vector.</li>
+            </ul>
+        </div>
+
+        <div class="bloque-actividad">
+            <div class="actividad-titulo">🕵️‍♂️ Actividad 2: Code Detective <span class="bloom-tag" style="background: rgba(239, 68, 68, 0.2); color: #ef4444;">Evaluar</span></div>
+            <p><strong>Contexto:</strong> El radar de la estación utiliza una cuadrícula matricial de 3x3 indexada en base cero. Analiza el recorrido ejecutado por las siguientes estructuras repetitivas anidadas.</p>
+            <pre style="background: #0f141c; padding: 15px; border-radius: 6px; font-family: monospace; color: #e2e8f0; border: 1px solid #2d3748;">
+Para i = 0 Hasta 2 Con Paso 1 Hacer
+    Para j = 0 Hasta 2 Con Paso 1 Hacer
+        Si i == 1 Entonces
+            radar[i][j] = 9
+        FinSi
+    FinPara
+FinPara</pre>
+            <p><strong>Pregunta:</strong> ¿Qué zona geográfica de la matriz de datos fue modificada con el valor numérico 9 tras concluir las iteraciones?</p>
+            <ul class="opciones-lista" id="ans_act2">
+                <li onclick="marcarOpcionAct(this, 'act2', '1')" data-id="1">Toda la primera columna vertical del radar.</li>
+                <li onclick="marcarOpcionAct(this, 'act2', '2')" data-id="2">La fila intermedia horizontal completa (Fila 1).</li>
+                <li onclick="marcarOpcionAct(this, 'act2', '3')" data-id="3">Únicamente la celda central localizada en la coordenada [1][1].</li>
+            </ul>
+        </div>
+
+        <div class="bloque-actividad">
+            <div class="actividad-titulo">🛠️ Actividad 3: Debug Pro <span class="bloom-tag" style="background: rgba(239, 68, 68, 0.2); color: #ef4444;">Evaluar</span></div>
+            <p><strong>Contexto:</strong> Un algoritmo de telemetría médica intenta aislar los valores de la diagonal principal de una matriz cuadrada mediante ciclos anidados redundantes, consumiendo excesivos ciclos de reloj de la CPU.</p>
+            <pre style="background: #0f141c; padding: 15px; border-radius: 6px; font-family: monospace; color: #e2e8f0; border: 1px solid #2d3748;">
+// Código defectuoso por ineficiencia temporal
+Para i = 0 Hasta N-1 Hacer
+    Para j = 0 Hasta N-1 Hacer
+        Si i == j Entonces
+            Imprimir matriz[i][j]
+        FinSi
+    FinPara
+FinPara</pre>
+            <p><strong>Pregunta:</strong> ¿Cuál es la refactorización lógica óptima que extrae la diagonal principal eliminando por completo el desperdicio del ciclo anidado horizontal?</p>
+            <ul class="opciones-lista" id="ans_act3">
+                <li onclick="marcarOpcionAct(this, 'act3', '1')" data-id="1">Reemplazar toda la estructura por un único ciclo simple: `Para i = 0 Hasta N-1 Hacer Imprimir matriz[i][i] FinPara`.</li>
+                <li onclick="marcarOpcionAct(this, 'act3', '2')" data-id="2">Cambiar la condición lógica a `Si i != j` para forzar una búsqueda lineal invertida.</li>
+                <li onclick="marcarOpcionAct(this, 'act3', '3')" data-id="3">Transponer de forma recursiva la matriz entera antes de mandar a consola los datos.</li>
+            </ul>
+        </div>
+
+        <div class="bloque-actividad">
+            <div class="actividad-titulo">🛠️ Actividad 4: Debug Pro <span class="bloom-tag" style="background: rgba(239, 68, 68, 0.2); color: #ef4444;">Evaluar</span></div>
+            <p><strong>Contexto:</strong> Un ingeniero júnior entregó un módulo crítico de soporte vital. Aunque el script funciona, su mantenimiento es imposible debido a la violación sistemática de los estándares mundiales de legibilidad de código.</p>
+            <pre style="background: #0f141c; padding: 15px; border-radius: 6px; font-family: monospace; color: #e2e8f0; border: 1px solid #2d3748;">
+Funcion s(a,b)
+Si a>b Entonces
+Retornar a
+Sino
+Retornar b
+FinSi
+FinFuncion</pre>
+            <p><strong>Pregunta:</strong> Desde la perspectiva de las buenas prácticas de desarrollo, ¿cuáles son las omisiones técnicas más graves de este módulo?</p>
+            <ul class="opciones-lista" id="ans_act4">
+                <li onclick="marcarOpcionAct(this, 'act4', '1')" data-id="1">Carece por completo de sangrado jerárquico (indentación) y utiliza identificadores mudos no mnemotécnicos que destruyen la legibilidad.</li>
+                <li onclick="marcarOpcionAct(this, 'act4', '2')" data-id="2">El algoritmo tiene un error fatal de sintaxis porque la palabra reservada 'Sino' no pertenece a la programación estructurada.</li>
+                <li onclick="marcarOpcionAct(this, 'act4', '3')" data-id="3">Usa funciones con retorno en lugar de procedimientos globales vacíos.</li>
+            </ul>
+        </div>
+
+        <div class="bloque-actividad">
+            <div class="actividad-titulo">🚀 Actividad 5: MiniProjects <span class="bloom-tag" style="background: rgba(16, 185, 129, 0.2); color: #10b981;">Crear</span></div>
+            <p><strong>Desafío de Cierre:</strong> Diseña la arquitectura de un motor de procesamiento de datos espaciales. Este debe recibir una matriz de coordenadas de asteroides, realizar una transposición para reorientar los ejes vectoriales y aplicar una búsqueda secuencial limpia controlada por una bandera para localizar una firma térmica exótica.</p>
+            <p><strong>Pregunta:</strong> ¿Qué secuencia de pasos lógicos garantiza el éxito técnico y la escalabilidad de este proyecto integrador?</p>
+            <ul class="opciones-lista" id="ans_act5">
+                <li onclick="marcarOpcionAct(this, 'act5', '1')" data-id="1">Utilizar variables globales de una sola letra, transponer mezclando filas de forma aleatoria y omitir las condiciones de parada del ciclo.</li>
+                <li onclick="marcarOpcionAct(this, 'act5', '2')" data-id="2">Declarar la matriz con nombres mnemotécnicos; transponer mediante un bucle anidado ordenado asignando `destino[j][i] = origen[i][j]`; y aplicar una búsqueda lineal sobre la estructura procesada usando una bandera lógica binaria que interrumpa el bucle de inmediato al hallar el objetivo.</li>
+                <li onclick="marcarOpcionAct(this, 'act5', '3')" data-id="3">Evitar el uso de subalgoritmos o modularidad, programando una sola función masiva de mil líneas consecutivas sin comentarios.</li>
+            </ul>
+        </div>
+
+        <div id="resultadoValidacion" style="margin-top: 20px; padding: 15px; border-radius: 6px; text-align: center; font-weight: bold; font-family: 'Poppins', sans-serif;"></div>
+
+        <button class="btn-verificar" onclick="validarExamenFinal()">Enviar Dictamen Final (+100 XP) 🏆</button>
+    </section>
+
+    <div id="overlayExito" class="pantalla-exito-overlay">
+        <div id="textoExito" class="mensaje-exito-grande">🚀 ¡Misión Cumplida! Has completado el Módulo I con honores de excelencia industrial.</div>
+        <button class="btn-comenzar" id="btnSiguienteNivel" onclick="irAlMapa()">Finalizar y Regresar al Panel General 🗺️</button>
+    </div>
+
+    <script>
+        const idLeccionActual = 30;
+        const xpGanada = 100;
+        let segundosTranscurridos = 0;
+        const timerVisual = document.getElementById("timerVisual");
+
+        const cronometroIntervalo = setInterval(() => {
+            segundosTranscurridos++;
+            let min = Math.floor(segundosTranscurridos / 60);
+            let seg = segundosTranscurridos % 60;
+            timerVisual.innerText = (min < 10 ? "0" + min : min) + ":" + (seg < 10 ? "0" + seg : seg);
+        }, 1000);
+
+        function marcarOpcionAct(el, actividad, id) {
+            const ul = el.parentElement;
+            Array.from(ul.children).forEach(li => li.classList.remove('seleccionada'));
+            el.classList.add('seleccionada');
+            ul.setAttribute('data-seleccionada', id);
+        }
+
+        function solicitarSalida() {
+            if (confirm("¿Deseas abortar la evaluación final de módulo? No se guardará el progreso actual.")) {
+                window.location.href = "../mundoI.php";
+            }
+        }
+
+        function validarExamenFinal() {
+            const r1 = document.getElementById('ans_act1').getAttribute('data-seleccionada');
+            const r2 = document.getElementById('ans_act2').getAttribute('data-seleccionada');
+            const r3 = document.getElementById('ans_act3').getAttribute('data-seleccionada');
+            const r4 = document.getElementById('ans_act4').getAttribute('data-seleccionada');
+            const r5 = document.getElementById('ans_act5').getAttribute('data-seleccionada');
+
+            const resultadoDiv = document.getElementById('resultadoValidacion');
+
+            if (!r1 || !r2 || !r3 || !r4 || !r5) {
+                resultadoDiv.style.color = "#f59e0b";
+                resultadoDiv.innerText = "⚠️ Alerta de Telemetría: Es obligatorio responder las 5 auditorías del módulo.";
+                return;
+            }
+
+            if (r1 === "2" && r2 === "2" && r3 === "1" && r4 === "1" && r5 === "2") {
+                clearInterval(cronometroIntervalo);
+                resultadoDiv.style.color = "#38e27a";
+                resultadoDiv.innerText = "✓ Dictamen aprobado por unanimidad. Registrando cierre de módulo en la base de datos...";
+                registrarProgresoEvaluacion(idLeccionActual);
+            } else {
+                resultadoDiv.style.color = "#ef4444";
+                resultadoDiv.innerText = "❌ Denegado. Se encontraron fallos lógicos graves en tus diagnósticos de código.";
+            }
+        }
+
+        function registrarProgresoEvaluacion(leccion) {
+            fetch('../api/procesar_leccion_completada.php', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ 
+                    id_leccion: leccion, 
+                    xp_ganada: xpGanada,
+                    tiempo_segundos: segundosTranscurridos
+                })
+            })
+            .then(res => res.json())
+            .then(() => { mostrarPantallaExito(); })
+            .catch(() => { mostrarPantallaExito(); });
+        }
+
+        function mostrarPantallaExito() {
+            document.getElementById('overlayExito').classList.add('visible');
+            document.getElementById('btnSiguienteNivel').style.setProperty('display', 'flex', 'important');
+        }
+
+        function irAlMapa() {
+            window.location.href = "../mundoI.php";
+        }
+    </script>
+</body>
+</html>

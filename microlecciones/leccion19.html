@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/estilo_lecciones.css">
+    <title>Estación Orbital 19 | CodeLand DPS</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght=300;400;600;800&display=swap" rel="stylesheet">
+    <script src="https://player.vimeo.com/api/player.js"></script>
+</head>
+<body>
+    <header class="header-leccion">
+        <div><h2>Módulo I ➔ Estación 19</h2></div>
+        <div id="cronometroContenedor" style="background: rgba(0, 162, 255, 0.15); border: 1px solid #00a2ff; padding: 6px 16px; border-radius: 20px; font-weight: 600; color: #00a2ff; font-family: 'Poppins', sans-serif; display: flex; align-items: center; gap: 8px;">
+            ⏱️ Tiempo: <span id="timerVisual">00:00</span>
+        </div>
+        <button class="btn-salir" onclick="solicitarSalida()">Abandona Misión 🛸</button>
+    </header>
+
+    <section class="seccion-contexto" style="margin-bottom: 25px; padding: 20px; background: rgba(255, 255, 255, 0.02); border-left: 4px solid #00a2ff; border-radius: 4px;">
+        <h3>🚀 Contexto de Aplicación Real</h3>
+        <p>Cuando acudes a un cajero automático o inicias sesión en un videojuego, el sistema te muestra el menú principal de opciones de inmediato. No te pregunta primero si deseas salir del cajero antes de mostrarte la pantalla. El software pinta la interfaz, te permite interactuar y, al final del proceso, evalúa: "¿El usuario seleccionó la opción Salir?". Si la respuesta es no, vuelve a repetir todo. Esto garantiza que las acciones ocurran al menos una vez obligatoriamente.</p>
+    </section>
+
+    <section class="seccion-multimedia">
+        <h3>🎥 Contenido Audiovisual de Telemetría</h3>
+        <p class="instruccion-video">⚠️ Debes visualizar el video completo sin adelantar para desbloquear la evaluación.</p>
+        
+        <div class="contenedor-video" style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; margin-bottom: 15px;">
+            <iframe id="videoVimeo" 
+                    src="https://player.vimeo.com/video/1198480177?api=1&controls=1&badge=0&autopause=0&player_id=0" 
+                    frameborder="0" 
+                    allow="autoplay; fullscreen; picture-in-picture" 
+                    style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border-radius: 8px;" 
+                    title="Contenido Educativo Orbital">
+            </iframe>
+        </div>
+
+        <p style="font-size: 0.85rem; color: #64748b; text-align: center; margin-top: 12px; font-style: italic; font-family: 'Poppins', sans-serif;">
+            Material audiovisual adaptado con fines estrictamente educativos. Créditos del autor: El Profe Ariel.
+        </p>
+        <div class="contenedor-imagen-apoyo">
+            <img src="img/esquema_leccion19.png" alt="Esquema conceptual" onerror="this.style.display='none';">
+        </div>
+    </section>
+
+    <section class="seccion-teoria">
+        <h1>19. Estructuras Cíclicas: Bucle Repetir (Do-While / Hasta Que)</h1>
+        <p>A diferencia del bucle Mientras, la estructura Repetir traslada la evaluación de la condición de control al desenlace de la iteración, modificando sustancialmente el comportamiento mínimo del algoritmo.</p>
+        
+        <div class="ideas-clave">
+            <h3>💡 Conceptos Clave y Definiciones Académicas:</h3>
+            <ul>
+                <li><strong>Bucle Post-test (Repetir / Hacer-Mientras):</strong> Estructura algorítmica donde la condición se sitúa al final del bloque. Esto asegura de forma matemática que el conjunto de instrucciones internas se ejecute **al menos una vez**, independientemente del valor de la condición de control <em>(Sznajdleder, 2012)</em>.</li>
+                <li><strong>Divergencia de Criterio:</strong> Dependiendo de la herramienta de diseño (como PSeInt o lenguajes formales como C++/Java), el ciclo se repite *mientras la condición sea verdadera* (Hacer-Mientras) o continúa iterando *hasta que la condición se convierta en verdadera* (Repetir-Hasta Que). Académicamente, ambas comparten la naturaleza post-test.</li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="seccion-bloqueada-control" id="controlBloqueo">
+        <button id="btnDesbloquearQuiz" class="btn-verificar" disabled onclick="mostrarEvaluacionOculta()">
+            Bloqueado por Reproducción 🔒
+        </button>
+    </section>
+
+    <section class="seccion-quiz oculto-inicial" id="moduloEvaluacion">
+        <h2>⚡ Evaluación </h2>
+        
+        <div id="contenedorPreguntas">
+            
+            <div class="pregunta-bloque" data-correcta="3">
+                <p><strong> ¿Cuál es la garantía fundamental que ofrece un bucle de tipo post-test (`Repetir`) frente a uno de tipo pre-test (`Mientras`)?</strong></p>
+                <ul class="opciones-lista">
+                    <li onclick="seleccionarOpcion(this)" data-id="1">Garantiza consumir menos memoria RAM durante el procesamiento aritmético.</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="2">Asegura que el programa se detenga inmediatamente si el usuario introduce un carácter inválido.</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="3">Garantiza que las instrucciones del cuerpo del ciclo se ejecutarán obligatoriamente al menos una vez.</li>
+                </ul>
+            </div>
+
+            <div class="pregunta-bloque" data-correcta="2">
+                <p><strong> Si necesitas diseñar un algoritmo que solicite una contraseña al usuario y se siga repitiendo obligatoriamente mientras el texto ingresado sea incorrecto, ¿cuál estructura es la óptima para capturar el primer intento?</strong></p>
+                <ul class="opciones-lista">
+                    <li onclick="seleccionarOpcion(this)" data-id="1">Una condicional simple combinada con una declaración de variable.</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="2">Una estructura cíclica post-test como 'Repetir' para asegurar la lectura del primer intento sin duplicar código.</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="3">Una estructura de selección múltiple basada en casos numéricos fijos.</li>
+                </ul>
+            </div>
+
+            <div class="pregunta-bloque" data-correcta="1">
+                <p><strong> De acuerdo con Sznajdleder (2012), ¿dónde sitúa la condición de control la estructura de un bucle post-test?</strong></p>
+                <ul class="opciones-lista">
+                    <li onclick="seleccionarOpcion(this)" data-id="1">Al final del bloque de instrucciones internas.</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="2">Antes de ejecutar el primer comando lineal del programa.</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="3">En una función externa fuera del archivo indexado.</li>
+                </ul>
+            </div>
+
+            <div class="pregunta-bloque" data-correcta="3">
+                <p><strong> ¿Qué sucede en un bucle 'Repetir' si la condición de control es falsa en su primera revisión post-test en un lenguaje formal como C++ o Java (Hacer-Mientras)?</strong></p>
+                <ul class="opciones-lista">
+                    <li onclick="seleccionarOpcion(this)" data-id="1">El bloque de instrucciones internas nunca se ejecuta.</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="2">El sistema arroja un error crítico de sintaxis oculta.</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="3">Se ejecutó exactamente una vez, debido a que la evaluación se hace al desenlace de la iteración.</li>
+                </ul>
+            </div>
+
+            <div class="pregunta-bloque" data-correcta="2">
+                <p><strong> En el contexto real de un cajero automático, ¿qué acción ocurre primero obligatoriamente antes de validar si se desea salir?</strong></p>
+                <ul class="opciones-lista">
+                    <li onclick="seleccionarOpcion(this)" data-id="1">Se verifica la señal de la red satelital central.</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="2">El software pinta la interfaz gráfica y permite al usuario interactuar en el menú de opciones.</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="3">Se expulsa la tarjeta de forma preventiva para liberar memoria.</li>
+                </ul>
+            </div>
+
+            <div class="pregunta-bloque" data-correcta="1">
+                <p><strong> ¿A qué se refiere el término "Divergencia de Criterio" mencionado en los conceptos clave?</strong></p>
+                <ul class="opciones-lista">
+                    <li onclick="seleccionarOpcion(this)" data-id="1">A que dependiendo de la herramienta (como PSeInt o lenguajes formales), el ciclo puede repetir mientras la condición sea verdadera o hasta que se convierta en verdadera.</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="2">A un error lógico en la CPU provocado por el desbordamiento de la RAM.</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="3">A la diferencia en la tipografía usada entre Poppins y Arial.</li>
+                </ul>
+            </div>
+
+            <div class="pregunta-bloque" data-correcta="3">
+                <p><strong> A pesar de la divergencia de sintaxis entre herramientas, ¿qué naturaleza matemática e inequívoca comparten el 'Hacer-Mientras' y el 'Repetir-Hasta Que'?</strong></p>
+                <ul class="opciones-lista">
+                    <li onclick="seleccionarOpcion(this)" data-id="1">Ambas operan como condicionales lógicas simples de una sola ruta.</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="2">Ambas operan evaluando la condición de manera previa (pre-test).</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="3">Ambas comparten exactamente la naturaleza del diseño de bucles post-test.</li>
+                </ul>
+            </div>
+
+            <div class="pregunta-bloque" data-correcta="1">
+                <p><strong> Cuando el procesador ejecuta la secuencia lineal del cuerpo antes de realizar cualquier tipo de pregunta, está operando bajo:</strong></p>
+                <ul class="opciones-lista">
+                    <li onclick="seleccionarOpcion(this)" data-id="1">Un bucle cíclico de tipo post-test.</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="2">Una estructura de selección anidada secuencial.</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="3">Un algoritmo determinista plano de un solo paso.</li>
+                </ul>
+            </div>
+
+            <div class="pregunta-bloque" data-correcta="2">
+                <p><strong> ¿Por qué es ideal la estructura post-test para validaciones de entrada de datos en un programa?</strong></p>
+                <ul class="opciones-lista">
+                    <li onclick="seleccionarOpcion(this)" data-id="1">Porque detiene la CPU de inmediato si hay un espacio en blanco.</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="2">Porque permite ejecutar el comando de lectura antes de validar si el dato cumple o no los requisitos de salida, evitando duplicidad de código.</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="3">Porque bloquea los sensores inalámbricos de la terminal de control.</li>
+                </ul>
+            </div>
+
+            <div class="pregunta-bloque" data-correcta="1">
+                <p><strong> Completando el flujo lógico de la lección: Trasladar la evaluación de la condición de control al desenlace de la iteración tiene como resultado que...</strong></p>
+                <ul class="opciones-lista">
+                    <li onclick="seleccionarOpcion(this)" data-id="1">...se modifique sustancialmente el comportamiento mínimo de ejecución del algoritmo.</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="2">...el bucle interno se vuelva infinitamente aleatorio e inestable.</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="3">...las variables modificadoras se eliminen de la sintaxis estructural.</li>
+                </ul>
+            </div>
+
+        </div>
+
+        <button class="btn-verificar" onclick="validarCuestionario()">Enviar Respuestas </button>
+    </section>
+
+    <div id="overlayExito" class="pantalla-exito-overlay">
+        <div id="textoExito" class="mensaje-exito-grande">¡Correcto! Has ganado 50 XP.</div>
+        <button class="btn-comenzar" id="btnSiguienteNivel" onclick="irAlMapa()">Regresar a las Regiones 🚀</button>
+    </div>
+
+    <script>
+        const idLeccionActual = 19;
+        const xpGanada = 50;
+        
+        let segundosTranscurridos = 0;
+        const timerElemento = document.getElementById("timerVisual");
+        
+        const cronometroIntervalo = setInterval(() => {
+            segundosTranscurridos++;
+            let minutos = Math.floor(segundosTranscurridos / 60);
+            let segundos = segundosTranscurridos % 60;
+            
+            let minTexto = minutos < 10 ? "0" + minutes : minutes;
+            let segTexto = segundos < 10 ? "0" + segundos : segundos;
+            
+            timerElemento.innerText = minTexto + ":" + segTexto;
+        }, 1000);
+
+        const btnDesbloquear = document.getElementById("btnDesbloquearQuiz");
+        const moduloEvaluacion = document.getElementById("moduloEvaluacion");
+
+        const iframe = document.getElementById('videoVimeo');
+        const player = new Vimeo.Player(iframe);
+        
+        let tiempoMaximoVisto = 0;
+        let ejecutandoRegreso = false;
+        let duracionVideo = 0;
+
+        player.getDuration().then(function(duration) {
+            duracionVideo = duration;
+        }).catch(function(error) {
+            duracionVideo = 60; 
+        });
+
+        player.on('timeupdate', function(data) {
+            if (!ejecutandoRegreso) {
+                if (data.seconds > tiempoMaximoVisto + 1.5) {
+                    ejecutandoRegreso = true;
+                    player.setCurrentTime(tiempoMaximoVisto).then(function() {
+                        ejecutandoRegreso = false;
+                        alert("🔒 Bloqueo de Seguridad: No puedes adelantar la explicación audiovisual.");
+                    });
+                } else if (data.seconds > tiempoMaximoVisto) {
+                    tiempoMaximoVisto = data.seconds;
+                }
+            }
+        });
+
+        player.on('seeked', function(data) {
+            if (data.seconds > tiempoMaximoVisto + 1.5) {
+                ejecutandoRegreso = true;
+                player.setCurrentTime(tiempoMaximoVisto).then(function() {
+                    ejecutandoRegreso = false;
+                });
+            }
+        });
+
+        player.on('ended', function() {
+            if (tiempoMaximoVisto >= (duracionVideo - 3)) {
+                btnDesbloquear.removeAttribute("disabled");
+                btnDesbloquear.innerText = "Acceder a Evaluación ⚔️";
+                btnDesbloquear.style.background = "linear-gradient(135deg, #00ff87, #00c2ff)";
+                btnDesbloquear.style.color = "#020617";
+                btnDesbloquear.style.boxShadow = "0 0 20px rgba(0, 255, 135, 0.6)";
+            } else {
+                tiempoMaximoVisto = 0;
+                player.setCurrentTime(0);
+                alert("❌ Trampa detectada: Debes reproducir el contenido completo paso a paso.");
+            }
+        });
+
+        function barajearTodo() {
+            const contenedorPreguntas = document.getElementById('contenedorPreguntas');
+            const bloquesPreguntas = Array.from(contenedorPreguntas.children);
+            
+            for (let i = bloquesPreguntas.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                contenedorPreguntas.appendChild(bloquesPreguntas[j]);
+            }
+
+            const listasOpciones = document.querySelectorAll('.opciones-lista');
+            listasOpciones.forEach(lista => {
+                const opciones = Array.from(lista.children);
+                for (let i = opciones.length - 1; i > 0; i--) {
+                    const j = Math.floor(Math.random() * (i + 1));
+                    lista.appendChild(opciones[j]);
+                }
+            });
+        }
+
+        window.addEventListener("DOMContentLoaded", barajearTodo);
+
+        function mostrarEvaluacionOculta() {
+            moduloEvaluacion.classList.remove("oculto-inicial");
+            moduloEvaluacion.classList.add("mostrar-animado");
+            document.getElementById("controlBloqueo").style.display = "none";
+            moduloEvaluacion.scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function solicitarSalida() { 
+            if (confirm("¿Abortar misión? El progreso actual no se guardará.")) {
+                window.location.href = "../mundoI.php"; 
+            }
+        }
+        
+        function seleccionarOpcion(elementoLli) { 
+            const listaPadre = elementoLli.parentElement; 
+            Array.from(listaPadre.children).forEach(li => li.classList.remove('seleccionada')); 
+            elementoLli.classList.add('seleccionada'); 
+            listaPadre.setAttribute("data-seleccionada", elementoLli.getAttribute("data-id")); 
+        }
+
+        function validarCuestionario() {
+            const bloques = document.querySelectorAll('.pregunta-bloque'); 
+            let todasRespondidas = true; 
+            let todasCorrectas = true;
+
+            bloques.forEach(bloque => {
+                const listaOpciones = bloque.querySelector('.opciones-lista');
+                const seleccionadaId = listaOpciones.getAttribute('data-seleccionada');
+                const respuestaCorrecta = block = bloque.getAttribute('data-correcta');
+
+                if (!seleccionadaId) {
+                    todasRespondidas = false;
+                    return; 
+                }
+
+                if (seleccionadaId !== respuestaCorrecta) {
+                    todasCorrectas = false;
+                }
+            });
+
+            if (!todasRespondidas) { 
+                alert("⚠️ Por favor, responde los 10 reactivos antes de enviar las respuestas."); 
+                return; 
+            }
+
+            if (!todasCorrectas) { 
+                alert("❌ Error en los sistemas lógicos. Revisa tus respuestas e inténtalo de nuevo."); 
+                return; 
+            }
+
+            clearInterval(cronometroIntervalo);
+            registrarProgresoYXP(idLeccionActual);
+        }
+
+        function registrarProgresoYXP(l) {
+            fetch('../api/procesar_leccion_completada.php', { 
+                method: 'POST', 
+                headers: { 'Content-Type': 'application/json' }, 
+                body: JSON.stringify({ 
+                    id_leccion: l, 
+                    xp_ganada: xpGanada,
+                    tiempo_segundos: segundosTranscurridos 
+                }) 
+            })
+            .then(res => res.json())
+            .then(d => { 
+                mostrarPantallaExito();
+            })
+            .catch(() => { 
+                mostrarPantallaExito();
+            });
+        }
+
+        function mostrarPantallaExito() {
+            document.getElementById('overlayExito').classList.add('visible'); 
+            const btnRegresar = document.getElementById('btnSiguienteNivel');
+            btnRegresar.style.setProperty('display', 'flex', 'important');
+        }
+
+        function irAlMapa() { window.location.href = "../mundoI.php"; }
+    </script>
+</body>
+</html>

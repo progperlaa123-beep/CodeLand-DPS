@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/estilo_lecciones.css">
+    <title>Estación Orbital 04 | CodeLand DPS</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght=300;400;600;800&display=swap" rel="stylesheet">
+    <script src="https://player.vimeo.com/api/player.js"></script>
+</head>
+<body>
+    <header class="header-leccion">
+        <div><h2>Módulo I ➔ Estación 04</h2></div>
+        <div id="cronometroContenedor" style="background: rgba(0, 162, 255, 0.15); border: 1px solid #00a2ff; padding: 6px 16px; border-radius: 20px; font-weight: 600; color: #00a2ff; font-family: 'Poppins', sans-serif; display: flex; align-items: center; gap: 8px;">
+            ⏱️ Tiempo: <span id="timerVisual">00:00</span>
+        </div>
+        <button class="btn-salir" onclick="solicitarSalida()">Abandona Misión 🛸</button>
+    </header>
+
+    <section class="seccion-contexto">
+        <h3>🚀 Contexto de Aplicación Real</h3>
+        <p>Cuando trabajas en un equipo de desarrollo de software con ingenieros de diferentes países, el código escrito en un lenguaje específico puede ser difícil de interpretar a primera vista. Para resolver esto, los programadores utilizan planos universales llamados diagramas de flujo. Al igual que un arquitecto usa símbolos estandarizados para diseñar una casa, un programador dibuja bloques específicos para que cualquier persona en el mundo entienda exactamente cómo fluyen los datos y dónde se toman las decisiones en el sistema.</p>
+    </section>
+
+    <section class="seccion-multimedia">
+        <h3>🎥 Contenido Audiovisual de Telemetría</h3>
+        <p class="instruccion-video">⚠️ Debes visualizar el video completo sin adelantar para desbloquear la evaluación.</p>
+        
+        <div class="contenedor-video" style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; margin-bottom: 15px;">
+            <iframe id="videoVimeo" 
+                    src="https://player.vimeo.com/video/1198226421?api=1&controls=1&badge=0&autopause=0&player_id=0" 
+                    frameborder="0" 
+                    allow="autoplay; fullscreen; picture-in-picture" 
+                    style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border-radius: 8px;" 
+                    title="Contenido Educativo Orbital">
+            </iframe>
+        </div>
+
+        <p style="font-size: 0.85rem; color: #64748b; text-align: center; margin-top: 12px; font-style: italic; font-family: 'Poppins', sans-serif;">
+            Material audiovisual adaptado con fines estrictamente educativos. Créditos del autor: LearnFree en Español.
+        </p>
+        <div class="contenedor-imagen-apoyo">
+            <img src="img/esquema_leccion4.png" alt="Simbología geométrica estándar" onerror="this.style.display='none';">
+        </div>
+    </section>
+
+    <section class="seccion-teoria">
+        <h1>4. Diagramas de Flujo: Símbolos Básicos</h1>
+        <p>Un diagrama de flujo es la representación gráfica de un algoritmo. Utiliza una simbología geométrica estandarizada (normalizada por organizaciones como ANSI e ISO) donde cada forma tiene un significado lógico exclusivo. Las líneas de flujo interconectan estos símbolos para indicar la secuencia exacta en la que se deben ejecutar las instrucciones, permitiendo visualizar la estructura del programa de manera rápida y sin ambigüedades.</p>
+        
+        <div class="ideas-clave">
+            <h3>💡 Conceptos Clave y Definiciones Académicas:</h3>
+            <ul>
+                <li><strong>Diagrama de Flujo:</strong> Herramienta gráfica que utiliza bloques geométricos para representar de forma esquemática la secuencia de pasos lógicos de un algoritmo informático <em>(Joyanes Aguilar, 2013)</em>.</li>
+                <li><strong>Terminal (Inicio / Fin):</strong> Símbolo con forma de óvalo o rectángulo redondeado. Se coloca obligatoriamente al principio y al final del diagrama para delimitar el alcance físico del algoritmo.</li>
+                <li><strong>Entrada / Salida (Lectura):</strong> Símbolo con forma de paralelogramo. Se utiliza para indicar que el programa está recibiendo datos introducidos por el usuario o leyendo un registro de memoria.</li>
+                <li><strong>Proceso:</strong> Símbolo rectangular. Representa cualquier operación interna realizada por la computadora, tales como cálculos matemáticos, operaciones aritméticas o asignación de valores a variables.</li>
+                <li><strong>Impresión / Salida en Pantalla:</strong> Bloque con base ondulada (o el paralelogramo general en ciertas notaciones simplificadas). Indica la acción de mostrar un resultado final o un mensaje directo al usuario en la pantalla.</li>
+                <li><strong>Líneas de Flujo:</strong> Flechas rectas orientadas que conectan los símbolos geométricos. Su única función es dictar el orden estricto de ejecución, fluyendo convencionalmente de arriba hacia abajo y de izquierda a derecha.</li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="seccion-bloqueada-control" id="controlBloqueo">
+        <button id="btnDesbloquearQuiz" class="btn-verificar" disabled onclick="mostrarEvaluacionOculta()">
+            Bloqueado por Reproducción 🔒
+        </button>
+    </section>
+
+    <section class="seccion-quiz oculto-inicial" id="moduloEvaluacion">
+        <h2>⚡ Evaluación </h2>
+        
+        <div id="contenedorPreguntas">
+            
+            <div class="pregunta-bloque" data-correcta="2">
+                <p><strong> Si necesitas representar una operación matemática compleja (como calcular el IVA), ¿qué símbolo geométrico debes emplear?</strong></p>
+                <ul class="opciones-lista">
+                    <li onclick="seleccionarOpcion(this)" data-id="1">Un óvalo o elipse.</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="2">Un rectángulo regular.</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="3">Un paralelogramo inclinado.</li>
+                </ul>
+            </div>
+
+            <div class="pregunta-bloque" data-correcta="3">
+                <p><strong> ¿Cuál es el propósito obligatorio del símbolo con forma de óvalo (terminal) dentro de un diagrama de flujo estructurado?</strong></p>
+                <ul class="opciones-lista">
+                    <li onclick="seleccionarOpcion(this)" data-id="1">Mostrar un mensaje de error crítico en la pantalla.</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="2">Almacenar datos alfanuméricos de forma temporal en la RAM.</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="3">Marcar de forma unívoca los puntos exactos de Inicio y Fin del algoritmo para garantizar su finitud.</li>
+                </ul>
+            </div>
+
+            <div class="pregunta-bloque" data-correcta="1">
+                <p><strong> Cuando un algoritmo requiere que el usuario digite su contraseña desde el teclado, esta acción de captura se grafica con un:</strong></p>
+                <ul class="opciones-lista">
+                    <li onclick="seleccionarOpcion(this)" data-id="1">Paralelogramo (símbolo de Entrada/Lectura).</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="2">Rectángulo (símbolo de Proceso).</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="3">Círculo con flechas concéntricas.</li>
+                </ul>
+            </div>
+
+            <div class="pregunta-bloque" data-correcta="3">
+                <p><strong> ¿Cuáles son las dos organizaciones internacionales que normalizan y estandarizan la simbología de los diagramas de flujo?</strong></p>
+                <ul class="opciones-lista">
+                    <li onclick="seleccionarOpcion(this)" data-id="1">Spotify y Vimeo Académico.</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="2">PHP Global y MySQL Community.</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="3">ANSI e ISO.</li>
+                </ul>
+            </div>
+
+            <div class="pregunta-bloque" data-correcta="1">
+                <p><strong> ¿Qué forma geométrica tiene el bloque que indica la acción de mostrar un mensaje de texto directo al usuario en la pantalla?</strong></p>
+                <ul class="opciones-lista">
+                    <li onclick="seleccionarOpcion(this)" data-id="1">Un bloque con base ondulada (Impresión).</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="2">Un rombo regular de decisiones.</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="3">Un rectángulo redondeado.</li>
+                </ul>
+            </div>
+
+            <div class="pregunta-bloque" data-correcta="2">
+                <p><strong> ¿Cuál es la única función técnica de las Líneas de Flujo (flechas) dentro del plano universal?</strong></p>
+                <ul class="opciones-lista">
+                    <li onclick="seleccionarOpcion(this)" data-id="1">Indicar qué variables consumen más espacio de memoria RAM.</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="2">Dictar el orden estricto de ejecución, fluyendo de arriba a abajo y de izquierda a derecha.</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="3">Conectar los archivos HTML con las hojas de estilo CSS.</li>
+                </ul>
+            </div>
+
+            <div class="pregunta-bloque" data-correcta="1">
+                <p><strong> Según Joyanes Aguilar (2013), un diagrama de flujo se define técnicamente como:</strong></p>
+                <ul class="opciones-lista">
+                    <li onclick="seleccionarOpcion(this)" data-id="1">Una herramienta gráfica que utiliza bloques geométricos para representar esquemáticamente un algoritmo.</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="2">Un código estructurado que el servidor interpreta directamente.</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="3">Una base de datos relacional armada de forma secuencial.</li>
+                </ul>
+            </div>
+
+            <div class="pregunta-bloque" data-correcta="3">
+                <p><strong> Si asignamos el valor de una variable ($x = 10$), ¿qué bloque geométrico debemos dibujar?</strong></p>
+                <ul class="opciones-lista">
+                    <li onclick="seleccionarOpcion(this)" data-id="1">Un paralelogramo de lectura.</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="2">Un óvalo terminal.</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="3">Un rectángulo de proceso.</li>
+                </ul>
+            </div>
+
+            <div class="pregunta-bloque" data-correcta="2">
+                <p><strong> ¿Por qué se consideran los diagramas de flujo como "planos universales"?</strong></p>
+                <ul class="opciones-lista">
+                    <li onclick="seleccionarOpcion(this)" data-id="1">Porque se envían por satélite a las estaciones espaciales orbitales.</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="2">Porque permiten que ingenieros de diferentes países entiendan el flujo lógico sin importar el idioma de programación.</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="3">Porque aumentan automáticamente la velocidad de la CPU.</li>
+                </ul>
+            </div>
+
+            <div class="pregunta-bloque" data-correcta="1">
+                <p><strong> Todo diagrama de flujo válido y bien estructurado debe cumplir obligatoriamente con la regla de delimitar su alcance mediante:</strong></p>
+                <ul class="opciones-lista">
+                    <li onclick="seleccionarOpcion(this)" data-id="1">Un óvalo al inicio y un óvalo al final.</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="2">Líneas de flujo que apunten en todas las direcciones de manera aleatoria.</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="3">Un rectángulo de proceso que se repita infinitamente.</li>
+                </ul>
+            </div>
+
+        </div>
+
+        <button class="btn-verificar" onclick="validarCuestionario()">Enviar Respuestas al Servidor</button>
+    </section>
+
+    <div id="overlayExito" class="pantalla-exito-overlay">
+        <div id="textoExito" class="mensaje-exito-grande">¡Correcto! Has ganado 50 XP.</div>
+        <button class="btn-comenzar" id="btnSiguienteNivel" onclick="irAlMapa()">Regresar a las Regiones 🚀</button>
+    </div>
+
+    <script>
+        const idLeccionActual = 4;
+        const xpGanada = 50;
+        
+        let segundosTranscurridos = 0;
+        const timerElemento = document.getElementById("timerVisual");
+        
+        const cronometroIntervalo = setInterval(() => {
+            segundosTranscurridos++;
+            let minutos = Math.floor(segundosTranscurridos / 60);
+            let segundos = segundosTranscurridos % 60;
+            let minTexto = minutes < 10 ? "0" + minutes : minutes;
+            let segTexto = segundos < 10 ? "0" + segundos : segundos;
+            timerElemento.innerText = minTexto + ":" + segTexto;
+        }, 1000);
+
+        const btnDesbloquear = document.getElementById("btnDesbloquearQuiz");
+        const moduloEvaluacion = document.getElementById("moduloEvaluacion");
+
+        const iframe = document.getElementById('videoVimeo');
+        const player = new Vimeo.Player(iframe);
+        
+        let tiempoMaximoVisto = 0;
+        let ejecutandoRegreso = false;
+        let duracionVideo = 0;
+
+        player.getDuration().then(function(duration) {
+            duracionVideo = duration;
+        }).catch(function() {
+            duracionVideo = 60; 
+        });
+
+        player.on('timeupdate', function(data) {
+            if (!ejecutandoRegreso) {
+                if (data.seconds > tiempoMaximoVisto + 1.5) {
+                    ejecutandoRegreso = true;
+                    player.setCurrentTime(tiempoMaximoVisto).then(function() {
+                        ejecutandoRegreso = false;
+                        alert("🔒 Bloqueo de Seguridad: No puedes adelantar la explicación audiovisual.");
+                    });
+                } else if (data.seconds > tiempoMaximoVisto) {
+                    tiempoMaximoVisto = data.seconds;
+                }
+            }
+        });
+
+        player.on('seeked', function(data) {
+            if (data.seconds > tiempoMaximoVisto + 1.5) {
+                ejecutandoRegreso = true;
+                player.setCurrentTime(tiempoMaximoVisto).then(function() {
+                    ejecutandoRegreso = false;
+                });
+            }
+        });
+
+        player.on('ended', function() {
+            if (tiempoMaximoVisto >= (duracionVideo - 3)) {
+                btnDesbloquear.removeAttribute("disabled");
+                btnDesbloquear.innerText = "Acceder a Evaluación ⚔️";
+                btnDesbloquear.style.background = "linear-gradient(135deg, #00ff87, #00c2ff)";
+                btnDesbloquear.style.color = "#020617";
+                btnDesbloquear.style.boxShadow = "0 0 20px rgba(0, 255, 135, 0.6)";
+            } else {
+                tiempoMaximoVisto = 0;
+                player.setCurrentTime(0);
+                alert("❌ Trampa detectada: Debes reproducir el contenido completo paso a paso.");
+            }
+        });
+
+        function barajearTodo() {
+            const contenedorPreguntas = document.getElementById('contenedorPreguntas');
+            const bloquesPreguntas = Array.from(contenedorPreguntas.children);
+            for (let i = bloquesPreguntas.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                contenedorPreguntas.appendChild(bloquesPreguntas[j]);
+            }
+
+            const listasOpciones = document.querySelectorAll('.opciones-lista');
+            listasOpciones.forEach(lista => {
+                const opciones = Array.from(lista.children);
+                for (let i = opciones.length - 1; i > 0; i--) {
+                    const j = Math.floor(Math.random() * (i + 1));
+                    lista.appendChild(opciones[j]);
+                }
+            });
+        }
+
+        window.addEventListener("DOMContentLoaded", barajearTodo);
+
+        function mostrarEvaluacionOculta() {
+            moduloEvaluacion.classList.remove("oculto-inicial");
+            moduloEvaluacion.classList.add("mostrar-animado");
+            document.getElementById("controlBloqueo").style.display = "none";
+            moduloEvaluacion.scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function solicitarSalida() { 
+            if (confirm("¿Abortar misión? El progreso actual no se guardará.")) {
+                window.location.href = "../mundoI.php"; 
+            }
+        }
+        
+        function seleccionarOpcion(elementoLli) { 
+            const listaPadre = elementoLli.parentElement; 
+            Array.from(listaPadre.children).forEach(li => li.classList.remove('seleccionada')); 
+            elementoLli.classList.add('seleccionada'); 
+            listaPadre.setAttribute("data-seleccionada", elementoLli.getAttribute("data-id")); 
+        }
+
+        function validarCuestionario() {
+            const bloques = document.querySelectorAll('.pregunta-bloque'); 
+            let todasRespondidas = true; 
+            let todasCorrectas = true;
+
+            bloques.forEach(bloque => {
+                const listaOpciones = bloque.querySelector('.opciones-lista');
+                const seleccionadaId = listaOpciones.getAttribute('data-seleccionada');
+                const respuestaCorrecta = bloque.getAttribute('data-correcta');
+
+                if (!seleccionadaId) {
+                    todasRespondidas = false;
+                    return; 
+                }
+                if (seleccionadaId !== respuestaCorrecta) {
+                    todasCorrectas = false;
+                }
+            });
+
+            if (!todasRespondidas) { 
+                alert("⚠️ Por favor, responde los 10 reactivos antes de enviar la telemetría."); 
+                return; 
+            }
+            if (!todasCorrectas) { 
+                alert("❌ Error en los sistemas lógicos. Revisa tus respuestas e inténtalo de nuevo."); 
+                return; 
+            }
+
+            clearInterval(cronometroIntervalo);
+            registrarProgresoYXP(idLeccionActual);
+        }
+
+        function registrarProgresoYXP(l) {
+            fetch('../api/procesar_leccion_completada.php', { 
+                method: 'POST', 
+                headers: { 'Content-Type': 'application/json' }, 
+                body: JSON.stringify({ 
+                    id_leccion: l, 
+                    xp_ganada: xpGanada,
+                    tiempo_segundos: segundosTranscurridos 
+                }) 
+            })
+            .then(res => res.json())
+            .then(() => { mostrarPantallaExito(); })
+            .catch(() => { mostrarPantallaExito(); });
+        }
+
+        function mostrarPantallaExito() {
+            document.getElementById('overlayExito').classList.add('visible'); 
+            const btnRegresar = document.getElementById('btnSiguienteNivel');
+            btnRegresar.style.setProperty('display', 'flex', 'important');
+        }
+
+        function irAlMapa() { window.location.href = "../mundoI.php"; }
+    </script>
+</body>
+</html>

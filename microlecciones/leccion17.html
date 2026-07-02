@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/estilo_lecciones.css">
+    <title>Estación Orbital 17 | CodeLand DPS</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght=300;400;600;800&display=swap" rel="stylesheet">
+    <script src="https://player.vimeo.com/api/player.js"></script>
+</head>
+<body>
+    <header class="header-leccion">
+        <div><h2>Módulo I ➔ Estación 17</h2></div>
+        <div id="cronometroContenedor" style="background: rgba(0, 162, 255, 0.15); border: 1px solid #00a2ff; padding: 6px 16px; border-radius: 20px; font-weight: 600; color: #00a2ff; font-family: 'Poppins', sans-serif; display: flex; align-items: center; gap: 8px;">
+            ⏱️ Tiempo: <span id="timerVisual">00:00</span>
+        </div>
+        <button class="btn-salir" onclick="solicitarSalida()">Abandona Misión 🛸</button>
+    </header>
+
+    <section class="seccion-contexto" style="margin-bottom: 25px; padding: 20px; background: rgba(255, 255, 255, 0.02); border-left: 4px solid #00a2ff; border-radius: 4px;">
+        <h3>🚀 Contexto de Aplicación Real</h3>
+        <p>Imagina que estás en la clase de educación física y el profesor te ordena dar **exactamente 5 vueltas** a la cancha. No vas a parar cuando empiece a llover, ni vas a seguir corriendo para siempre; tu mente sabe con precisión el número de repeticiones desde el inicio: empiezas en la vuelta 1, avanzas de 1 en 1, y te detienes al completar la número 5. En el software, cuando sabemos de antemano cuántas veces debe repetirse una acción, utilizamos el **bucle Para (For)** para evitar escribir la misma instrucción una y otra vez.</p>
+    </section>
+
+    <section class="seccion-multimedia">
+        <h3>🎥 Contenido Audiovisual </h3>
+        <p class="instruccion-video">⚠️ Debes visualizar el video completo sin adelantar para desbloquear la evaluación.</p>
+        
+        <div class="contenedor-video" style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; margin-bottom: 15px;">
+            <iframe id="videoVimeo" 
+                    src="https://player.vimeo.com/video/1198480173?api=1&controls=1&badge=0&autopause=0&player_id=0" 
+                    frameborder="0" 
+                    allow="autoplay; fullscreen; picture-in-picture" 
+                    style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border-radius: 8px;" 
+                    title="Contenido Educativo Orbital">
+            </iframe>
+        </div>
+
+        <p style="font-size: 0.85rem; color: #64748b; text-align: center; margin-top: 12px; font-style: italic; font-family: 'Poppins', sans-serif;">
+            Material audiovisual adaptado con fines estrictamente educativos. Créditos del autor: Retro.
+        </p>
+        <div class="contenedor-imagen-apoyo">
+            <img src="img/esquema_leccion17.png" alt="Esquema conceptual" onerror="this.style.display='none';">
+        </div>
+    </section>
+
+    <section class="seccion-teoria">
+        <h1>17. Estructuras Cíclicas: Bucle Para (For)</h1>
+        <p>Las estructuras de repetición controladas por contador, comúnmente llamadas bucles **Para** o ciclos **For**, permiten ejecutar un conjunto de instrucciones un número determinado y fijo de veces.</p>
+        
+        <div class="ideas-clave">
+            <h3>💡 Conceptos Clave y Definiciones Académicas:</h3>
+            <ul>
+                <li><strong>Bucle Determinado:</strong> Es aquel ciclo donde la cantidad de iteraciones (repeticiones) se conoce con total certeza antes de que comience la primera ejecución del bucle <em>(Joyanes Aguilar, 2013)</em>.</li>
+                <li><strong>Componentes Esenciales del Ciclo For:</strong> Para que funcione correctamente, requiere siempre tres parámetros definidos en su cabecera:
+                    <ol>
+                        <li><strong>Valor Inicial (Inicialización):</strong> Establece el valor inicial de la variable contadora (ej. `i = 1`).</li>
+                        <li><strong>Condición de Parada (Límite):</strong> Expresión lógica que evalúa si el contador alcanzó el valor final establecido (ej. `i <= 10`).</li>
+                        <li><strong>Incremento o Paso (Actualización):</strong> Dictamina cuánto se le suma o resta al contador al finalizar cada vuelta (ej. `i = i + 1`).</li>
+                    </ol>
+                </li>
+                <li><strong>Sintaxis Estructural (PSeInt / Pseudocódigo):</strong>
+                    <pre style="background:#111622; color:#38e27a; padding:10px; margin:10px 0; border-radius:4px; font-family:monospace;">
+Para variable_contador <- valor_inicial Hasta valor_final Con Paso incremento Hacer
+    Instrucciones que se van a repetir...
+FinPara</pre>
+                </li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="seccion-bloqueada-control" id="controlBloqueo">
+        <button id="btnDesbloquearQuiz" class="btn-verificar" disabled onclick="mostrarEvaluacionOculta()">
+            Bloqueado por Reproducción 🔒
+        </button>
+    </section>
+
+    <section class="seccion-quiz oculto-inicial" id="moduloEvaluacion">
+        <h2>⚡ Evaluación </h2>
+        
+        <div id="contenedorPreguntas">
+            
+            <div class="pregunta-bloque" data-correcta="1">
+                <p><strong> ¿Cuál es la característica principal que define a un bucle determinado como el ciclo "Para" (For)?</strong></p>
+                <ul class="opciones-lista">
+                    <li onclick="seleccionarOpcion(this)" data-id="1">El número de repeticiones se conoce con exactitud antes de que empiece a ejecutarse el ciclo.</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="2">Se repite infinitamente hasta que la computadora se apaga.</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="3">Solo sirve para evaluar si una condición es verdadera o falsa una única vez.</li>
+                </ul>
+            </div>
+
+            <div class="pregunta-bloque" data-correcta="3">
+                <p><strong> ¿Cuáles son los tres componentes esenciales que se deben definir en la cabecera de una estructura "Para"?</strong></p>
+                <ul class="opciones-lista">
+                    <li onclick="seleccionarOpcion(this)" data-id="1">Texto de pantalla, color de interfaz y dimensiones de memoria.</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="2">Condición simple, condición compuesta y cláusula Sino.</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="3">Valor inicial, condición de parada (límite) e incremento (paso).</li>
+                </ul>
+            </div>
+
+            <div class="pregunta-bloque" data-correcta="2">
+                <p><strong> En la analogía del profesor de educación física, ¿qué elemento representa al "Incremento o Paso" del ciclo?</strong></p>
+                <ul class="opciones-lista">
+                    <li onclick="seleccionarOpcion(this)" data-id="1">La cantidad total de 5 vueltas que se deben dar.</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="2">Ir sumando una vuelta cada vez que pasas por la línea de meta.</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="3">El silbato que usa el profesor para iniciar la clase.</li>
+                </ul>
+            </div>
+
+            <div class="pregunta-bloque" data-correcta="1">
+                <p><strong> De acuerdo con Joyanes Aguilar (2013), ¿cuándo se determina la cantidad de iteraciones en un bucle controlado por contador?</strong></p>
+                <ul class="opciones-lista">
+                    <li onclick="seleccionarOpcion(this)" data-id="1">Antes de que comience la primera ejecución del bucle.</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="2">Únicamente cuando el programa detecta un error de sintaxis.</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="3">Al final de todo el programa de manera aleatoria.</li>
+                </ul>
+            </div>
+
+            <div class="pregunta-bloque" data-correcta="3">
+                <p><strong> Si escribes un ciclo que inicia en 1, termina en 5 y avanza con paso 1, ¿cuántas veces se ejecutarán las instrucciones internas?</strong></p>
+                <ul class="opciones-lista">
+                    <li onclick="seleccionarOpcion(this)" data-id="1">Se ejecutarán 1 vuelta únicamente.</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="2">Se ejecutarán de forma infinita sin detenerse.</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="3">Se ejecutarán exactamente 5 veces.</li>
+                </ul>
+            </div>
+
+            <div class="pregunta-bloque" data-correcta="2">
+                <p><strong> ¿Qué palabra reservada se utiliza en pseudocódigo para cerrar formalmente el bloque de instrucciones de este ciclo?</strong></p>
+                <ul class="opciones-lista">
+                    <li onclick="seleccionarOpcion(this)" data-id="1">FinSi</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="2">FinPara</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="3">TerminarBucle</li>
+                </ul>
+            </div>
+
+            <div class="pregunta-bloque" data-correcta="1">
+                <p><strong> ¿Cuál es la función del "Valor Inicial" en la variable contadora de un ciclo For?</strong></p>
+                <ul class="opciones-lista">
+                    <li onclick="seleccionarOpcion(this)" data-id="1">Establecer el número o punto de partida desde el cual comenzará a contar el bucle.</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="2">Definir el límite máximo de memoria RAM que usará el código.</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="3">Indicarle al programa que borre todas las variables previas.</li>
+                </ul>
+            </div>
+
+            <div class="pregunta-bloque" data-correcta="3">
+                <p><strong> ¿Qué sucedería si un bucle "Para" no tuviera un parámetro de incremento o actualización?</strong></p>
+                <ul class="opciones-lista">
+                    <li onclick="seleccionarOpcion(this)" data-id="1">El programa corre más rápido porque hace menos operaciones.</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="2">Se salta directamente al final de la estructura de control.</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="3">La variable contadora nunca cambiaría, provocando que la condición de parada no se alcance.</li>
+                </ul>
+            </div>
+
+            <div class="pregunta-bloque" data-correcta="2">
+                <p><strong> En la sintaxis provista, ¿dónde se colocan las acciones o instrucciones que queremos repetir de forma automatizada?</strong></p>
+                <ul class="opciones-lista">
+                    <li onclick="seleccionarOpcion(this)" data-id="1">Antes de la cabecera 'Para'.</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="2">Entre la palabra reservada 'Hacer' y el cierre 'FinPara'.</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="3">Fuera del documento HTML indexado de telemetría.</li>
+                </ul>
+            </div>
+
+            <div class="pregunta-bloque" data-correcta="1">
+                <p><strong> El uso principal de los bucles repetitivos en el desarrollo de software nos ayuda a evitar...</strong></p>
+                <ul class="opciones-lista">
+                    <li onclick="seleccionarOpcion(this)" data-id="1">...escribir manualmente la misma línea de instrucción una y otra vez de forma innecesaria.</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="2">...la declaración obligatoria de variables enteras.</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="3">...el uso de navegadores web modernos para ejecutar interfaces.</li>
+                </ul>
+            </div>
+
+        </div>
+
+        <button class="btn-verificar" onclick="validarCuestionario()">Enviar Respuestas </button>
+    </section>
+
+    <div id="overlayExito" class="pantalla-exito-overlay">
+        <div id="textoExito" class="mensaje-exito-grande">¡Correcto! Has ganado 50 XP.</div>
+        <button class="btn-comenzar" id="btnSiguienteNivel" onclick="irAlMapa()">Regresar a las Regiones 🚀</button>
+    </div>
+
+    <script>
+        const idLeccionActual = 20;
+        const xpGanada = 50;
+        
+        let segundosTranscurridos = 0;
+        const timerElemento = document.getElementById("timerVisual");
+        
+        const cronometroIntervalo = setInterval(() => {
+            segundosTranscurridos++;
+            let minutos = Math.floor(segundosTranscurridos / 60);
+            let segundos = segundosTranscurridos % 60;
+            
+            let minTexto = minutos < 10 ? "0" + minutos : minutos;
+            let segTexto = segundos < 10 ? "0" + segundos : segundos;
+            
+            timerElemento.innerText = minTexto + ":" + segTexto;
+        }, 1000);
+
+        const btnDesbloquear = document.getElementById("btnDesbloquearQuiz");
+        const moduloEvaluacion = document.getElementById("moduloEvaluacion");
+
+        const iframe = document.getElementById('videoVimeo');
+        const player = new Vimeo.Player(iframe);
+        
+        let tiempoMaximoVisto = 0;
+        let ejecutandoRegreso = false;
+        let duracionVideo = 0;
+
+        player.getDuration().then(function(duration) {
+            duracionVideo = duration;
+        }).catch(function(error) {
+            duracionVideo = 60; 
+        });
+
+        player.on('timeupdate', function(data) {
+            if (!ejecutandoRegreso) {
+                if (data.seconds > tiempoMaximoVisto + 1.5) {
+                    ejecutandoRegreso = true;
+                    player.setCurrentTime(tiempoMaximoVisto).then(function() {
+                        ejecutandoRegreso = false;
+                        alert("🔒 Bloqueo de Seguridad: No puedes adelantar la explicación audiovisual.");
+                    });
+                } else if (data.seconds > tiempoMaximoVisto) {
+                    tiempoMaximoVisto = data.seconds;
+                }
+            }
+        });
+
+        player.on('seeked', function(data) {
+            if (data.seconds > tiempoMaximoVisto + 1.5) {
+                ejecutandoRegreso = true;
+                player.setCurrentTime(tiempoMaximoVisto).then(function() {
+                    ejecutandoRegreso = false;
+                });
+            }
+        });
+
+        player.on('ended', function() {
+            if (tiempoMaximoVisto >= (duracionVideo - 3)) {
+                btnDesbloquear.removeAttribute("disabled");
+                btnDesbloquear.innerText = "Acceder a Evaluación ⚔️";
+                btnDesbloquear.style.background = "linear-gradient(135deg, #00ff87, #00c2ff)";
+                btnDesbloquear.style.color = "#020617";
+                btnDesbloquear.style.boxShadow = "0 0 20px rgba(0, 255, 135, 0.6)";
+            } else {
+                tiempoMaximoVisto = 0;
+                player.setCurrentTime(0);
+                alert("❌ Trampa detectada: Debes reproducir el contenido completo paso a paso.");
+            }
+        });
+
+        function barajearTodo() {
+            const contenedorPreguntas = document.getElementById('contenedorPreguntas');
+            const bloquesPreguntas = Array.from(contenedorPreguntas.children);
+            
+            for (let i = bloquesPreguntas.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                contenedorPreguntas.appendChild(bloquesPreguntas[j]);
+            }
+
+            const listasOpciones = document.querySelectorAll('.opciones-lista');
+            listasOpciones.forEach(lista => {
+                const opciones = Array.from(lista.children);
+                for (let i = opciones.length - 1; i > 0; i--) {
+                    const j = Math.floor(Math.random() * (i + 1));
+                    lista.appendChild(opciones[j]);
+                }
+            });
+        }
+
+        window.addEventListener("DOMContentLoaded", barajearTodo);
+
+        function mostrarEvaluacionOculta() {
+            moduloEvaluacion.classList.remove("oculto-inicial");
+            moduloEvaluacion.classList.add("mostrar-animado");
+            document.getElementById("controlBloqueo").style.display = "none";
+            moduloEvaluacion.scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function solicitarSalida() { 
+            if (confirm("¿Abortar misión? El progreso actual no se guardará.")) {
+                window.location.href = "../mundoI.php"; 
+            }
+        }
+        
+        function seleccionarOpcion(elementoLli) { 
+            const listaPadre = elementoLli.parentElement; 
+            Array.from(listaPadre.children).forEach(li => li.classList.remove('seleccionada')); 
+            elementoLli.classList.add('seleccionada'); 
+            listaPadre.setAttribute("data-seleccionada", elementoLli.getAttribute("data-id")); 
+        }
+
+        function validarCuestionario() {
+            const bloques = document.querySelectorAll('.pregunta-bloque'); 
+            let todasRespondidas = true; 
+            let todasCorrectas = true;
+
+            bloques.forEach(bloque => {
+                const listaOpciones = bloque.querySelector('.opciones-lista');
+                const seleccionadaId = listaOpciones.getAttribute('data-seleccionada');
+                const respuestaCorrecta = bloque.getAttribute('data-correcta');
+
+                if (!seleccionadaId) {
+                    todasRespondidas = false;
+                    return; 
+                }
+
+                if (seleccionadaId !== respuestaCorrecta) {
+                    todasCorrectas = false;
+                }
+            });
+
+            if (!todasRespondidas) { 
+                alert("⚠️ Por favor, responde los 10 reactivos antes de enviar las respuestas."); 
+                return; 
+            }
+
+            if (!todasCorrectas) { 
+                alert("❌ Error en los sistemas lógicos. Revisa tus respuestas e inténtalo de nuevo."); 
+                return; 
+            }
+
+            clearInterval(cronometroIntervalo);
+            registrarProgresoYXP(idLeccionActual);
+        }
+
+        function registrarProgresoYXP(l) {
+            fetch('../api/procesar_leccion_completada.php', { 
+                method: 'POST', 
+                headers: { 'Content-Type': 'application/json' }, 
+                body: JSON.stringify({ 
+                    id_leccion: l, 
+                    xp_ganada: xpGanada,
+                    tiempo_segundos: segundosTranscurridos 
+                }) 
+            })
+            .then(res => res.json())
+            .then(d => { 
+                mostrarPantallaExito();
+            })
+            .catch(() => { 
+                mostrarPantallaExito();
+            });
+        }
+
+        function mostrarPantallaExito() {
+            document.getElementById('overlayExito').classList.add('visible'); 
+            const btnRegresar = document.getElementById('btnSiguienteNivel');
+            btnRegresar.style.setProperty('display', 'flex', 'important');
+        }
+
+        function irAlMapa() { window.location.href = "../mundoI.php"; }
+    </script>
+</body>
+</html>

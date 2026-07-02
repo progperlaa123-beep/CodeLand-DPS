@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/estilo_lecciones.css">
+    <title>Estación Orbital 01 | CodeLand DPS</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght=300;400;600;800&display=swap" rel="stylesheet">
+    <script src="https://player.vimeo.com/api/player.js"></script>
+</head>
+<body>
+    <header class="header-leccion">
+        <div><h2>Módulo I ➔ Estación 01</h2></div>
+        <div id="cronometroContenedor" style="background: rgba(0, 162, 255, 0.15); border: 1px solid #00a2ff; padding: 6px 16px; border-radius: 20px; font-weight: 600; color: #00a2ff; font-family: 'Poppins', sans-serif; display: flex; align-items: center; gap: 8px;">
+            ⏱️ Tiempo: <span id="timerVisual">00:00</span>
+        </div>
+        <button class="btn-salir" onclick="solicitarSalida()">Abandona Misión 🛸</button>
+    </header>
+
+    <section class="seccion-contexto">
+        <h3>🚀 Contexto de Aplicación Real</h3>
+        <p>Imagina que quieres programar un robot para que prepare una taza de café de forma automática. El robot no tiene sentido común ni intuición; no sabe qué es una taza ni qué significa "hervir". Para lograrlo, debes descomponer la tarea en instrucciones tan detalladas, lógicas y ordenadas que una máquina sin mente pueda ejecutarlas sin cometer errores. Eso es exactamente un algoritmo: el mapa de navegación de cualquier sistema de software en el universo.</p>
+    </section>
+
+    <section class="seccion-multimedia">
+        <h3>🎥 Contenido Audiovisual </h3>
+        <p class="instruccion-video">⚠️ Debes visualizar el video completo sin adelantar para desbloquear la evaluación.</p>
+        
+        <div class="contenedor-video" style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; margin-bottom: 15px;">
+            <iframe id="videoVimeo" 
+                    src="https://player.vimeo.com/video/1198205580?api=1&controls=1&badge=0&autopause=0&player_id=0" 
+                    frameborder="0" 
+                    allow="autoplay; fullscreen; picture-in-picture" 
+                    style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border-radius: 8px;" 
+                    title="Contenido Educativo Orbital">
+            </iframe>
+        </div>
+
+        <p style="font-size: 0.85rem; color: #64748b; text-align: center; margin-top: 12px; font-style: italic; font-family: 'Poppins', sans-serif;">
+            Material audiovisual adaptado con fines estrictamente educativos. Créditos del autor: Qué es.
+        </p>
+        <div class="contenedor-imagen-apoyo">
+            <img src="img/esquema_leccion1.png" alt="Esquema conceptual" onerror="this.style.display='none';">
+        </div>
+    </section>
+
+    <section class="seccion-teoria">
+        <h1>01. Introducción a la Lógica Computacional</h1>
+        <p>La lógica computacional es la estructura mental que permite abordar problemas de manera analítica, convirtiendo desafíos complejos en instrucciones precisas que una computadora pueda procesar eficazmente.</p>
+        
+        <div class="ideas-clave">
+            <h3>💡 Conceptos Clave y Definiciones Académicas:</h3>
+            <ul>
+                <li><strong>Algoritmo:</strong> Conjunto finito de pasos lógicos, ordenados de forma secuencial y perfectamente definidos, diseñado para resolver un problema o ejecutar una tarea específica sin ambigüedades.</li>
+                <li><strong>Precisión y Finitud:</strong> Todo algoritmo debe indicar rigurosamente el orden de realización de cada paso y, de manera obligatoria, debe terminar en algún momento, consumiendo recursos medibles.</li>
+                <li><strong>Eficiencia Algorítmica:</strong> La optimización del camino lógico. Dos algoritmos pueden resolver el mismo problema, pero el mejor será aquel que consuma menos tiempo de procesamiento y espacio en memoria RAM.</li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="seccion-bloqueada-control" id="controlBloqueo">
+        <button id="btnDesbloquearQuiz" class="btn-verificar" disabled onclick="mostrarEvaluacionOculta()">
+            Bloqueado por Reproducción 🔒
+        </button>
+    </section>
+
+    <section class="seccion-quiz oculto-inicial" id="moduloEvaluacion">
+        <h2>⚡ Evaluación </h2>
+        
+        <div id="contenedorPreguntas">
+            
+            <div class="pregunta-bloque" data-correcta="2">
+                <p><strong> Según el texto de la lección, ¿para qué nos sirve la lógica computacional?</strong></p>
+                <ul class="opciones-lista">
+                    <li onclick="seleccionarOpcion(this)" data-id="1">Para aprender a armar una computadora por dentro.</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="2">Para tener una estructura mental que nos permita resolver problemas de forma ordenada.</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="3">Para hacer que el internet de nuestra casa sea más rápido.</li>
+                </ul>
+            </div>
+
+            <div class="pregunta-bloque" data-correcta="3">
+                <p><strong> Si queremos programar un robot para que haga una taza de café, ¿por qué no podemos darle instrucciones generales o vagas?</strong></p>
+                <ul class="opciones-lista">
+                    <li onclick="seleccionarOpcion(this)" data-id="1">Porque los robots se cansan si no les hablamos con claridad.</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="2">Porque las máquinas solo entienden comandos cuando están conectadas a una pantalla gigante.</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="3">Porque el robot no tiene sentido común ni intuición; no sabe por sí mismo qué es una taza ni qué es hervir.</li>
+                </ul>
+            </div>
+
+            <div class="pregunta-bloque" data-correcta="1">
+                <p><strong> Basado en el ejemplo del café, ¿qué es exactamente un algoritmo?</strong></p>
+                <ul class="opciones-lista">
+                    <li onclick="seleccionarOpcion(this)" data-id="1">Un mapa de navegación con instrucciones detalladas, lógicas y ordenadas para que una máquina las cumpla.</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="2">Un componente físico que se instala dentro de la memoria del robot.</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="3">Una aplicación móvil que sirve para comprar café de forma automática.</li>
+                </ul>
+            </div>
+
+            <div class="pregunta-bloque" data-correcta="2">
+                <p><strong> ¿Qué significa que los pasos de un algoritmo deban ser "finitos"?</strong></p>
+                <ul class="opciones-lista">
+                    <li onclick="seleccionarOpcion(this)" data-id="1">Se refiere a que las instrucciones deben ser muy delgadas y ocupar poco espacio en la pantalla.</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="2">Significa que el algoritmo debe terminar obligatoriamente en algún momento y no quedarse repitiendo pasos para siempre.</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="3">Significa que solo los alumnos de segundo semestre pueden entenderlo.</li>
+                </ul>
+            </div>
+
+            <div class="pregunta-bloque" data-correcta="1">
+                <p><strong> Cuando un algoritmo nos pide que las instrucciones sean "perfectamente definidas y sin ambigüedades", ¿qué nos quiere decir?</strong></p>
+                <ul class="opciones-lista">
+                    <li onclick="seleccionarOpcion(this)" data-id="1">Que cada paso debe ser tan claro que tenga un solo significado exacto, sin dar espacio a dudas.</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="2">Que podemos dejar que el robot adivine lo que quisimos decir si nos da flojera escribir todo.</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="3">Que el código debe estar escrito con palabras de científicos del espacio.</li>
+                </ul>
+            </div>
+
+            <div class="pregunta-bloque" data-correcta="3">
+                <p><strong> ¿A qué se refiere la propiedad de "precisión" que se menciona en las ideas clave?</strong></p>
+                <ul class="opciones-lista">
+                    <li onclick="seleccionarOpcion(this)" data-id="1">A la marca o modelo de la computadora que estamos utilizando.</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="2">A qué tan bonito se ve el diseño de la página web.</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="3">A indicar de manera rigurosa y estricta el orden exacto en el que se debe realizar cada paso.</li>
+                </ul>
+            </div>
+
+            <div class="pregunta-bloque" data-correcta="2">
+                <p><strong> En la lectura se explica que dos algoritmos diferentes pueden resolver el mismo problema. ¿Cómo sabemos cuál de los dos es el mejor?</strong></p>
+                <ul class="opciones-lista">
+                    <li onclick="seleccionarOpcion(this)" data-id="1">El que tenga el título más largo y llamativo al inicio.</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="2">El que logre solucionar el problema usando el camino lógico más corto y optimizado.</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="3">El algoritmo que se haya programado por la tarde.</li>
+                </ul>
+            </div>
+
+            <div class="pregunta-bloque" data-correcta="1">
+                <p><strong> ¿Qué recursos físicos de la computadora consume un algoritmo al ejecutarse y que debemos cuidar para que sea "eficiente"?</strong></p>
+                <ul class="opciones-lista">
+                    <li onclick="seleccionarOpcion(this)" data-id="1">El tiempo de procesamiento de la CPU y el espacio en la memoria RAM.</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="2">La batería del mouse inalámbrico y el brillo del monitor.</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="3">Los cables de conexión a la corriente eléctrica de la escuela.</li>
+                </ul>
+            </div>
+
+            <div class="pregunta-bloque" data-correcta="3">
+                <p><strong> Si tuviéramos que explicarle de forma simple a un compañero qué es la "optimización del camino lógico", ¿cuál sería la respuesta correcta?</strong></p>
+                <ul class="opciones-lista">
+                    <li onclick="seleccionarOpcion(this)" data-id="1">Hacer que el robot ejecute los pasos de atrás hacia adelante para ahorrar energía.</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="2">Escribir las instrucciones en un block de notas antes de pasarlas al sistema.</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="3">Encontrar la solución al problema gastando la menor cantidad posible de tiempo y memoria.</li>
+                </ul>
+            </div>
+
+            <div class="pregunta-bloque" data-correcta="1">
+                <p><strong> Completando el flujo lógico de la lección: Un conjunto finito de pasos secuenciales ordenados sirve para...</strong></p>
+                <ul class="opciones-lista">
+                    <li onclick="seleccionarOpcion(this)" data-id="1">...resolver un problema o ejecutar una tarea específica de forma exitosa.</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="2">...hacer que el robot apague sus sensores y aborte la misión en automático.</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="3">...cambiar las fuentes de texto de Poppins a otras letras del sistema.</li>
+                </ul>
+            </div>
+
+        </div>
+
+        <button class="btn-verificar" onclick="validarCuestionario()">Enviar Respuestas</button>
+    </section>
+
+    <div id="overlayExito" class="pantalla-exito-overlay">
+        <div id="textoExito" class="mensaje-exito-grande">¡Correcto! Has ganado 50 XP.</div>
+        <button class="btn-comenzar" id="btnSiguienteNivel" onclick="irAlMapa()">Regresar a las Regiones 🚀</button>
+    </div>
+
+    <script>
+        const idLeccionActual = 1;
+        const xpGanada = 50;
+        
+        // ⏱️ 1. SISTEMA DEL CRONÓMETRO VISUAL
+        let segundosTranscurridos = 0;
+        const timerElemento = document.getElementById("timerVisual");
+        
+        const cronometroIntervalo = setInterval(() => {
+            segundosTranscurridos++;
+            let minutos = Math.floor(segundosTranscurridos / 60);
+            let segundos = segundosTranscurridos % 60;
+            
+            let minTexto = minutos < 10 ? "0" + minutos : minutos;
+            let segTexto = segundos < 10 ? "0" + segundos : segundos;
+            
+            timerElemento.innerText = minTexto + ":" + segTexto;
+        }, 1000);
+
+        const btnDesbloquear = document.getElementById("btnDesbloquearQuiz");
+        const moduloEvaluacion = document.getElementById("moduloEvaluacion");
+
+        // 🛡️ 2. CONTROL TOTAL ANTI-TRAMPAS EN VIMEO (BLINDADO)
+        const iframe = document.getElementById('videoVimeo');
+        const player = new Vimeo.Player(iframe);
+        
+        let tiempoMaximoVisto = 0;
+        let ejecutandoRegreso = false;
+        let duracionVideo = 0;
+
+        // Obtener la duración real del video cargado en Vimeo para usarlo como métrica de validación
+        player.getDuration().then(function(duration) {
+            duracionVideo = duration;
+        }).catch(function(error) {
+            // Valor de respaldo por defecto si tarda en responder la API de Vimeo
+            duracionVideo = 60; 
+        });
+
+        // Evento gatillado continuamente mientras corre el video
+        player.on('timeupdate', function(data) {
+            if (!ejecutandoRegreso) {
+                // Si intenta dar un salto hacia adelante mayor a 1.5 segundos de su récord legal
+                if (data.seconds > tiempoMaximoVisto + 1.5) {
+                    ejecutandoRegreso = true;
+                    player.setCurrentTime(tiempoMaximoVisto).then(function() {
+                        ejecutandoRegreso = false;
+                        alert("🔒 Bloqueo de Seguridad: No puedes adelantar la explicación audiovisual.");
+                    });
+                } else if (data.seconds > tiempoMaximoVisto) {
+                    // Si avanza con normalidad, actualiza el punto máximo alcanzado
+                    tiempoMaximoVisto = data.seconds;
+                }
+            }
+        });
+
+        // Segunda capa de seguridad interceptando la acción de soltar la barra de progreso (Seek)
+        player.on('seeked', function(data) {
+            if (data.seconds > tiempoMaximoVisto + 1.5) {
+                ejecutandoRegreso = true;
+                player.setCurrentTime(tiempoMaximoVisto).then(function() {
+                    ejecutandoRegreso = false;
+                });
+            }
+        });
+
+        // Evento que se dispara al finalizar el video
+        player.on('ended', function() {
+            // Tercera capa (Capa Maestra): Comprobar que realmente vio el video completo matemáticamente
+            // Se le da un margen de tolerancia de 3 segundos por si el video se corta antes del último frame
+            if (tiempoMaximoVisto >= (duracionVideo - 3)) {
+                btnDesbloquear.removeAttribute("disabled");
+                btnDesbloquear.innerText = "Acceder a Evaluación ⚔️";
+                btnDesbloquear.style.background = "linear-gradient(135deg, #00ff87, #00c2ff)";
+                btnDesbloquear.style.color = "#020617";
+                btnDesbloquear.style.boxShadow = "0 0 20px rgba(0, 255, 135, 0.6)";
+            } else {
+                // Si llegó al final adelantándolo mediante un truco, el reproductor lo regresa al inicio
+                tiempoMaximoVisto = 0;
+                player.setCurrentTime(0);
+                alert("❌ Trampa detectada: Debes reproducir el contenido completo paso a paso.");
+            }
+        });
+
+        // 🔀 3. MOTOR DE ALEATORIEDAD COMPLETO (DOBLE SHUFFLE)
+        function barajearTodo() {
+            // A) Barajear las preguntas en el contenedor de forma física
+            const contenedorPreguntas = document.getElementById('contenedorPreguntas');
+            const bloquesPreguntas = Array.from(contenedorPreguntas.children);
+            
+            for (let i = bloquesPreguntas.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                contenedorPreguntas.appendChild(bloquesPreguntas[j]);
+            }
+
+            // B) Barajear las respuestas internas (<li>) de cada una de las preguntas
+            const listasOpciones = document.querySelectorAll('.opciones-lista');
+            listasOpciones.forEach(lista => {
+                const opciones = Array.from(lista.children);
+                for (let i = opciones.length - 1; i > 0; i--) {
+                    const j = Math.floor(Math.random() * (i + 1));
+                    lista.appendChild(opciones[j]);
+                }
+            });
+        }
+
+        // Inicializar el mezclador aleatorio al renderizarse la interfaz gráfica
+        window.addEventListener("DOMContentLoaded", barajearTodo);
+
+        function mostrarEvaluacionOculta() {
+            moduloEvaluacion.classList.remove("oculto-inicial");
+            moduloEvaluacion.classList.add("mostrar-animado");
+            document.getElementById("controlBloqueo").style.display = "none";
+            moduloEvaluacion.scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function solicitarSalida() { 
+            if (confirm("¿Abortar misión? El progreso actual no se guardará.")) {
+                window.location.href = "../mundoI.php"; 
+            }
+        }
+        
+        function seleccionarOpcion(elementoLli) { 
+            const listaPadre = elementoLli.parentElement; 
+            Array.from(listaPadre.children).forEach(li => li.classList.remove('seleccionada')); 
+            elementoLli.classList.add('seleccionada'); 
+            
+            // Guardamos la respuesta basándonos en su data-id (es inmune al desorden físico)
+            listaPadre.setAttribute("data-seleccionada", elementoLli.getAttribute("data-id")); 
+        }
+
+        function validarCuestionario() {
+            const bloques = document.querySelectorAll('.pregunta-bloque'); 
+            let todasRespondidas = true; 
+            let todasCorrectas = true;
+
+            bloques.forEach(bloque => {
+                const listaOpciones = bloque.querySelector('.opciones-lista');
+                const seleccionadaId = listaOpciones.getAttribute('data-seleccionada');
+                const respuestaCorrecta = bloque.getAttribute('data-correcta');
+
+                if (!seleccionadaId) {
+                    todasRespondidas = false;
+                    return; 
+                }
+
+                if (seleccionadaId !== respuestaCorrecta) {
+                    todasCorrectas = false;
+                }
+            });
+
+            if (!todasRespondidas) { 
+                alert("⚠️ Por favor, responde los 10 reactivos antes de enviar las respuestas."); 
+                return; 
+            }
+
+            if (!todasCorrectas) { 
+                alert("❌ Error en los sistemas lógicos. Revisa tus respuestas e inténtalo de nuevo."); 
+                return; 
+            }
+
+            clearInterval(cronometroIntervalo);
+            registrarProgresoYXP(idLeccionActual);
+        }
+
+        function registrarProgresoYXP(l) {
+            fetch('../api/procesar_leccion_completada.php', { 
+                method: 'POST', 
+                headers: { 'Content-Type': 'application/json' }, 
+                body: JSON.stringify({ 
+                    id_leccion: l, 
+                    xp_ganada: xpGanada,
+                    tiempo_segundos: segundosTranscurridos 
+                }) 
+            })
+            .then(res => res.json())
+            .then(d => { 
+                mostrarPantallaExito();
+            })
+            .catch(() => { 
+                mostrarPantallaExito();
+            });
+        }
+
+        function mostrarPantallaExito() {
+            document.getElementById('overlayExito').classList.add('visible'); 
+            const btnRegresar = document.getElementById('btnSiguienteNivel');
+            btnRegresar.style.setProperty('display', 'flex', 'important');
+        }
+
+        function irAlMapa() { window.location.href = "../mundoI.php"; }
+    </script>
+</body>
+</html>

@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/estilo_lecciones.css">
+    <title>Estación Orbital 06 | CodeLand DPS</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght=300;400;600;800&display=swap" rel="stylesheet">
+    <script src="https://player.vimeo.com/api/player.js"></script>
+</head>
+<body>
+    <header class="header-leccion">
+        <div><h2>Módulo I ➔ Estación 06</h2></div>
+        <div id="cronometroContenedor" style="background: rgba(0, 162, 255, 0.15); border: 1px solid #00a2ff; padding: 6px 16px; border-radius: 20px; font-weight: 600; color: #00a2ff; font-family: 'Poppins', sans-serif; display: flex; align-items: center; gap: 8px;">
+            ⏱️ Tiempo: <span id="timerVisual">00:00</span>
+        </div>
+        <button class="btn-salir" onclick="solicitarSalida()">Abandona Misión 🛸</button>
+    </header>
+
+    <section class="seccion-contexto">
+        <h3>🚀 Contexto de Aplicación Real</h3>
+        <p>Antes de filmar una película de ciencia ficción de gran presupuesto, los directores escriben un guion detallado en papel en su propio idioma; no van directo a grabar con las cámaras. En programación ocurre lo mismo: el pseudocódigo es ese borrador o guion escrito en español técnico que te permite diseñar la lógica de un software complejo sin preocuparte por las reglas estrictas de un lenguaje como Java o C++. Permite estructurar la mente antes de programar en los servidores reales.</p>
+    </section>
+
+    <section class="seccion-multimedia">
+        <h3>🎥 Contenido Audiovisual </h3>
+        <p class="instruccion-video">⚠️ Debes visualizar el video completo sin adelantar para desbloquear la evaluación.</p>
+        
+        <div class="contenedor-video" style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; margin-bottom: 15px;">
+            <iframe id="videoVimeo" 
+                    src="https://player.vimeo.com/video/1198286477?api=1&controls=1&badge=0&autopause=0&player_id=0" 
+                    frameborder="0" 
+                    allow="autoplay; fullscreen; picture-in-picture" 
+                    style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border-radius: 8px;" 
+                    title="Contenido Educativo Orbital">
+            </iframe>
+        </div>
+
+        <p style="font-size: 0.85rem; color: #64748b; text-align: center; margin-top: 12px; font-style: italic; font-family: 'Poppins', sans-serif;">
+            Material audiovisual adaptado con fines estrictamente educativos. Créditos del autor: Kiko Palomares.
+        </p>
+        <div class="contenedor-imagen-apoyo">
+            <img src="img/esquema_leccion6.png" alt="Esquema conceptual" onerror="this.style.display='none';">
+        </div>
+    </section>
+
+    <section class="seccion-teoria">
+        <h1>06. Diseño de Algoritmos Mediante Pseudocódigo</h1>
+        <p>El pseudocódigo es un lenguaje de especificación de algoritmos que utiliza palabras clave en lenguaje humano (como español) mezcladas con estructuras sintácticas de programación para describir el flujo lógico de un programa.</p>
+        
+        <div class="ideas-clave">
+            <h3>💡 Conceptos Clave y Definiciones Académicas:</h3>
+            <ul>
+                <li><strong>Definición de Pseudocódigo:</strong> Es una herramienta de diseño de algoritmos que carece de rigidez sintáctica pero mantiene una secuencia matemática estricta e independiente de cualquier lenguaje ejecutable.</li>
+                <li><strong>Palabras Reservadas:</strong> Comandos universales escritos en español técnico (como <em>Inicio, Leer, Escribir, Fin</em>) que definen operaciones precisas de entrada, procesamiento y salida de información.</li>
+                <li><strong>Ventajas Operativas:</strong> Permite enfocarse exclusivamente en la solución lógica del problema de un software y simplifica considerablemente la posterior transcripción u homologación a código fuente real.</li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="seccion-bloqueada-control" id="controlBloqueo">
+        <button id="btnDesbloquearQuiz" class="btn-verificar" disabled onclick="mostrarEvaluacionOculta()">
+            Bloqueado por Reproducción 🔒
+        </button>
+    </section>
+
+    <section class="seccion-quiz oculto-inicial" id="moduloEvaluacion">
+        <h2>⚡ Evaluación </h2>
+        
+        <div id="contenedorPreguntas">
+            
+            <div class="pregunta-bloque" data-correcta="2">
+                <p><strong> ¿Cuál es la analogía utilizada en la lección para describir el pseudocódigo?</strong></p>
+                <ul class="opciones-lista">
+                    <li onclick="seleccionarOpcion(this)" data-id="1">La pintura de un cohete espacial.</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="2">El guion detallado en papel de una película antes de ser filmada.</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="3">La construcción física de una base de datos.</li>
+                </ul>
+            </div>
+
+            <div class="pregunta-bloque" data-correcta="3">
+                <p><strong> ¿Qué es técnicamente el pseudocódigo según la lectura?</strong></p>
+                <ul class="opciones-lista">
+                    <li onclick="seleccionarOpcion(this)" data-id="1">Un código binario oculto en las páginas web.</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="2">Un lenguaje oficial de bases de datos como MySQL.</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="3">Un lenguaje de especificación que utiliza palabras humanas y estructuras lógicas para describir un flujo.</li>
+                </ul>
+            </div>
+
+            <div class="pregunta-bloque" data-correcta="1">
+                <p><strong> ¿Por qué se afirma que el pseudocódigo carece de rigidez sintáctica?</strong></p>
+                <ul class="opciones-lista">
+                    <li onclick="seleccionarOpcion(this)" data-id="1">Porque no requiere de las reglas ortográficas o signos estrictos de un lenguaje como Java o C++.</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="2">Porque cambia de tamaño de letra de forma aleatoria en la consola.</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="3">Porque permite escribir palabras desordenadas y sin un fin determinado.</li>
+                </ul>
+            </div>
+
+            <div class="pregunta-bloque" data-correcta="2">
+                <p><strong> ¿Qué son las "Palabras Reservadas" mencionadas en las ideas clave?</strong></p>
+                <ul class="opciones-lista">
+                    <li onclick="seleccionarOpcion(this)" data-id="1">Comentarios ocultos que los docentes guardan en sus reportes.</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="2">Comandos escritos en español técnico (como Leer, Escribir, Fin) que ejecutan acciones operativas claras.</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="3">Títulos dinámicos de los menús en las interfaces gráficas.</li>
+                </ul>
+            </div>
+
+            <div class="pregunta-bloque" data-correcta="1">
+                <p><strong> ¿Cuál es la principal ventaja operativa de diseñar un algoritmo con pseudocódigo antes de ir a la computadora?</strong></p>
+                <ul class="opciones-lista">
+                    <li onclick="seleccionarOpcion(this)" data-id="1">Permite concentrarse en la solución lógica del problema sin perder tiempo en la sintaxis de un compilador.</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="2">Hacer que la memoria RAM duplique su capacidad en automático.</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="3">Evitar el uso de hojas de estilo en cascada CSS de forma definitiva.</li>
+                </ul>
+            </div>
+
+            <div class="pregunta-bloque" data-correcta="3">
+                <p><strong> Si un pseudocódigo incluye la instrucción "Leer X", ¿qué operación se está indicando al procesador?</strong></p>
+                <ul class="opciones-lista">
+                    <li onclick="seleccionarOpcion(this)" data-id="1">Imprimir un archivo de texto en la pantalla.</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="2">Terminar la ejecución del algoritmo de forma inmediata.</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="3">Capturar un dato de entrada enviado desde el exterior o teclado.</li>
+                </ul>
+            </div>
+
+            <div class="pregunta-bloque" data-correcta="2">
+                <p><strong> ¿Qué palabra reservada se utiliza típicamente en pseudocódigo para indicarle al sistema que debe mostrar un resultado en pantalla?</strong></p>
+                <ul class="opciones-lista">
+                    <li onclick="seleccionarOpcion(this)" data-id="1">Capturar.</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="2">Escribir.</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="3">Procesar.</li>
+                </ul>
+            </div>
+
+            <div class="pregunta-bloque" data-correcta="1">
+                <p><strong> ¿Por qué el pseudocódigo es considerado un lenguaje "independiente"?</strong></p>
+                <ul class="opciones-lista">
+                    <li onclick="seleccionarOpcion(this)" data-id="1">Porque la lógica diseñada puede transcribirse con facilidad a cualquier lenguaje de programación real.</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="2">Porque no requiere de ningún programador para ser ejecutado.</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="3">Porque funciona de forma aislada sin internet ni servidores de hosting.</li>
+                </ul>
+            </div>
+
+            <div class="pregunta-bloque" data-correcta="3">
+                <p><strong> ¿Qué pasa si un programador comete un error de lógica en su pseudocódigo?</strong></p>
+                <ul class="opciones-lista">
+                    <li onclick="seleccionarOpcion(this)" data-id="1">El navegador Netlify se desconecta automáticamente.</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="2">Las variables matemáticas se guardan solas en formato CSS.</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="3">El error de lógica se trasladará directamente al código de programación si no se corrige en el borrador.</li>
+                </ul>
+            </div>
+
+            <div class="pregunta-bloque" data-correcta="1">
+                <p><strong> ¿Cuál de las siguientes estructuras representa una secuencia correcta de palabras reservadas básicas en un pseudocódigo estructurado?</strong></p>
+                <ul class="opciones-lista">
+                    <li onclick="seleccionarOpcion(this)" data-id="1">Inicio ➔ Leer variables ➔ Calcular fórmula ➔ Escribir resultado ➔ Fin.</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="2">Fin ➔ Calcular fórmula ➔ Leer variables ➔ Inicio.</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="3">Escribir resultado ➔ Fin ➔ Inicio ➔ Leer variables.</li>
+                </ul>
+            </div>
+
+        </div>
+
+        <button class="btn-verificar" onclick="validarCuestionario()">Enviar Respuestas al Servidor</button>
+    </section>
+
+    <div id="overlayExito" class="pantalla-exito-overlay">
+        <div id="textoExito" class="mensaje-exito-grande">¡Correcto! Has ganado 50 XP.</div>
+        <button class="btn-comenzar" id="btnSiguienteNivel" onclick="irAlMapa()">Regresar a las Regiones 🚀</button>
+    </div>
+
+    <script>
+        const idLeccionActual = 6;
+        const xpGanada = 50;
+        
+        let segundosTranscurridos = 0;
+        const timerElemento = document.getElementById("timerVisual");
+        
+        const cronometroIntervalo = setInterval(() => {
+            segundosTranscurridos++;
+            let minutos = Math.floor(segundosTranscurridos / 60);
+            let segundos = segundosTranscurridos % 60;
+            let minTexto = minutos < 10 ? "0" + minutos : minutes;
+            let segTexto = segundos < 10 ? "0" + segundos : segundos;
+            timerElemento.innerText = minTexto + ":" + segTexto;
+        }, 1000);
+
+        const btnDesbloquear = document.getElementById("btnDesbloquearQuiz");
+        const moduloEvaluacion = document.getElementById("moduloEvaluacion");
+
+        const iframe = document.getElementById('videoVimeo');
+        const player = new Vimeo.Player(iframe);
+        
+        let tiempoMaximoVisto = 0;
+        let ejecutandoRegreso = false;
+        let duracionVideo = 0;
+
+        player.getDuration().then(function(duration) {
+            duracionVideo = duration;
+        }).catch(function() {
+            duracionVideo = 60; 
+        });
+
+        player.on('timeupdate', function(data) {
+            if (!ejecutandoRegreso) {
+                if (data.seconds > tiempoMaximoVisto + 1.5) {
+                    ejecutandoRegreso = true;
+                    player.setCurrentTime(tiempoMaximoVisto).then(function() {
+                        ejecutandoRegreso = false;
+                        alert("🔒 Bloqueo de Seguridad: No puedes adelantar la explicación audiovisual.");
+                    });
+                } else if (data.seconds > tiempoMaximoVisto) {
+                    tiempoMaximoVisto = data.seconds;
+                }
+            }
+        });
+
+        player.on('seeked', function(data) {
+            if (data.seconds > tiempoMaximoVisto + 1.5) {
+                ejecutandoRegreso = true;
+                player.setCurrentTime(tiempoMaximoVisto).then(function() {
+                    ejecutandoRegreso = false;
+                });
+            }
+        });
+
+        player.on('ended', function() {
+            if (tiempoMaximoVisto >= (duracionVideo - 3)) {
+                btnDesbloquear.removeAttribute("disabled");
+                btnDesbloquear.innerText = "Acceder a Evaluación ⚔️";
+                btnDesbloquear.style.background = "linear-gradient(135deg, #00ff87, #00c2ff)";
+                btnDesbloquear.style.color = "#020617";
+                btnDesbloquear.style.boxShadow = "0 0 20px rgba(0, 255, 135, 0.6)";
+            } else {
+                tiempoMaximoVisto = 0;
+                player.setCurrentTime(0);
+                alert("❌ Trampa detectada: Debes reproducir el contenido completo paso a paso.");
+            }
+        });
+
+        function barajearTodo() {
+            const contenedorPreguntas = document.getElementById('contenedorPreguntas');
+            const bloquesPreguntas = Array.from(contenedorPreguntas.children);
+            for (let i = bloquesPreguntas.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                contenedorPreguntas.appendChild(bloquesPreguntas[j]);
+            }
+            const listasOpciones = document.querySelectorAll('.opciones-lista');
+            listasOpciones.forEach(lista => {
+                const opciones = Array.from(lista.children);
+                for (let i = opciones.length - 1; i > 0; i--) {
+                    const j = Math.floor(Math.random() * (i + 1));
+                    lista.appendChild(opciones[j]);
+                }
+            });
+        }
+
+        window.addEventListener("DOMContentLoaded", barajearTodo);
+
+        function mostrarEvaluacionOculta() {
+            moduloEvaluacion.classList.remove("oculto-inicial");
+            moduloEvaluacion.classList.add("mostrar-animado");
+            document.getElementById("controlBloqueo").style.display = "none";
+            moduloEvaluacion.scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function solicitarSalida() { 
+            if (confirm("¿Abortar misión? El progreso actual no se guardará.")) {
+                window.location.href = "../mundoI.php"; 
+            }
+        }
+        
+        function seleccionarOpcion(elementoLli) { 
+            const listaPadre = elementoLli.parentElement; 
+            Array.from(listaPadre.children).forEach(li => li.classList.remove('seleccionada')); 
+            elementoLli.classList.add('seleccionada'); 
+            listaPadre.setAttribute("data-seleccionada", elementoLli.getAttribute("data-id")); 
+        }
+
+        function validarCuestionario() {
+            const bloques = document.querySelectorAll('.pregunta-bloque'); 
+            let todasRespondidas = true; 
+            let todasCorrectas = true;
+
+            bloques.forEach(bloque => {
+                const listaOpciones = bloque.querySelector('.opciones-lista');
+                const seleccionadaId = listaOpciones.getAttribute('data-seleccionada');
+                const respuestaCorrecta = bloque.getAttribute('data-correcta');
+
+                if (!seleccionadaId) {
+                    todasRespondidas = false;
+                    return; 
+                }
+                if (seleccionadaId !== respuestaCorrecta) {
+                    todasCorrectas = false;
+                }
+            });
+
+            if (!todasRespondidas) { 
+                alert("⚠️ Por favor, responde los 10 reactivos antes de enviar la telemetría."); 
+                return; 
+            }
+            if (!todasCorrectas) { 
+                alert("❌ Error en los sistemas lógicos. Revisa tus respuestas e inténtalo de nuevo."); 
+                return; 
+            }
+
+            clearInterval(cronometroIntervalo);
+            registrarProgresoYXP(idLeccionActual);
+        }
+
+        function registrarProgresoYXP(l) {
+            fetch('../api/procesar_leccion_completada.php', { 
+                method: 'POST', 
+                headers: { 'Content-Type': 'application/json' }, 
+                body: JSON.stringify({ 
+                    id_leccion: l, 
+                    xp_ganada: xpGanada,
+                    tiempo_segundos: segundosTranscurridos 
+                }) 
+            })
+            .then(res => res.json())
+            .then(() => { mostrarPantallaExito(); })
+            .catch(() => { mostrarPantallaExito(); });
+        }
+
+        function mostrarPantallaExito() {
+            document.getElementById('overlayExito').classList.add('visible'); 
+            const btnRegresar = document.getElementById('btnSiguienteNivel');
+            btnRegresar.style.setProperty('display', 'flex', 'important');
+        }
+
+        function irAlMapa() { window.location.href = "../mundoI.php"; }
+    </script>
+</body>
+</html>

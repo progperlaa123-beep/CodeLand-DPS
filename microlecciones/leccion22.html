@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/estilo_lecciones.css">
+    <title>Estación Orbital 22 | CodeLand DPS</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght=300;400;600;800&display=swap" rel="stylesheet">
+    <script src="https://player.vimeo.com/api/player.js"></script>
+</head>
+<body>
+    <header class="header-leccion">
+        <div><h2>Módulo I ➔ Estación 22</h2></div>
+        <div id="cronometroContenedor" style="background: rgba(0, 162, 255, 0.15); border: 1px solid #00a2ff; padding: 6px 16px; border-radius: 20px; font-weight: 600; color: #00a2ff; font-family: 'Poppins', sans-serif; display: flex; align-items: center; gap: 8px;">
+            ⏱️ Tiempo: <span id="timerVisual">00:00</span>
+        </div>
+        <button class="btn-salir" onclick="solicitarSalida()">Abandona Misión 🛸</button>
+    </header>
+
+    <section class="seccion-contexto" style="margin-bottom: 25px; padding: 20px; background: rgba(255, 255, 255, 0.02); border-left: 4px solid #00a2ff; border-radius: 4px;">
+        <h3>🚀 Contexto de Aplicación Real</h3>
+        <p>Si una fábrica de automóviles tuviera un solo operario encargado de fundir el motor, pintar la carrocería, colocar las ruedas y limpiar los cristales en un único bloque continuo, la producción colapsaría ante el menor error. La industria funciona aislando tareas especializadas en departamentos independientes. En programación, escribir miles de líneas de código seguidas es inviable; por ello, dividimos el programa en "módulos" o "funciones" independientes que resuelven una sola sub-tarea específica y pueden reutilizarse ilimitadamente.</p>
+    </section>
+
+    <section class="seccion-multimedia">
+        <h3>🎥 Contenido Audiovisual </h3>
+        <p class="instruccion-video">⚠️ Debes visualizar el video completo sin adelantar para desbloquear la evaluación.</p>
+        
+        <div class="contenedor-video" style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; margin-bottom: 15px;">
+            <iframe id="videoVimeo" 
+                    src="https://player.vimeo.com/video/1198518848?api=1&controls=1&badge=0&autopause=0&player_id=0" 
+                    frameborder="0" 
+                    allow="autoplay; fullscreen; picture-in-picture" 
+                    style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border-radius: 8px;" 
+                    title="Contenido Educativo Orbital 22">
+            </iframe>
+        </div>
+
+        <p style="font-size: 0.85rem; color: #64748b; text-align: center; margin-top: 12px; font-style: italic; font-family: 'Poppins', sans-serif;">
+            Material audiovisual adaptado con fines estrictamente educativos. Créditos del autor: Eductronica.
+        </p>
+        <div class="contenedor-imagen-apoyo">
+            <img src="img/esquema_leccion22.png" alt="Esquema modular" onerror="this.style.display='none';">
+        </div>
+    </section>
+
+    <section class="seccion-teoria">
+        <h1>22. Modularidad: Diseño de Subalgoritmos y Funciones</h1>
+        <p>La modularidad es la filosofía de diseño de software basada en el paradigma de "divide y vencerás", fraccionando un problema complejo en bloques independientes de código denominados funciones o subprogramas.</p>
+        
+        <div class="ideas-clave">
+            <h3>💡 Conceptos Clave y Definiciones Académicas:</h3>
+            <ul>
+                <li><strong>Subalgoritmo / Función:</strong> Es un bloque de instrucciones estructurado e independiente que realiza una operación bien definida y que se ejecuta únicamente cuando es invocado explícitamente desde el algoritmo principal u otra función.</li>
+                <li><strong>Reutilización de Código:</strong> Evita la redundancia de código, permitiendo escribir una sub-rutina una sola vez e invocarla de forma repetida desde distintos puntos del sistema.</li>
+                <li><strong>Estructura General:</strong> Posee un nombre identificador único, puede recibir datos de entrada llamados parámetros y suele devolver un resultado único al acabar su flujo operativo.</li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="seccion-bloqueada-control" id="controlBloqueo">
+        <button id="btnDesbloquearQuiz" class="btn-verificar" disabled onclick="mostrarEvaluacionOculta()">
+            Bloqueado por Reproducción 🔒
+        </button>
+    </section>
+
+    <section class="seccion-quiz oculto-inicial" id="moduloEvaluacion">
+        <h2>⚡ Evaluación </h2>
+        
+        <div id="contenedorPreguntas">
+            
+            <div class="pregunta-bloque" data-correcta="1">
+                <p><strong> ¿Qué principio lógico y matemático fundamenta la modularidad en programación?</strong></p>
+                <ul class="opciones-lista">
+                    <li onclick="seleccionarOpcion(this)" data-id="1">El paradigma metodológico de "divide y vencerás".</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="2">La acumulación lineal de instrucciones continuas infinitas.</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="3">El uso exclusivo de variables globales sin inicializar.</li>
+                </ul>
+            </div>
+
+            <div class="pregunta-bloque" data-correcta="3">
+                <p><strong> ¿Qué es formalmente un subalgoritmo o función en el desarrollo de software?</strong></p>
+                <ul class="opciones-lista">
+                    <li onclick="seleccionarOpcion(this)" data-id="1">Una herramienta gráfica para pintar diagramas de flujo en papel.</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="2">Un tipo especial de bucle condicional post-test determinado.</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="3">Un bloque estructurado e independiente de código que realiza una operación bien definida.</li>
+                </ul>
+            </div>
+
+            <div class="pregunta-bloque" data-correcta="2">
+                <p><strong> ¿Cuál es una de las ventajas operativas más destacadas de usar funciones?</strong></p>
+                <ul class="opciones-lista">
+                    <li onclick="seleccionarOpcion(this)" data-id="1">Que el código fuente se ejecuta sin necesidad de un procesador físico.</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="2">La reutilización de código para evitar escribir líneas redundantes de forma innecesaria.</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="3">La eliminación forzada de todas las variables locales.</li>
+                </ul>
+            </div>
+
+            <div class="pregunta-bloque" data-correcta="1">
+                <p><strong> ¿Cuándo entra en ejecución el bloque de instrucciones contenido dentro de una función?</strong></p>
+                <ul class="opciones-lista">
+                    <li onclick="seleccionarOpcion(this)" data-id="1">Únicamente cuando la función es invocada o llamada explícitamente desde el programa.</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="2">De forma automática e inmediata al cargar el documento HTML.</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="3">Al romperse de forma imprevista una variable tipo bandera lógica.</li>
+                </ul>
+            </div>
+
+            <div class="pregunta-bloque" data-correcta="3">
+                <p><strong> ¿Cómo se denominan los datos o valores que recibe una función como datos de entrada para operar?</strong></p>
+                <ul class="opciones-lista">
+                    <li onclick="seleccionarOpcion(this)" data-id="1">Contadores continuos deterministas.</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="2">Banderas lógicas asíncronas.</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="3">Parámetros o argumentos.</li>
+                </ul>
+            </div>
+
+            <div class="pregunta-bloque" data-correcta="2">
+                <p><strong> En la analogía de la fábrica de autos, ¿qué representaría una función especializada?</strong></p>
+                <ul class="opciones-lista">
+                    <li onclick="seleccionarOpcion(this)" data-id="1">Un operario tratando de hacer absolutamente todo el vehículo solo.</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="2">Un departamento independiente dedicado exclusivamente a una sola tarea, como pintar la carrocería.</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="3">El cronómetro que mide la salida de los trabajadores.</li>
+                </ul>
+            </div>
+
+            <div class="pregunta-bloque" data-correcta="1">
+                <p><strong> ¿Qué característica de diseño debe cumplir el nombre o identificador de una función?</strong></p>
+                <ul class="opciones-lista">
+                    <li onclick="seleccionarOpcion(this)" data-id="1">Debe ser único y reflejar idealmente la acción específica que realiza.</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="2">Debe ser exactamente igual al nombre de todas las variables globales.</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="3">Debe escribirse obligatoriamente en lenguaje binario puro.</li>
+                </ul>
+            </div>
+
+            <div class="pregunta-bloque" data-correcta="2">
+                <p><strong> ¿Cuando una función termina de resolver la sub-tarea encomendada, comúnmente qué devuelve al punto de origen:</strong></p>
+                <ul class="opciones-lista">
+                    <li onclick="seleccionarOpcion(this)" data-id="1">Una copia de todo el código de la base de datos de telemetría.</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="2">Un resultado único o valor de retorno calculado de vuelta al flujo principal.</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="3">Una alerta gráfica que bloquea la terminal operativa permanentemente.</li>
+                </ul>
+            </div>
+
+            <div class="pregunta-bloque" data-correcta="1">
+                <p><strong> ¿Por qué la modularidad facilita el mantenimiento y la corrección de errores en un sistema de software?</strong></p>
+                <ul class="opciones-lista">
+                    <li onclick="seleccionarOpcion(this)" data-id="1">Porque si un módulo específico falla, se puede aislar, depurar y corregir sin alterar el resto del software operativo.</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="2">Porque elimina automáticamente la necesidad de compilar el algoritmo.</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="3">Porque las funciones convierten los errores en bucles infinitos controlados.</li>
+                </ul>
+            </div>
+
+            <div class="pregunta-bloque" data-correcta="3">
+                <p><strong> ¿Es válido invocar una función múltiples veces con distintos valores de parámetros de entrada?</strong></p>
+                <ul class="opciones-lista">
+                    <li onclick="seleccionarOpcion(this)" data-id="1">No, una función se autodestruye en memoria RAM tras la primera llamada.</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="2">Solo si la función no procesa ninguna operación aritmética interna.</li>
+                    <li onclick="seleccionarOpcion(this)" data-id="3">Sí, es justamente el propósito de la reutilización modular del código.</li>
+                </ul>
+            </div>
+
+        </div>
+
+        <button class="btn-verificar" onclick="validarCuestionario()">Enviar Respuestas al Servidor</button>
+    </section>
+
+    <div id="overlayExito" class="pantalla-exito-overlay">
+        <div id="textoExito" class="mensaje-exito-grande">¡Correcto! Has ganado 50 XP.</div>
+        <button class="btn-comenzar" id="btnSiguienteNivel" onclick="irAlMapa()">Regresar a las Regiones 🚀</button>
+    </div>
+
+    <script>
+        const idLeccionActual = 22;
+        const xpGanada = 50;
+        
+        let segundosTranscurridos = 0;
+        const timerElemento = document.getElementById("timerVisual");
+        
+        const cronometroIntervalo = setInterval(() => {
+            segundosTranscurridos++;
+            let minutos = Math.floor(segundosTranscurridos / 60);
+            let segundos = segundosTranscurridos % 60;
+            let minTexto = minutos < 10 ? "0" + minutos : minutos;
+            let segTexto = segundos < 10 ? "0" + segundos : segundos;
+            timerElemento.innerText = minTexto + ":" + segTexto;
+        }, 1000);
+
+        const btnDesbloquear = document.getElementById("btnDesbloquearQuiz");
+        const moduloEvaluacion = document.getElementById("moduloEvaluacion");
+        const iframe = document.getElementById('videoVimeo');
+        const player = new Vimeo.Player(iframe);
+        
+        let tiempoMaximoVisto = 0;
+        let ejecutandoRegreso = false;
+        let duracionVideo = 0;
+
+        player.getDuration().then(function(duration) {
+            duracionVideo = duration;
+        }).catch(function() {
+            duracionVideo = 60; 
+        });
+
+        player.on('timeupdate', function(data) {
+            if (!ejecutandoRegreso) {
+                if (data.seconds > tiempoMaximoVisto + 1.5) {
+                    ejecutandoRegreso = true;
+                    player.setCurrentTime(tiempoMaximoVisto).then(function() {
+                        ejecutandoRegreso = false;
+                        alert("🔒 Bloqueo de Seguridad: No puedes adelantar la explicación audiovisual.");
+                    });
+                } else if (data.seconds > tiempoMaximoVisto) {
+                    tiempoMaximoVisto = data.seconds;
+                }
+            }
+        });
+
+        player.on('seeked', function(data) {
+            if (data.seconds > tiempoMaximoVisto + 1.5) {
+                ejecutandoRegreso = true;
+                player.setCurrentTime(tiempoMaximoVisto).then(function() {
+                    ejecutandoRegreso = false;
+                });
+            }
+        });
+
+        player.on('ended', function() {
+            if (tiempoMaximoVisto >= (duracionVideo - 3)) {
+                btnDesbloquear.removeAttribute("disabled");
+                btnDesbloquear.innerText = "Acceder a Evaluación ⚔️";
+                btnDesbloquear.style.background = "linear-gradient(135deg, #00ff87, #00c2ff)";
+                btnDesbloquear.style.color = "#020617";
+                btnDesbloquear.style.boxShadow = "0 0 20px rgba(0, 255, 135, 0.6)";
+            } else {
+                tiempoMaximoVisto = 0;
+                player.setCurrentTime(0);
+                alert("❌ Trampa detectada: Debes reproducir el contenido completo paso a paso.");
+            }
+        });
+
+        function barajearTodo() {
+            const contenedorPreguntas = document.getElementById('contenedorPreguntas');
+            const bloquesPreguntas = Array.from(contenedorPreguntas.children);
+            
+            for (let i = bloquesPreguntas.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                contenedorPreguntas.appendChild(bloquesPreguntas[j]);
+            }
+
+            const listasOpciones = document.querySelectorAll('.opciones-lista');
+            listasOpciones.forEach(lista => {
+                const opciones = Array.from(lista.children);
+                for (let i = opciones.length - 1; i > 0; i--) {
+                    const j = Math.floor(Math.random() * (i + 1));
+                    lista.appendChild(opciones[j]);
+                }
+            });
+        }
+
+        window.addEventListener("DOMContentLoaded", barajearTodo);
+
+        function mostrarEvaluacionOculta() {
+            moduloEvaluacion.classList.remove("oculto-inicial");
+            moduloEvaluacion.classList.add("mostrar-animado");
+            document.getElementById("controlBloqueo").style.display = "none";
+            moduloEvaluacion.scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function solicitarSalida() { 
+            if (confirm("¿Abortar misión? El progreso actual no se guardará.")) {
+                window.location.href = "../mundoI.php"; 
+            }
+        }
+        
+        function seleccionarOpcion(elementoLli) { 
+            const listaPadre = elementoLli.parentElement; 
+            Array.from(listaPadre.children).forEach(li => li.classList.remove('seleccionada')); 
+            elementoLli.classList.add('seleccionada'); 
+            listaPadre.setAttribute("data-seleccionada", elementoLli.getAttribute("data-id")); 
+        }
+
+        function validarCuestionario() {
+            const bloques = document.querySelectorAll('.pregunta-bloque'); 
+            let todasRespondidas = true; 
+            let todasCorrectas = true;
+
+            bloques.forEach(bloque => {
+                const listaOpciones = bloque.querySelector('.opciones-lista');
+                const seleccionadaId = listaOpciones.getAttribute('data-seleccionada');
+                const respuestaCorrecta = bloque.getAttribute('data-correcta');
+
+                if (!seleccionadaId) {
+                    todasRespondidas = false;
+                    return; 
+                }
+
+                if (seleccionadaId !== respuestaCorrecta) {
+                    todasCorrectas = false;
+                }
+            });
+
+            if (!todasRespondidas) { 
+                alert("⚠️ Por favor, responde los 10 reactivos antes de enviar las respuestas."); 
+                return; 
+            }
+
+            if (!todasCorrectas) { 
+                alert("❌ Error en los sistemas lógicos. Revisa tus respuestas e inténtalo de nuevo."); 
+                return; 
+            }
+
+            clearInterval(cronometroIntervalo);
+            registrarProgresoYXP(idLeccionActual);
+        }
+
+        function registrarProgresoYXP(l) {
+            fetch('../api/procesar_leccion_completada.php', { 
+                method: 'POST', 
+                headers: { 'Content-Type': 'application/json' }, 
+                body: JSON.stringify({ 
+                    id_leccion: l, 
+                    xp_ganada: xpGanada,
+                    tiempo_segundos: segundosTranscurridos 
+                }) 
+            })
+            .then(res => res.json())
+            .then(() => { mostrarPantallaExito(); })
+            .catch(() => { mostrarPantallaExito(); });
+        }
+
+        function mostrarPantallaExito() {
+            document.getElementById('overlayExito').classList.add('visible'); 
+            const btnRegresar = document.getElementById('btnSiguienteNivel');
+            btnRegresar.style.setProperty('display', 'flex', 'important');
+        }
+
+        function irAlMapa() { window.location.href = "../mundoI.php"; }
+    </script>
+</body>
+</html>

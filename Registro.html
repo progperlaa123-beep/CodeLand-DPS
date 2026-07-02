@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro - CodeLand DPS</title>
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght=300;400;500;600;700;800&display=swap">
+
+    <link rel="stylesheet" href="registro.css">
+</head>
+<body>
+
+    <div class="contenedor">
+        <img src="CodeLandDPS_logo (1).png" class="planeta">
+
+        <h1 class="logo">
+            <span class="azul">CodeLand</span>
+            <span class="verde">DPS</span>
+        </h1>
+
+        <div class="card">
+            <h2>Bienvenido!</h2>
+            <p>Crear cuenta para <br> comenzar</p>
+
+           <form id="formRegistro" method="POST">
+    <input type="text" name="nombre" id="nombre" placeholder="Nombre" required>
+    <input type="email" name="correo" id="correo" placeholder="Correo institucional" required>
+    <input type="password" name="password" id="password" placeholder="Contraseña" required>
+    <input type="password" name="confirmar_password" id="confirmar_password" placeholder="Confirmar Contraseña" required>
+
+    <div id="contenedorCodigo" style="display: none; margin-bottom: 15px; border: 1px dashed #27ae60; padding: 10px; border-radius: 8px; background-color: rgba(39, 174, 96, 0.05);">
+        <p style="color: #27ae60; font-size: 13px; margin: 0 0 8px 0; font-weight: 500; text-align: center;">📧 Ingresa las coordenadas enviadas a tu buzón:</p>
+        <input type="text" id="codigo_verificacion" placeholder="CÓDIGO DE VERIFICACIÓN (6 DÍGITOS)" style="border: 2px solid #27ae60; text-align: center; letter-spacing: 3px; font-weight: bold;" maxlength="6">
+    </div>
+
+    <select name="semestre" id="semestre" required>
+        <option value="">Selecciona semestre</option>
+        <option value="1">1er semestre</option>
+        <option value="2">2do semestre</option>
+        <option value="3">3er semestre</option>
+        <option value="4">4to semestre</option>
+        <option value="5">5to semestre</option>
+        <option value="6">6to semestre</option>
+    </select>
+
+                <select name="grupo" id="grupo" required>
+                    <option value="">Selecciona grupo</option>
+                    <option value="1">E</option>
+                    <option value="2">F</option>
+                    <option value="3">G</option>
+                </select>
+
+                <button type="submit" id="btnEnviar">
+                    Sign Up
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+ let codigoServidor = "";
+    let pasoVerificacion = false;
+
+    document.getElementById('formRegistro').addEventListener('submit', async function(e) {
+        // 1. Detener el envío nativo a PHP inmediatamente para evaluar la fase actual
+        e.preventDefault(); 
+        
+        const btn = document.getElementById('btnEnviar');
+        const correoInput = document.getElementById('correo').value.trim();
+        const pass = document.getElementById('password').value;
+        const confirmPass = document.getElementById('confirmar_password').value;
+
+        // Validación inicial de contraseñas (Siempre se mantiene activa)
+        if (pass !== confirmPass) {
+            alert("❌ Las contraseñas espaciales introducidas no coinciden.");
+            return;
+        }
+
+        // ========================================================
+        // FASE A: SOLICITAR Y ENVIAR EL CÓDIGO AL CORREO
+        // ========================================================
+        if (!pasoVerificacion) {
+            btn.disabled = true;
+            btn.style.opacity = "0.6";
+            btn.innerText = "Despachando código de verificación... 🛰️";
+
+            try {
+                // URL de tu aplicación web de Google Apps Script (Se mantiene la tuya original)
+                const urlGoogleAppsScript = 'https://script.google.com/macros/s/AKfycbxVaDZ7m5ZsglcSDtl61AXXQGdEKzRWfclxujDjSTAi5sKedfoXnley4MCnbqq2gYfl/exec';
+
+                const respuesta = await fetch(urlGoogleAppsScript, {
+                    method: 'POST',
+                    mode: 'cors',
+                    headers: { 'Content-Type': 'text/plain' }, 
+                    body: JSON.stringify({ correo: correoInput })
+                });
+
+                const textoRespuesta = await respuesta.text();
+                const resultado = JSON.parse(textoRespuesta);
+
+                // Si Google Apps Script responde que hubo un fallo
+                if (resultado.exito === false || resultado.exito === "false") {
+                    alert("❌ Error: " + (resultado.datos || "No se pudo despachar el correo de verificación."));
+                    btn.disabled = false;
+                    btn.style.opacity = "1";
+                    btn.innerText = "Sign Up";
+                } else {
+                    // Guardamos el código que generó Google en secreto en la sesión del cliente
+                    codigoServidor = resultado.datos;
+                    pasoVerificacion = true;
+
+                    alert("📧 ¡Transmisión Estelar Enviada! Hemos enviado un código de 6 dígitos a tu correo institucional. Revisa tu bandeja de entrada o carpeta de Spam.");
+                    
+                    // Modificaciones de la Interfaz del Hangar de Registro
+                    btn.disabled = false;
+                    btn.style.opacity = "1";
+                    btn.style.backgroundColor = "#27ae60"; // Cambia a verde exitoso
+                    btn.innerText = "Verificar Código e Iniciar Viaje 🚀";
+                    
+                    // Bloqueamos los datos clave de identidad para evitar que los alteren tras validar
+                    document.getElementById('correo').readOnly = true;
+                    document.getElementById('nombre').readOnly = true;
+                    document.getElementById('password').readOnly = true;
+                    document.getElementById('confirmar_password').readOnly = true;
+
+                    // 🔥 HACEMOS APARECER EL CAMPO EXCLUSIVO DEL CÓDIGO
+                    const contenedor = document.getElementById('contenedorCodigo');
+                    contenedor.style.display = "block";
+                    
+                    // Hacemos que sea obligatorio sólo cuando ya es visible
+                    document.getElementById('codigo_verificacion').required = true;
+                    document.getElementById('codigo_verificacion').focus();
+                }
+
+            } catch (error) {
+                console.error("Error conectando con la API de Google:", error);
+                alert("❌ Alerta del Hangar: No se pudo conectar con el servicio de correos. Verifica tu conexión de red.");
+                btn.disabled = false;
+                btn.style.opacity = "1";
+                btn.innerText = "Sign Up";
+            }
+        } 
+        // ========================================================
+        // FASE B: VALIDACIÓN DEL CÓDIGO INTRODUCIDO
+        // ========================================================
+        else {
+            const codigoIntroducido = document.getElementById('codigo_verificacion').value.trim();
+
+            if (codigoIntroducido === codigoServidor) {
+                btn.disabled = true;
+                btn.innerText = "¡Código Correcto! Guardando en la flota... 🚀";
+                
+                // Único camino de éxito autorizado: Enviamos el formulario original a registro.php
+                this.action = "registro.php";
+                this.submit(); 
+            } else {
+                alert("❌ Código de verificación incorrecto. Las coordenadas no coinciden con la transmisión original.");
+            }
+        }
+    });
+    </script>
+</body>
+</html>
